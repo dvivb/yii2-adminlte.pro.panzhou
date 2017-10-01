@@ -30,6 +30,20 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
+                    ['label' => '首页', 'icon' => 'tv', 'url' => ['/default/index']],
+                    ['label' => '项目管理', 'icon' => 'cube', 'url' => ['projects/index']],
+                    ['label' => '房屋征收', 'icon' => 'building-o', 'url' => ['#']],
+                    ['label' => '土地征补', 'icon' => 'map', 'url' => ['#']],
+                    [
+                        'label' => '安置信息',
+                        'icon' => 'home',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => '棚改安置房', 'icon' => 'archive', 'url' => '/residentials/index',],
+                            ['label' => '商品安置房', 'icon' => 'building', 'url' => '/shanties/index',],
+                            ['label' => '安置信息管理', 'icon' => 'clipboard', 'url' => '/information/index',],
+                        ],
+                    ],
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
