@@ -75,9 +75,6 @@ return [
         'project' => [
             'class' => 'backend\modules\project\project',
         ],
-        'arrange' => [
-            'class' => 'backend\modules\arrange\arrange',
-        ],
     ],
     'params' => $params,
 ];

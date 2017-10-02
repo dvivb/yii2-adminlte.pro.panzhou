@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                 <?php
                 echo GridView::widget([
                     'dataProvider' => $data,
+                    'filterModel' => $searchModel,
                     'columns' => [
                         
                             // 通过 $dataProvider 包括的数据定义了一个简单列
