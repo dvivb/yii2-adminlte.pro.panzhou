@@ -45,6 +45,14 @@
                             ['label' => '安置信息管理', 'icon' => 'fa fa-clipboard', 'url' => '/arrange/information/index',],
                         ],
                     ],
+                    [
+                        'label' => '用户管理',
+                        'icon' => 'fa fa-users',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/user/index',],
+                        ],
+                    ],
 
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
