@@ -15,6 +15,7 @@ class ProjectController extends Controller
      */
     public function actionIndex()
     {
+        $this->getView()->title = '项目列表';
         return $this->render('index');
     }
 }
