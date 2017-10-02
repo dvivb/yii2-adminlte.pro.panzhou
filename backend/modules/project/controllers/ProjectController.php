@@ -3,6 +3,7 @@
 namespace backend\modules\project\controllers;
 
 use yii\web\Controller;
+use backend\modules\project\services\ProjectService;
 
 /**
  * Default controller for the `project` module
@@ -16,6 +17,7 @@ class ProjectController extends Controller
     public function actionIndex()
     {
         $this->getView()->title = '项目列表';
-        return $this->render('index');
+        $data = ProjectService::ProjectList();
+        return $this->render('index',['data'=>$data]);
     }
 }

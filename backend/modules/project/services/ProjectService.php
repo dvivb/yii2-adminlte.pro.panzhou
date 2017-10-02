@@ -8,15 +8,16 @@ use yii\data\ActiveDataProvider;
  * Default controller for the `project` module
  */
 class ProjectService{
-    public function ProjectList(){
+    public static  function ProjectList(){
         //$query = new Projects();
-        $query = Projects::find()->where()->orderBy('id DESC');
+        $query = Projects::find()->orderBy('id DESC');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
                 'pagesize' =>  20,
             ]
         ]);
+        return $dataProvider;
     }
 }
 
