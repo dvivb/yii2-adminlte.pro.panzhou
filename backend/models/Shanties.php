@@ -81,8 +81,17 @@ class Shanties extends \yii\db\ActiveRecord
             'biz_house_surplusr_amount' => '剩余套数',
             'remarks' => '备注',
             'operator' => '填报人',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ShantiesQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new ShantiesQuery(get_called_class());
     }
 }

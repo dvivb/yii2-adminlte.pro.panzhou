@@ -87,8 +87,17 @@ class Information extends \yii\db\ActiveRecord
             'upload_file' => '档案资料',
             'operator' => '填报人',
             'sign_time' => '签约时间',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return InformationQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new InformationQuery(get_called_class());
     }
 }

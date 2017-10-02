@@ -1,28 +1,57 @@
 <?php
+
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
 use yii\grid\GridView;
-backend\assets\JConfirmAsset::register($this);
-$this->registerJsFile(
-    Yii::$app->request->baseUrl."/js/sms_template.js",
-    [
-        "depends"=>['backend\assets\AppAsset'],
-        "position"=> $this::POS_END
-    ]
-);
-$this->params['breadcrumbs'][] = ['label' => '项目管理', ];
-$this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project/project/index']];
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\InformationSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Informations';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="modules-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
+<div class="information-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
+        <?= Html::a('Create Information', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-</div>
+<?php Pjax::begin(); ?>    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'name',
+            'identification',
+            'phone',
+            'towns',
+            // 'address',
+            // 'booklet',
+            // 'contract_no',
+            // 'arrange_type',
+            // 'permute_type',
+            // 'house_area',
+            // 'permute_area',
+            // 'use_area',
+            // 'arrange_address',
+            // 'arrange_house_total',
+            // 'arrange_root_no',
+            // 'arrange_house_area',
+            // 'arrange_clearing',
+            // 'arrange_delivery_time',
+            // 'arrange_is_clearing',
+            // 'remarks',
+            // 'upload_file',
+            // 'operator',
+            // 'sign_time',
+            // 'created_at',
+            // 'updated_at',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+<?php Pjax::end(); ?></div>
