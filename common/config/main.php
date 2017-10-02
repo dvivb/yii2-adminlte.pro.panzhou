@@ -4,7 +4,7 @@ return [
     'components' => [
         'gii' => [
             'class' => 'yii\gii\Module',
-            'allowedIPs' => ['*.*.*.*', '127.0.0.1', '::1', '192.168.0.*', '101.37.82.36'] // 按需调整这里
+            'allowedIPs' => ['*.*.*.*', '127.0.0.1', '::1', '192.168.0.*', '192.168.230.*'] // 按需调整这里
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -19,6 +19,11 @@ return [
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
+        ],
+    ],
+    'modules' => [
+        'gii' => [
+            'class'=>'yii\gii\Module',
         ],
     ],
 ];

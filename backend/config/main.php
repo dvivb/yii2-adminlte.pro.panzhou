@@ -61,6 +61,7 @@ return [
 					],
 			],
 	],
+    
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -69,6 +70,11 @@ return [
             ],
         ],
         */
+    ],
+    'modules' => [
+        'project' => [
+            'class' => 'backend\modules\project\project',
+        ],
     ],
     'params' => $params,
 ];
