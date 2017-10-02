@@ -39,7 +39,7 @@ use dmstr\widgets\Alert;
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
     </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong><?= date('Y') ?> Copyright &copy; 盘州市房屋征收补偿管理系统 .</strong> All rights
     reserved.
 </footer>
 

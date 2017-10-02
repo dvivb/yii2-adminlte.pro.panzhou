@@ -6,6 +6,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => '盘州市征补管理系统',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
