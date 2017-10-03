@@ -10,7 +10,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => '安置信息详情', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="information-view">
+<div class="information-view "view>
 
 
     <p>
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <style>
-    .information-view{
+    .view{
         padding: 10px;
         background: #fcfcfd;
     }

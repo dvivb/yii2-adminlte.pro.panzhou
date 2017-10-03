@@ -10,7 +10,7 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Residentials', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="residentials-view">
+<div class="residentials-view view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -49,3 +49,15 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<style>
+    .view{
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    p {
+        float: right;
+        margin: 16px;
+    }
+</style>

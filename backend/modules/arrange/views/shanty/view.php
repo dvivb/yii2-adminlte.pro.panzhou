@@ -7,16 +7,14 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Shanties */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Shanties', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '商品安置房详情', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="shanties-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="shanties-view view">
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -55,3 +53,15 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<style>
+    .view{
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    p {
+        float: right;
+        margin: 16px;
+    }
+</style>

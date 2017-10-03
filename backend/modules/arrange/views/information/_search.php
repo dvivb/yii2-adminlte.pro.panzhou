@@ -89,9 +89,6 @@ use yii\widgets\ActiveForm;
         float: left;
         margin: 1px 2%;
     }
-    .form-group-title{
-        margin: 10px 0;
-    }
     .control-label{
         font-weight: normal;
     }

@@ -8,14 +8,13 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="shanties-search">
+<div class="shanties-search search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'name') ?>
 
@@ -61,11 +60,33 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updated_at') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+    <div class="form-group submit-button">
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<style>
+    .search{
+        height: 130px;
+        padding: 10px;
+        background: #fcfcfd;
+    }
+    .form-group {
+        margin-bottom: 15px;
+        width: 20%;
+        float: left;
+        margin: 1px 2%;
+    }
+    .control-label{
+        font-weight: normal;
+    }
+    .submit-button{
+        float: right;
+        display: block;
+        margin: 0 -4% 0 0;
+    }
+</style>

@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="information-form">
+<div class="information-form form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -81,7 +81,7 @@ use yii\widgets\ActiveForm;
 </div>
 
 <style>
- .information-form{
+ .form{
     height: 700px;
     padding: 10px;
     background: #fcfcfd;
