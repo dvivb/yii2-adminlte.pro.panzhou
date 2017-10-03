@@ -27,6 +27,8 @@ return [
                 'project/project/detail/<id:\d+>' => 'project/project/detail/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 'project/project/del/<id:\d+>' => 'project/project/del/',
+                'projectlist/projectlist/<id:\d+>' => 'projectlist/projectlist/index',
+                'projectlist/projectlist/add/<id:\d+>' => 'projectlist/projectlist/add',
                 ]
          ],
         'request' => [
@@ -81,6 +83,9 @@ return [
         ],
         'arrange' => [
             'class' => 'backend\modules\arrange\arrange',
+        ],
+        'projectlist' => [
+            'class' => 'backend\modules\projectlist\projectlist',
         ],
     ],
     'params' => $params,

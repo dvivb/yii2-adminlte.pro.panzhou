@@ -81,11 +81,11 @@ class Projects extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'code' => 'Code',
-            'name' => 'Name',
+            'name' => '项目名称',
             'state' => 'State',
-            'total_household' => 'Total Household',
-            'total_areas' => 'Total Areas',
-            'amount' => 'Amount',
+            'total_household' => '总户数',
+            'total_areas' => '总面积',
+            'amount' => '总金额',
             'col_household' => 'Col Household',
             'actual_household' => 'Actual Household',
             'col_area_household' => 'Col Area Household',
@@ -118,8 +118,8 @@ class Projects extends \yii\db\ActiveRecord
             'warranty_price' => 'Warranty Price',
             'actul_warranty_price' => 'Actul Warranty Price',
             'period' => 'Period',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 }

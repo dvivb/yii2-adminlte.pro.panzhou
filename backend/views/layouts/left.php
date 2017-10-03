@@ -38,7 +38,12 @@
                             ['label' => '项目新增', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
                         ]
                     ],
-                    ['label' => '房屋征收', 'icon' => 'fa fa-building-o', 'url' => ['#']],
+                    ['label' => '房屋征收', 'icon' => 'fa fa-building-o',
+                        'items'=>[
+                            ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
+                            ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                        ]
+                    ],
                     ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#']],
                     [
                         'label' => '安置信息',

@@ -27,16 +27,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
 </div>
 <div style='clear:both'></div>
 <div class="row">
-    <div class=".col-lg-12">
-        <div class="order-search">
-        
-            <?
-//                 $this->render('_smsListForm', [
-//                 'model' => $model,
-           // ]) 
-           ?>
-        </div>
-    </div>
+    
 </div>
     <div style='clear:both'></div>
     <div class='text-center'>
@@ -47,6 +38,9 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                  </div>
                  <div style='clear:both'></div>
                 <?php
+                echo '<div style="text-align:right">';
+                echo Html::a('增加', ['/projectlist/projectlist/add/'.$id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                echo '</div>';
                 echo GridView::widget([
                     'dataProvider' => $data,
                     'filterModel' => $searchModel,
@@ -55,21 +49,39 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                             // 通过 $dataProvider 包括的数据定义了一个简单列
                             // 模型列1 的数据将被使用
                             'id',
-                            'name'=>['attribute'=>'name','value'=>function($data){
-                            return '<a href="/projectlist/projectlist/'.$data->id.'">'.$data->name.'</a>';
-                    }, 'format' => 'raw',],
-                            'total_household',
-                            'total_areas',
+                            'household',
+                            'area',
                             'amount',
+                            'status'=>['attribute'=>'status','value'=>function($data){
+                            $statusStr = '';
+                            switch($data->status){
+                                case 0;
+                                    $statusStr ='未提交';
+                                break;
+                                case 1:
+                                    $statusStr ='初审通过';
+                                break;
+                                case 2:
+                                    $statusStr ='业务主管审批通过';
+                                break;
+                                case 3:
+                                    $statusStr ='分管领导审批通过';
+                                break;
+                                case 4:
+                                    $statusStr ='主要领导审批通过';
+                                break;
+                            }
+                            return $statusStr;
+                    }],
                             'created_at',
                             'updated_at',
                             'do_action' =>[
                                             'label'=>'操作',
                                             'value' => function ($data) {
                                                         $buttonStr = '';
-                                                        $buttonStr .=  Html::a('详情', ['/project/project/detail/'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                                                        $buttonStr .=  Html::a('编辑',['/project/project/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                                                        $buttonStr.=Html::a('删除',['/project/project/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr .=  Html::a('申请拨款', ['/projectlist/projectlist/apply/'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr .=  Html::a('编辑',['/projectlist/projectlist/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr.=Html::a('删除',['/projectlist/projectlist/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
                                                     
                                                     return $buttonStr;
                                                      },
