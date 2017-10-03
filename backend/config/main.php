@@ -23,6 +23,8 @@ return [
             'showScriptName' => false,
             'rules' => [
 //                 ''=> 'bi/default/index',
+                'project/project/detail/<id:\d+>' => 'project/project/detail/',
+                'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 ]
          ],
         'request' => [

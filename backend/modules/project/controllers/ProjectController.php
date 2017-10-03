@@ -22,4 +22,68 @@ class ProjectController extends Controller
         $projectSearch = $data->search(Yii::$app->request->queryParams);
         return $this->render('index',['data'=>$projectSearch,'searchModel'=> $data]);
     }
+    /*
+     * project detail
+     * 
+     * @params id int 1
+     */
+    public function  actionDetail(){
+        $this->getView()->title = '项目详情';
+        $projectId = yii::$app->request->get('id',0);
+        $projectInfo = ProjectService::getProjectDetailById($projectId);
+        if(is_null($projectInfo) || empty($projectInfo)){
+           return $this->render('detail',['message'=>'没有查询到该项目','data'=>null]);
+        }else{
+           return $this->render('detail',['message'=>'success','data'=>$projectInfo]);
+        }
+        
+    }
+    
+    /*
+     * project edit 
+     * 
+     * @params id int 1
+     */
+    public function  actionEdit(){
+        $this->getView()->title = '项目修改';
+        if(yii::$app->request->isGet){
+            $projectId = yii::$app->request->get('id',0);
+            $projectInfo = ProjectService::getProjectDetailById($projectId);
+            if(is_null($projectInfo) || empty($projectInfo)){
+                return $this->render('edit',['message'=>'没有查询到该项目','data'=>null]);
+            }else{
+                return $this->render('edit',['message'=>'success','data'=>$projectInfo]);
+            }
+        }elseif(yii::$app->request->isPost){
+            $projectId = yii::$app->request->post('id');
+            if(ProjectService::updateProjectById($projectId,yii::$app->request->post())){
+                Yii::$app->getSession()->setFlash('success', '保存成功');
+            }else{
+                Yii::$app->getSession()->setFlash('success', '保存失败');
+            }
+            return $this->redirect(['/project/project']);
+        }
+    }
+    
+    /*
+     * project add
+     * 
+     * @params 
+     * 
+     */
+    
+    public function actionAdd(){
+        $this->getView()->title = '项目新增';
+        if(yii::$app->request->isGet){
+            return $this->render('add');
+        }elseif(yii::$app->request->isPost){
+            $post = yii::$app->request->post();
+            if(ProjectService::addProject($post)){
+                Yii::$app->getSession()->setFlash('success', '保存成功');
+            }else{
+                Yii::$app->getSession()->setFlash('success', '保存失败');
+            }
+            return $this->redirect(['/project/project']);
+        }
+    }
 }

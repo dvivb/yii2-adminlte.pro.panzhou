@@ -21,7 +21,15 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
 </style>
 <div class="row">
     <div class=".col-lg-12">
+    <?php 
+    ?>
+    </div>
+</div>
+<div style='clear:both'></div>
+<div class="row">
+    <div class=".col-lg-12">
         <div class="order-search">
+        
             <?
 //                 $this->render('_smsListForm', [
 //                 'model' => $model,
@@ -47,7 +55,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                             // 通过 $dataProvider 包括的数据定义了一个简单列
                             // 模型列1 的数据将被使用
                             'id',
-                            'name',
+                            'name'=>['attribute'=>'name'],
                             'total_household',
                             'total_areas',
                             'amount',
@@ -56,20 +64,12 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                             'do_action' =>[
                                             'label'=>'操作',
                                             'value' => function ($data) {
-                                                    $buttonStr = '';
-//                                                     if($data->template_status == 1){
-//                                                         $buttonStr.=Html::submitButton('启用', ['class'=>'btn update-sms-template-status btn-primary','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
-//                                                     }elseif($data->template_status == 0 && $data->is_use == 1){
-//                                                         $buttonStr.=Html::submitButton('关闭', ['class'=>'btn update-sms-template-status btn-primary','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
-//                                                     }else{
-//                                                         $buttonStr =  Html::submitButton('编辑', ['class'=>'btn btn-primary edit-sms-template','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
-//                                                         $buttonStr.=Html::submitButton('关闭', ['class'=>'btn update-sms-template-status btn-primary','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
-//                                                         if($data->is_del == 0){
-//                                                             $buttonStr.=Html::submitButton('删除', ['class'=>'btn update-sms-template-del btn-primary','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
-//                                                         }
-//                                                     }
+                                                        $buttonStr = '';
+                                                        $buttonStr .=  Html::a('详情', ['/project/project/detail/'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr .=  Html::a('编辑',['/project/project/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr.=Html::submitButton('删除', ['class'=>'btn update-sms-template-del btn-primary','name' =>'submit-button','data-id'=>$data->id]).'&nbsp;&nbsp;&nbsp;';
                                                     
-//                                                     return $buttonStr;
+                                                    return $buttonStr;
                                                      },
                                             'format' => 'raw',
                                         ]
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
         </div>
      </div>
 </div>
-
+<div style='clear:both'></div>
 <style>
     .grid-view {margin:20px}
     .pageNum{float:right;}

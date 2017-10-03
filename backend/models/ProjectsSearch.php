@@ -24,7 +24,7 @@ class ProjectsSearch extends Projects
     }
     public function search($params)
     {
-        $query =  Projects::find();
+        $query =  Projects::find()->orderBy(['id'=> SORT_DESC]);
         //$query->joinWith(['customer']);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,7 +53,7 @@ class ProjectsSearch extends Projects
 //         ]);
         $query->andFilterWhere(['like', 'name', $this->name]);
 //         $query->andFilterWhere(['like', 'customer.customer_name', $this->customer_name]) ;//<=====加入这句
-    
+        
         return $dataProvider;
     }
 }
