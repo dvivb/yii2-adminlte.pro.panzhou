@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $code
  * @property string $name
+ * @property integer $state
  * @property integer $total_household
  * @property integer $total_areas
  * @property string $amount
@@ -65,7 +66,7 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['total_household', 'total_areas', 'col_household', 'actual_household', 'col_land_household', 'actual_land_hosehold', 'period'], 'integer'],
+            [['state', 'total_household', 'total_areas', 'col_household', 'actual_household', 'col_land_household', 'actual_land_hosehold', 'period'], 'integer'],
             [['amount', 'col_area_household', 'actual_area_household', 'col_amout_household', 'actual_amout_household', 'excessive_amount', 'actual_excessive_amount', 'col_land_areas', 'actual_land_areas', 'col_area_amout', 'actual_area_amount', 'price', 'pay_price', 'agent_price', 'pay_agent_price', 'audit_price', 'pay_audit_price', 'balance_price', 'pay_balance_price', 'design_price', 'pay_design_price', 'settlement_price', 'pay_settlement_price', 'supervisor_price', 'actul_supervisor_price', 'warranty_price', 'actul_warranty_price'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['code', 'name', 'company_name'], 'string', 'max' => 50],
@@ -80,10 +81,11 @@ class Projects extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'code' => 'Code',
-            'name' => '项目名称',
-            'total_household' => '总户数',
-            'total_areas' => '总面积',
-            'amount' => '总金额',
+            'name' => 'Name',
+            'state' => 'State',
+            'total_household' => 'Total Household',
+            'total_areas' => 'Total Areas',
+            'amount' => 'Amount',
             'col_household' => 'Col Household',
             'actual_household' => 'Actual Household',
             'col_area_household' => 'Col Area Household',
@@ -116,8 +118,8 @@ class Projects extends \yii\db\ActiveRecord
             'warranty_price' => 'Warranty Price',
             'actul_warranty_price' => 'Actul Warranty Price',
             'period' => 'Period',
-            'created_at' => '创建时间',
-            'updated_at' =>'更新时间',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }

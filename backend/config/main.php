@@ -26,6 +26,7 @@ return [
 //                 ''=> 'bi/default/index',
                 'project/project/detail/<id:\d+>' => 'project/project/detail/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
+                'project/project/del/<id:\d+>' => 'project/project/del/',
                 ]
          ],
         'request' => [

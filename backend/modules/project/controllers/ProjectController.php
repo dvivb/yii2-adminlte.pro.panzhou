@@ -86,4 +86,18 @@ class ProjectController extends Controller
             return $this->redirect(['/project/project']);
         }
     }
+    /**
+     * project del
+     * 
+     * 
+     */
+    public function actionDel(){
+        $projectId = yii::$app->request->get('id');
+        if(ProjectService::updateProjectById($projectId, ['state'=>1])){
+            Yii::$app->getSession()->setFlash('success', '删除成功');
+        }else{
+            Yii::$app->getSession()->setFlash('success', '删除失败');
+        }
+        return $this->redirect(['/project/project']);
+    }
 }
