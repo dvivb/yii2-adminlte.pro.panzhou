@@ -6,6 +6,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => '盘州市征补管理系统',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -56,13 +57,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-	'view' => [
-		'theme' => [
-			'pathMap' => [ 
-				'@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app' 
-					],
-			],
-	],
+//	'view' => [
+//		'theme' => [
+//			'pathMap' => [
+//				'@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+//					],
+//			],
+//	],
     
         /*
         'urlManager' => [
@@ -76,6 +77,9 @@ return [
     'modules' => [
         'project' => [
             'class' => 'backend\modules\project\project',
+        ],
+        'arrange' => [
+            'class' => 'backend\modules\arrange\arrange',
         ],
     ],
     'params' => $params,
