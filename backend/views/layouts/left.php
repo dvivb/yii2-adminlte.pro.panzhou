@@ -32,7 +32,12 @@
                 'items' => [
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/default/index']],
-                    ['label' => '项目管理', 'icon' => 'fa fa-cube', 'url' => ['/project/project/index']],
+                    ['label' => '项目管理', 'icon' => 'fa fa-cube',
+                        'items'=>[
+                            ['label' => '项目列表', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
+                            ['label' => '项目新增', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                        ]
+                    ],
                     ['label' => '房屋征收', 'icon' => 'fa fa-building-o', 'url' => ['#']],
                     ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#']],
                     [
