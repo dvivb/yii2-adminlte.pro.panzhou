@@ -63,7 +63,7 @@
                             ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/user/index',],
                         ],
                     ],
-
+                    ['label' => '字典管理', 'icon' => 'fa fa-stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
 //                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],

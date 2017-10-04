@@ -87,6 +87,9 @@ return [
         'projectlist' => [
             'class' => 'backend\modules\projectlist\projectlist',
         ],
+        'dictionarie' => [
+            'class' => 'backend\modules\dictionarie\dictionarie',
+        ],
     ],
     'params' => $params,
 ];
