@@ -59,7 +59,7 @@ use yii\widgets\ActiveForm;
 
 <style>
     .form{
-        height: 520px;
+        height: 620px;
         padding: 10px;
         background: #fcfcfd;
     }
