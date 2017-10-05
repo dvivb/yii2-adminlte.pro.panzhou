@@ -29,6 +29,7 @@ return [
                 'project/project/del/<id:\d+>' => 'project/project/del/',
                 'projectlist/projectlist/<id:\d+>' => 'projectlist/projectlist/index',
                 'projectlist/projectlist/add/<id:\d+>' => 'projectlist/projectlist/add',
+                'projectlist/projectlist/del/<id:\d+>/<project_id:\d+>' => 'projectlist/projectlist/del',
                 ]
          ],
         'request' => [
@@ -86,9 +87,6 @@ return [
         ],
         'projectlist' => [
             'class' => 'backend\modules\projectlist\projectlist',
-        ],
-        'dictionarie' => [
-            'class' => 'backend\modules\dictionarie\dictionarie',
         ],
     ],
     'params' => $params,

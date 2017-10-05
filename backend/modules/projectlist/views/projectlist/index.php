@@ -79,9 +79,9 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                                             'label'=>'操作',
                                             'value' => function ($data) {
                                                         $buttonStr = '';
-                                                        $buttonStr .=  Html::a('申请拨款', ['/projectlist/projectlist/apply/'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr .=  Html::a('申请拨款', ['/projectlist/projectlist/apply/'.$data->id.'/'.$data->project_id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
                                                         $buttonStr .=  Html::a('编辑',['/projectlist/projectlist/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                                                        $buttonStr.=Html::a('删除',['/projectlist/projectlist/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr.=Html::a('删除',['/projectlist/projectlist/del/'.$data->id.'/'.$data->project_id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
                                                     
                                                     return $buttonStr;
                                                      },

@@ -46,4 +46,29 @@ class ProjectlistController extends Controller
         return $this->redirect(['/projectlist/projectlist/'.$projectId]);
     }
     
+    public function actionDel(){
+//         $this->getView()->title= '新增流程';
+        $projectId = yii::$app->request->get('project_id');
+        $id = yii::$app->request->get('id');
+        $update['state'] = 1;
+        if(ProjectlistService::updateProjectList($id,$update)){
+            Yii::$app->getSession()->setFlash('success', '保存成功');
+        }else{
+            Yii::$app->getSession()->setFlash('success', '保存失败');
+        }
+        
+        return $this->redirect(['/projectlist/projectlist/'.$projectId]);
+    }
+    public function actionApply(){
+        $projectId = yii::$app->request->get('project_id');
+        $id = yii::$app->request->get('id');
+        $update['state'] = 1;
+        if(ProjectlistService::updateProjectList($id,$update)){
+            Yii::$app->getSession()->setFlash('success', '保存成功');
+        }else{
+            Yii::$app->getSession()->setFlash('success', '保存失败');
+        }
+        
+        return $this->redirect(['/projectlist/projectlist/'.$projectId]);
+    }
 }

@@ -19,7 +19,17 @@ class ProjectlistService{
 
      */
     public static function getLastProjectList($projectId){
-        $res = ProjectsList::find()->where(['project_id'=>$projectId])->orderBy('id DESC')->asArray()->one();
+        $res = ProjectsList::find()->where(['project_id'=>$projectId,'state'=>0])->orderBy('id DESC')->asArray()->one();
         return $res;
+    }
+    
+    public static function updateProjectList($id,$data){
+        $projectList = ProjectsList::find()->where(['id'=>$id])->one();
+        if(is_null($projectList))return false;
+        $projectList->setAttributes($data);
+        return $projectList->save(false);
+    }
+    public static function getProjectList($id){
+        return ProjectsList::find()->where(['id'=>$id])->asArray()->one();
     }
 }
