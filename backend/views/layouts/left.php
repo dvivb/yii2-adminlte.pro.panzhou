@@ -3,16 +3,16 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
-            </div>
-            <div class="pull-left info">
-                <p>管理员</p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
-            </div>
-        </div>
+<!--        <div class="user-panel">-->
+<!--            <div class="pull-left image">-->
+<!--                <img src="--><?//= $directoryAsset ?><!--/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>-->
+<!--            </div>-->
+<!--            <div class="pull-left info">-->
+<!--                <p>管理员</p>-->
+<!---->
+<!--                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <!-- search form -->
         <!--  form action="#" method="get" class="sidebar-form">
@@ -31,14 +31,14 @@
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/default/index']],
-                    ['label' => '项目管理', 'icon' => 'fa fa-cube',
+                    ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/']],
+                    ['label' => '项目管理', 'icon' => 'fa fa-cube', 'url' => ['#'],
                         'items'=>[
                             ['label' => '项目列表', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
                             ['label' => '项目新增', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
                         ]
                     ],
-                    ['label' => '房屋征收', 'icon' => 'fa fa-building-o',
+                    ['label' => '房屋征收', 'icon' => 'fa fa-building-o', 'url' => ['#'],
                         'items'=>[
                             ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
                             ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
@@ -55,6 +55,7 @@
                             ['label' => '安置信息管理', 'icon' => 'fa fa-clipboard', 'url' => '/arrange/information/index',],
                         ],
                     ],
+                    ['label' => '字典管理', 'icon' => 'fa fa-stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
                     [
                         'label' => '用户管理',
                         'icon' => 'fa fa-users',
@@ -63,7 +64,6 @@
                             ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/user/index',],
                         ],
                     ],
-                    ['label' => '字典管理', 'icon' => 'fa fa-stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
 //                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],

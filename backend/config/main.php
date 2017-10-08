@@ -5,7 +5,7 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-backend',
+    'id' => '',
     'name' => '盘州市征补管理系统',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -23,7 +23,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                 ''=> 'bi/default/index',
+                 ''=> 'workbench/default/index',
                 'project/project/detail/<id:\d+>' => 'project/project/detail/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 'project/project/del/<id:\d+>' => 'project/project/del/',
@@ -91,8 +91,16 @@ return [
         'projectlist' => [
             'class' => 'backend\modules\projectlist\projectlist',
         ],
+<<<<<<< HEAD
         'member' => [
             'class' => 'backend\modules\member\controllers',
+=======
+        'dictionarie' => [
+            'class' => 'backend\modules\dictionarie\dictionarie',
+        ],
+        'workbench' => [
+            'class' => 'backend\modules\workbench\workbench',
+>>>>>>> e80977a610d220f9912c3145a9d2712e3873f4c7
         ],
     ],
     'params' => $params,

@@ -21,11 +21,11 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>后台管理系统</b></a>
+        <a href="#"><b>盘州市房屋征收补偿管理系统</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">登录系统</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
@@ -45,7 +45,7 @@ $fieldOptions2 = [
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-                <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('登录', ['class' => 'btn btn-success btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
         </div>
@@ -67,4 +67,40 @@ $fieldOptions2 = [
 
     </div>
     <!-- /.login-box-body -->
+
 </div><!-- /.login-box -->
+<div class="page-footer">
+    <p>2017 Copyright © 盘州市房屋征收补偿管理系统 . All rights reserved.</p>
+    <p>Support 贵阳金利远科技有限公司.</p>
+
+</div>
+
+
+<style>
+    .login-box, .register-box {
+        width: 460px;
+        margin: 7% auto;
+    }
+    .login-logo a, .register-logo a {
+        color: #fff;
+    }
+    .login-page, .register-page {
+        background: #2f485c;
+    }
+    .login-box-body, .register-box-body {
+        background: none;
+        padding: 80px;
+        border-top: 0;
+        color: #fefefe;
+        border-bottom-right-radius: inherit;
+    }
+    .page-footer{
+        margin-top: ;100px;
+        color: #fefefe;
+    }
+    .page-footer p{
+        margin: 0;
+        text-align: center;
+        padding: 0 20px 20px 20px;
+    }
+</style>
