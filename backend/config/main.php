@@ -30,6 +30,9 @@ return [
                 'projectlist/projectlist/<id:\d+>' => 'projectlist/projectlist/index',
                 'projectlist/projectlist/add/<id:\d+>' => 'projectlist/projectlist/add',
                 'projectlist/projectlist/del/<id:\d+>/<project_id:\d+>' => 'projectlist/projectlist/del',
+                'member/member/<id:\d+>' => 'member/member',
+                'member/member/edit/<id:\d+>/<project_id:\d+>' => 'member/member/edit',
+                'member/member/del/<id:\d+>/<project_id:\d+>' => 'member/member/del',
                 ]
          ],
         'request' => [
@@ -87,6 +90,9 @@ return [
         ],
         'projectlist' => [
             'class' => 'backend\modules\projectlist\projectlist',
+        ],
+        'member' => [
+            'class' => 'backend\modules\member\controllers',
         ],
     ],
     'params' => $params,
