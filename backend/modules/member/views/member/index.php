@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
         <div class='col-lg-12'>
             <div class='box box-primary'>
                 <div class="box-header with-border">
-                     <h5 class="box-title">项目列表</h5>
+                     <h5 class="box-title">花名册列表</h5>
                  </div>
                  <div style='clear:both'></div>
                 <?php
@@ -49,43 +49,32 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                             // 通过 $dataProvider 包括的数据定义了一个简单列
                             // 模型列1 的数据将被使用
                             'id',
-                            'household',
-                            'area',
-                            'amount',
-                            'status'=>['attribute'=>'status','value'=>function($data){
-                            $statusStr = '';
-                            switch($data->status){
-                                case 0;
-                                    $statusStr ='未提交';
-                                break;
-                                case 1:
-                                    $statusStr ='提交拨款';
+                            'name',
+                            'sex' => ['attribute'=>'sex','value'=>function($data){
+                                $statusStr = '';
+                                switch($data->sex){
+                                    case 0;
+                                    $statusStr ='女';
                                     break;
-                                case 2:
-                                    $statusStr ='初审通过';
-                                break;
-                                case 3:
-                                    $statusStr ='业务主管审批通过';
-                                break;
-                                case 4:
-                                    $statusStr ='分管领导审批通过';
-                                break;
-                                case 5:
-                                    $statusStr ='主要领导审批通过';
-                                break;
-                            }
-                            return $statusStr;
-                    }],
+                                    case 1:
+                                        $statusStr ='男';
+                                        break;
+                                }
+                                return $statusStr;
+                            }],
+                            
+                            'village',
+                            'card_no',
+                            'mobile',
+                            'address',
                             'created_at',
                             'updated_at',
                             'do_action' =>[
                                             'label'=>'操作',
                                             'value' => function ($data) {
                                                         $buttonStr = '';
-                                                        if($data->status == 0)
-                                                        $buttonStr .=  Html::a('申请拨款', ['/projectlist/projectlist/apply/'.$data->id.'/'.$data->project_id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                                                        $buttonStr .=  Html::a('详情',['/member/member/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                                                        $buttonStr.=Html::a('删除',['/projectlist/projectlist/del/'.$data->id.'/'.$data->project_id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr .=  Html::a('详情',['/projectlist/projectlist/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                                                        $buttonStr.=Html::a('删除',['/member/member/del/'.$data->id.'/'.$data->projectlist_id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
                                                     
                                                     return $buttonStr;
                                                      },
