@@ -23,7 +23,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                 ''=> 'workbench/default/index',
+//                 ''=> 'workbench/default/index',
                 'project/project/detail/<id:\d+>' => 'project/project/detail/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 'project/project/del/<id:\d+>' => 'project/project/del/',

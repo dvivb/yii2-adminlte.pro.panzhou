@@ -31,7 +31,7 @@
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/']],
+                    ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/workbench/default/index']],
                     ['label' => '项目管理', 'icon' => 'fa fa-cube', 'url' => ['#'],
                         'items'=>[
                             ['label' => '项目列表', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
