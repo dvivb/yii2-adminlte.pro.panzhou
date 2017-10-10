@@ -9,6 +9,19 @@ use yii\web\Controller;
  */
 class DefaultController extends Controller
 {
+    public function beforeAction($action)
+    {
+    if (parent::beforeAction($action)) {
+            if(is_null(Yii::$app->user->identity)){
+                $this->redirect(['/site/login']);
+                return false;
+            }
+            return true;
+        }else{
+            return false;
+        }
+         
+    }
     /**
      * Renders the index view for the module
      * @return string
