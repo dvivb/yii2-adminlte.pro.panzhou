@@ -139,7 +139,6 @@ $this->title = '工作台';
 </div>
 <!-- /.row -->
 
-
 <script>
     $(function () {
         $('#example1').DataTable()
