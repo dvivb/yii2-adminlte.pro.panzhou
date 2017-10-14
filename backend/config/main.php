@@ -23,8 +23,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                 ''=> 'workbench/default/index',
+                 ''=> 'workbench/default/index',
                 'project/project/detail/<id:\d+>' => 'project/project/detail/',
+                'project/project/index/<id:\d+>' => 'project/project/index/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 'project/project/del/<id:\d+>' => 'project/project/del/',
                 'projectlist/projectlist/<id:\d+>' => 'projectlist/projectlist/index',
@@ -33,6 +34,9 @@ return [
                 'member/member/<id:\d+>' => 'member/member',
                 'member/member/edit/<id:\d+>/<project_id:\d+>' => 'member/member/edit',
                 'member/member/del/<id:\d+>/<project_id:\d+>' => 'member/member/del',
+                'landlist/landlist/<id:\d+>' => 'landlist/landlist/index',
+                'landlist/landlist/add/<id:\d+>' => 'landlist/landlist/add',
+                'landlist/landlist/del/<id:\d+>' => 'landlist/landlist/del',
                 ]
          ],
         'request' => [
@@ -99,6 +103,9 @@ return [
         ],
         'workbench' => [
             'class' => 'backend\modules\workbench\workbench',
+        ],
+        'landlist' => [
+            'class' => 'backend\modules\landlist\landlist',
         ],
     ],
     'params' => $params,

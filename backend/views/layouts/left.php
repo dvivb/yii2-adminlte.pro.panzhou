@@ -40,11 +40,16 @@
                     ],
                     ['label' => '房屋征收', 'icon' => 'fa fa-building-o', 'url' => ['#'],
                         'items'=>[
-                            ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
+                            ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index/1'],
                             ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
                         ]
                     ],
-                    ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#']],
+                    ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#'],
+                        'items'=>[
+                            ['label' => '土地征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index/2'],
+                            ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                        ]
+                    ],
                     [
                         'label' => '安置信息',
                         'icon' => 'fa fa-home',
