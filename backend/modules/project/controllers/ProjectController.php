@@ -19,7 +19,7 @@ class ProjectController extends BaseController
     public function actionIndex()
     {
         $type=yii::$app->request->get('id');
-        
+      
         $this->getView()->title = '项目列表';
         $data = new ProjectsSearch();
         $projectSearch = $data->search(Yii::$app->request->queryParams);
@@ -31,6 +31,7 @@ class ProjectController extends BaseController
                 return $this->render('index1',['data'=>$projectSearch,'searchModel'=> $data]);
                 break;
             default:
+                return $this->render('index3',['data'=>$projectSearch,'searchModel'=> $data]);
                 break;
         }
         
