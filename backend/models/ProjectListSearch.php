@@ -25,9 +25,9 @@ class ProjectListSearch extends ProjectsList
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-    public function search($params)
+    public function search($params,$type=1)
     {
-        $query =  ProjectsList::find()->where(['state'=>0])->orderBy(['id'=> SORT_ASC]);
+        $query =  ProjectsList::find()->where(['state'=>0,'type'=>$type])->orderBy(['id'=> SORT_ASC]);
         //$query->joinWith(['customer']);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

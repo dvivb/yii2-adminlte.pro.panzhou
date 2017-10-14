@@ -14,6 +14,7 @@ use Yii;
  * @property string $amount
  * @property integer $state
  * @property integer $status
+ * @property integer $type
  * @property string $created_at
  * @property string $updated_at
  */
@@ -34,7 +35,7 @@ class ProjectsList extends \yii\db\ActiveRecord
     {
         return [
             [['project_id'], 'required'],
-            [['project_id', 'household', 'state', 'status'], 'integer'],
+            [['project_id', 'household', 'state', 'status', 'type'], 'integer'],
             [['amount'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['area'], 'string', 'max' => 10],
@@ -49,13 +50,14 @@ class ProjectsList extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'project_id' => 'Project ID',
-            'household' => '总户数',
-            'area' => '总面积',
-            'amount' => '总金额',
+            'household' => 'Household',
+            'area' => 'Area',
+            'amount' => 'Amount',
             'state' => 'State',
-            'status' => '审核状态',
-            'created_at' => '创建时间',
-            'updated_at' => '更新时间',
+            'status' => 'Status',
+            'type' => 'Type',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 }
