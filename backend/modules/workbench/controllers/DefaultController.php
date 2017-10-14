@@ -4,10 +4,11 @@ namespace backend\modules\workbench\controllers;
 
 use yii\web\Controller;
 use Yii;
+use backend\controllers\BaseController;
 /**
  * Default controller for the `modules` module
  */
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
     public function beforeAction($action)
     {

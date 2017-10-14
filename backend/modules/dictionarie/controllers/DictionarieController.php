@@ -8,11 +8,12 @@ use app\models\DictionariesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\controllers\BaseController;
 
 /**
  * DictionarieController implements the CRUD actions for Dictionaries model.
  */
-class DictionarieController extends Controller
+class DictionarieController extends BaseController
 {
     /**
      * @inheritdoc

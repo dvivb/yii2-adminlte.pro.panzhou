@@ -8,11 +8,12 @@ use app\models\ResidentialsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\controllers\BaseController;
 
 /**
  * ResidentialController implements the CRUD actions for Residentials model.
  */
-class ResidentialController extends Controller
+class ResidentialController extends BaseController
 {
     /**
      * @inheritdoc

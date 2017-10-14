@@ -8,11 +8,12 @@ use app\models\ShantiesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\controllers\BaseController;
 
 /**
  * ShantyController implements the CRUD actions for Shanties model.
  */
-class ShantyController extends Controller
+class ShantyController extends BaseController
 {
     /**
      * @inheritdoc

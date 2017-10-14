@@ -8,11 +8,12 @@ use app\models\InformationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\controllers\BaseController;
 
 /**
  * InformationController implements the CRUD actions for Information model.
  */
-class InformationController extends Controller
+class InformationController extends BaseController
 {
     /**
      * @inheritdoc

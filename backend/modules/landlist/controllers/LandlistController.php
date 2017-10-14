@@ -7,11 +7,12 @@ use yii\base\Object;
 use app\models\ProjectListSearch;
 use app\models\ProjectsList;
 use backend\modules\landlist\services\landlistService;
+use backend\controllers\BaseController;
 
 /**
  * Default controller for the `landlist` module
  */
-class LandlistController extends Controller
+class LandlistController extends BaseController
 {
     /**
      * Renders the index view for the module

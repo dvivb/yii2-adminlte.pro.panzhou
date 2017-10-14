@@ -5,11 +5,12 @@ use yii;
 use yii\web\Controller;
 use backend\modules\project\services\ProjectService;
 use app\models\ProjectsSearch;
+use backend\controllers\BaseController;
 
 /**
  * Default controller for the `project` module
  */
-class ProjectController extends Controller
+class ProjectController extends BaseController
 {
     /**
      * Renders the index view for the module

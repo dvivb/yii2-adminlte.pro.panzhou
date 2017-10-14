@@ -7,12 +7,14 @@ use yii\base\Object;
 use app\models\ProjectListSearch;
 use app\models\ProjectsList;
 use backend\modules\projectlist\services\ProjectlistService;
+use backend\controllers\BaseController;
 
 /**
  * Default controller for the `projectlist` module
  */
-class ProjectlistController extends Controller
+class ProjectlistController extends BaseController
 {
+    
     /**
      * Renders the index view for the module
      * @return string

@@ -6,11 +6,12 @@ use yii\web\Controller;
 use yii\base\Object;
 use app\models\MemberSearch;
 use backend\modules\member\services\MemberService;
+use backend\controllers\BaseController;
 
 /**
  * Default controller for the `member` module
  */
-class MemberController extends Controller
+class MemberController extends BaseController
 {
     /**
      * Renders the index view for the module
