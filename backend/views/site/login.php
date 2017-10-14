@@ -78,7 +78,7 @@ $fieldOptions2 = [
 
 <style>
     .login-box, .register-box {
-        width: 460px;
+        width: 500px;
         margin: 7% auto;
     }
     .login-logo a, .register-logo a {

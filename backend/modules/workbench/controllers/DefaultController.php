@@ -10,19 +10,6 @@ use backend\controllers\BaseController;
  */
 class DefaultController extends BaseController
 {
-    public function beforeAction($action)
-    {
-    if (parent::beforeAction($action)) {
-            if(is_null(Yii::$app->user->identity)){
-                $this->redirect(['/site/login']);
-                return false;
-            }
-            return true;
-        }else{
-            return false;
-        }
-         
-    }
     /**
      * Renders the index view for the module
      * @return string
