@@ -93,7 +93,7 @@ return [
         ],
         'member' => [
             'class' => 'backend\modules\member\controllers',
-
+        ],
         'dictionarie' => [
             'class' => 'backend\modules\dictionarie\dictionarie',
         ],
@@ -102,5 +102,4 @@ return [
         ],
     ],
     'params' => $params,
-    ]
 ];
