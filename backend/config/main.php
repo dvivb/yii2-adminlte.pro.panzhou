@@ -37,6 +37,8 @@ return [
                 'landlist/landlist/<id:\d+>' => 'landlist/landlist/index',
                 'landlist/landlist/add/<id:\d+>' => 'landlist/landlist/add',
                 'landlist/landlist/del/<id:\d+>' => 'landlist/landlist/del',
+
+                '/interim/interim-list/index/<id:\d+>' => '/interim/interim-detail/index',
                 ]
          ],
         'request' => [
@@ -106,6 +108,9 @@ return [
         ],
         'landlist' => [
             'class' => 'backend\modules\landlist\landlist',
+        ],
+        'interim' => [
+            'class' => 'backend\modules\interim\interim',
         ],
     ],
     'params' => $params,
