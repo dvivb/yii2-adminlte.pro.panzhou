@@ -42,6 +42,7 @@
                         'items'=>[
                             ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index/1'],
                             ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                            ['label' => '过渡费发放', 'icon' => 'fa fa-archive', 'url' => '/interim/interim-list/index'],
                         ]
                     ],
                     ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#'],
