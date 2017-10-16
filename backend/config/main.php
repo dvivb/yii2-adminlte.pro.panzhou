@@ -109,6 +109,9 @@ return [
         'landlist' => [
             'class' => 'backend\modules\landlist\landlist',
         ],
+        'users' => [
+            'class' => 'backend\modules\users\users',
+            ],
         'interim' => [
             'class' => 'backend\modules\interim\interim',
         ],

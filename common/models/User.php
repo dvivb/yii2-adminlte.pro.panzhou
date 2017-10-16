@@ -7,6 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use app\models\UserRole;
 
 /**
  * User model
@@ -185,5 +186,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             TimestampBehavior::className(),
         ];
+    }
+    public function getUserRole(){
+        return $this->hasOne(UserRole::className(), ['id' => 'role']);
     }
 }

@@ -67,7 +67,10 @@
                         'icon' => 'fa fa-users',
                         'url' => '#',
                         'items' => [
-                            ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/user/index',],
+                            ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/users/users/index',],
+                            ['label' => '用户分组', 'icon' => 'fa fa-user', 'url' => '/users/user-role',],
+                            ['label' => '权限', 'icon' => 'fa fa-user', 'url' => '/users/permissions/index',],
+                            ['label' => '权限配置', 'icon' => 'fa fa-user', 'url' => '/users/user-permissions/index',],
                         ],
                     ],
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
