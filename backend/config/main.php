@@ -107,6 +107,9 @@ return [
         'landlist' => [
             'class' => 'backend\modules\landlist\landlist',
         ],
+        'users' => [
+            'class' => 'backend\modules\users\users',
+        ],
     ],
     'params' => $params,
 ];
