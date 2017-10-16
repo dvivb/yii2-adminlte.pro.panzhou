@@ -22,7 +22,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','errors'],
                         'allow' => true,
                     ],
                     [
@@ -61,6 +61,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+    public function actionErrors()
+    {
+        $this->getView()->title = '权限提示';
+        return $this->render('permission-error');
     }
 
     /**
