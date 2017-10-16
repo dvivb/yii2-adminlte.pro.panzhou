@@ -21,21 +21,21 @@ class BaseController extends Controller
                 return false;
             }
             
+            $roleId =  yii::$app->user->identity->role;
             $permission = Yii::$app->controller->module->id.'/'.Yii::$app->controller->id.'/'.Yii::$app->controller->action->id;
             $premissionInfo = Permissions::find()->where(['permission_action'=>$permission])->asArray()->one();
-            
+            if($roleId == 1){ //管理员
+                return true;
+            }
             if(empty($premissionInfo) || is_null($premissionInfo)){
                 Yii::$app->getSession()->setFlash('error', '权限不足,请联系管理员');
                 $this->redirect(['/site/errors']);
                 return false;
             }
             
-            $roleId =  yii::$app->user->identity->role;
             
             $roles = UserPermissions::find()->where(['role_id'=>$roleId,'permission_id'=>$premissionInfo['id']])->one();
-            if($roleId == 1){ //管理员
-                return true;
-            }elseif(empty($roles) || is_null($roles)){
+            if(empty($roles) || is_null($roles)){
                 Yii::$app->getSession()->setFlash('error', '权限不足,请联系管理员');
                 $this->redirect(['/site/errors']);
                 return false;
