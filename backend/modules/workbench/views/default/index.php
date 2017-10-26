@@ -10,7 +10,7 @@ $this->title = '工作台';
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>1024/20</h3>
+                <h3><?=$data["project_total"];?>/<?=$data["project_incomplete_total"];?></h3>
 
                 <p>累计项目总数/未完成数</p>
             </div>
@@ -25,7 +25,7 @@ $this->title = '工作台';
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>200.00/18.00</h3>
+                <h3><?=$data["project_amount_total"]["amount"]/10000;?>/<?=$data["project_amount_total"]["actual_amount"]/10000;?></h3>
 
                 <p>累计应付款/实付款(万)</p>
             </div>
@@ -40,7 +40,7 @@ $this->title = '工作台';
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>44<sup style="font-size: 20px">%</sup></h3>
+                <h3><?=$data["project_amount_total"]["actual_amount"]/$data["project_amount_total"]["amount"]*100;?><sup style="font-size: 20px">%</sup></h3>
 
                 <p>款项拨付完成率</p>
             </div>
@@ -55,7 +55,7 @@ $this->title = '工作台';
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>10000.00</h3>
+                <h3><?=$data["project_amount_total"]["actual_amount"]/10000;?></h3>
 
                 <p><?= date('Y') ?>年度拨付总金额(万)</p>
             </div>
@@ -98,34 +98,42 @@ $this->title = '工作台';
                                 <th>待办事项</th>
                                 <th>发起人</th>
                                 <th>审批结果</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>项目一</td>
-                                <td>房屋征补一期拨款</td>
-                                <td> 封某某【房屋股】</td>
-                                <td>同意审批【分管领导.张某某】</td>
-                                <td><?= Html::a('查看', ['/projectlist/projectlist/14'], ['class' => 'btn btn-success']) ?></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>项目二</td>
-                                <td>房屋征补一期拨款</td>
-                                <td> 封某某【房屋股】</td>
-                                <td>同意审批【分管领导.张某某】</td>
-                                <td><?= Html::a('查看', ['/projectlist/projectlist/14'], ['class' => 'btn btn-success']) ?></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>项目三</td>
-                                <td>房屋征补一期拨款</td>
-                                <td> 封某某【房屋股】</td>
-                                <td>同意审批【分管领导.张某某】</td>
-                                <td><?= Html::a('查看', ['/projectlist/projectlist/14'], ['class' => 'btn btn-success']) ?></td>
-                            </tr>
+                            <?php
+                            foreach($data['project_list'] as $v){ ?>
+                                <tr>
+                                    <td><?= $v['id']; ?></td>
+                                    <td><?= $v['name']; ?></td>
+                                    <td>房屋征补（<?= $v['period']; ?>）期拨款</td>
+                                    <td>admin[系统管理员]</td>
+                                    <td>
+                                        <?php
+//                                        0未提交、1提交拨款,2初审通过、3业务主管审批通过、4分管领导审批通过、5主要领导审批通过
+                                            if($v['status'] == 0){
+                                                echo '未提交';
+                                            }elseif ($v['status'] = 1) {
+                                                echo '提交拨款';
+                                            }elseif ($v['status'] = 2) {
+                                                echo '初审通过';
+                                            }elseif ($v['status'] = 3) {
+                                                echo '业务主管审批通过';
+                                            }elseif ($v['status'] = 4) {
+                                                echo '分管领导审批通过';
+                                            }elseif ($v['status'] = 5) {
+                                                echo '主要领导审批通过';
+                                            }
+                                        ?>[系统管理员.admin]
+                                    </td>
+                                    <td><?= $v['created_at']; ?></td>
+                                    <td><?= $v['updated_at']; ?></td>
+                                    <td><?= Html::a('查看', ['/project/project/detail/' . $v['id']], ['class' => 'btn btn-success']) ?></td>
+                                </tr>
+                            <?php } ?>
                             </tbody>
                         </table>
                     </div>
