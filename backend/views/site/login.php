@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'Sign In';
+$this->title = Yii::$app->name;
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -20,24 +20,21 @@ $fieldOptions2 = [
 ?>
 
 <div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>盘州市房屋征收补偿管理系统</b></a>
-    </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">登录系统</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
+        <p class="login-box-msg">登录系统</p>
 
         <?= $form
             ->field($model, 'username', $fieldOptions1)
             ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
+            ->textInput(['placeholder' => '账号']) ?>
 
         <?= $form
             ->field($model, 'password', $fieldOptions2)
             ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+            ->passwordInput(['placeholder' => '密码']) ?>
 
         <div class="row">
             <div class="col-xs-8">
@@ -70,29 +67,41 @@ $fieldOptions2 = [
 
 </div><!-- /.login-box -->
 <div class="page-footer">
-    <p>2017 Copyright © 盘州市房屋征收补偿管理系统 . All rights reserved.</p>
-    <p>Support 贵阳金利远科技有限公司.</p>
+    <p>版权所有 ©  2017 盘州市房屋征收补偿管理办公室</p>
+    <p>技术支持： 贵阳金利远科技有限公司</p>
 
 </div>
 
 
 <style>
     .login-box, .register-box {
-        width: 500px;
+        width: 1000px;
         margin: 7% auto;
     }
     .login-logo a, .register-logo a {
         color: #fff;
     }
+    #login-form{
+        width: 400px;
+        float: right;
+        margin-top: 40px;
+    }
     .login-page, .register-page {
-        background: #2f485c;
+        background: #31465b;
+    }
+    .login-box-msg{
+        line-height: 60px;
+        font-size: 18px;
+        font-weight: bold;
     }
     .login-box-body, .register-box-body {
         background: none;
-        padding: 80px;
+        padding: 150px;
+        height: 600px;
         border-top: 0;
         color: #fefefe;
         border-bottom-right-radius: inherit;
+        background: url(/images/login.logo.bg.png) no-repeat left;
     }
     .page-footer{
         margin-top: ;100px;

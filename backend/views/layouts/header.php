@@ -7,7 +7,8 @@ use yii\helpers\Html;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">盘州</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+
+    <?= Html::a('<span class="logo-mini"></span><span class="logo-lg"></span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -73,3 +74,16 @@ use yii\helpers\Html;
         </div>
     </nav>
 </header>
+
+<style>
+    .logo{
+        background: url(/images/logo.png) no-repeat left;
+        margin-left: 1.4px;
+    }
+    .skin-blue .main-header .navbar {
+        background-color: #324156;
+    }
+    .skin-blue .main-header .logo{
+        background-color: #324156;
+    }
+</style>
