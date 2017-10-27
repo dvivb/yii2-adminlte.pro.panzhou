@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-role-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -33,3 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+
+<style>
+    .grid-view{
+        margin-top: 10px;
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    .btn-success {
+        float: left;
+        margin: 16px;
+    }
+</style>

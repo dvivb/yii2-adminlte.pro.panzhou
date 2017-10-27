@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = '更新权限';
 ?>
 <div class="permissions-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

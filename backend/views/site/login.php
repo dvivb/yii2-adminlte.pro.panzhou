@@ -67,7 +67,7 @@ $fieldOptions2 = [
 
 </div><!-- /.login-box -->
 <div class="page-footer">
-    <p>版权所有 ©  2017 盘州市房屋征收补偿管理办公室</p>
+    <p>版权所有 © <?= date('Y') ?> 盘州市房屋征收补偿管理办公室</p>
     <p>技术支持： 贵阳金利远科技有限公司</p>
 
 </div>

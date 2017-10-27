@@ -5,14 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\UserPermissions */
 
-$this->title = 'Update User Permissions: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'User Permissions', 'url' => ['index']];
+$this->title = '更新权限配置: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => '权限配置', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '更新';
 ?>
 <div class="user-permissions-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

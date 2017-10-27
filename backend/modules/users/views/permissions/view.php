@@ -10,9 +10,7 @@ $this->title = '权限详情';
 $this->params['breadcrumbs'][] = ['label' => '权限', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="permissions-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="permissions-view view">
 
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -37,3 +35,15 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<style>
+    .view{
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    p {
+        float: right;
+        margin: 16px;
+    }
+</style>

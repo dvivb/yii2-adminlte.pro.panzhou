@@ -10,9 +10,7 @@ $this->title = '分组详情';
 $this->params['breadcrumbs'][] = ['label' => '用户分组', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-role-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="user-role-view view">
 
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -36,3 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<style>
+    .view{
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    p {
+        float: right;
+        margin: 16px;
+    }
+</style>

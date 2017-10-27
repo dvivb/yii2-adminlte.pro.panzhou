@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = '修改用户信息';
 ?>
 <div class="user-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
         'roles' => $roles,
