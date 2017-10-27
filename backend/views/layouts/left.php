@@ -10,7 +10,7 @@
 <!--            <div class="pull-left info">-->
 <!--                <p>管理员</p>-->
 <!---->
-<!--                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>-->
+<!--                <a href="#"><i class="circle text-success"></i> 在线</a>-->
 <!--            </div>-->
 <!--        </div>-->
 
@@ -19,7 +19,7 @@
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="search"></i>
                 </button>
               </span>
             </div>
@@ -31,51 +31,51 @@
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => '首页', 'icon' => 'fa fa-tv', 'url' => ['/workbench/default/index']],
-                    ['label' => '项目管理', 'icon' => 'fa fa-cube', 'url' => ['#'],
+                    ['label' => '首页', 'icon' => 'tv', 'url' => ['/workbench/default/index']],
+                    ['label' => '项目管理', 'icon' => 'cube', 'url' => '#',
                         'items'=>[
-                            ['label' => '项目列表', 'icon' => 'fa fa-archive', 'url' => '/project/project/index'],
-                            ['label' => '项目新增', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                            ['label' => '项目列表', 'icon' => 'archive', 'url' => ['/project/project/index']],
+                            ['label' => '项目新增', 'icon' => 'archive', 'url' => ['/project/project/add']],
                         ]
                     ],
-                    ['label' => '房屋征收', 'icon' => 'fa fa-building-o', 'url' => ['#'],
+                    ['label' => '房屋征收', 'icon' => 'building-o', 'url' => '#',
                         'items'=>[
-                            ['label' => '房屋征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index/1'],
-                            ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
-                            ['label' => '过渡费发放', 'icon' => 'fa fa-archive', 'url' => '/interim/interim-list/index'],
+                            ['label' => '房屋征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/1']],
+                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/2']],
+                            ['label' => '过渡费发放', 'icon' => 'archive', 'url' => ['/interim/interim-list/index']],
                         ]
                     ],
-                    ['label' => '土地征补', 'icon' => 'fa fa-map', 'url' => ['#'],
+                    ['label' => '土地征补', 'icon' => 'map', 'url' => '#',
                         'items'=>[
-                            ['label' => '土地征补信息管理', 'icon' => 'fa fa-archive', 'url' => '/project/project/index/2'],
-                            ['label' => '新增花名册', 'icon' => 'fa fa-archive', 'url' => '/project/project/add'],
+                            ['label' => '土地征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/2']],
+                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/1']],
                         ]
                     ],
                     [
                         'label' => '安置信息',
-                        'icon' => 'fa fa-home',
+                        'icon' => 'home',
                         'url' => '#',
                         'items' => [
-                            ['label' => '棚改安置房', 'icon' => 'fa fa-archive', 'url' => '/arrange/residential/index',],
-                            ['label' => '商品安置房', 'icon' => 'fa fa-building', 'url' => '/arrange/shanty/index',],
-                            ['label' => '安置信息管理', 'icon' => 'fa fa-clipboard', 'url' => '/arrange/information/index',],
+                            ['label' => '棚改安置房', 'icon' => 'archive', 'url' => ['/arrange/residential/index']],
+                            ['label' => '商品安置房', 'icon' => 'building', 'url' => ['/arrange/shanty/index']],
+                            ['label' => '安置信息管理', 'icon' => 'clipboard', 'url' => ['/arrange/information/index']],
                         ],
                     ],
-                    ['label' => '字典管理', 'icon' => 'fa fa-stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
+                    ['label' => '字典管理', 'icon' => 'stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
                     [
                         'label' => '用户管理',
-                        'icon' => 'fa fa-users',
+                        'icon' => 'users',
                         'url' => '#',
                         'items' => [
-                            ['label' => '用户', 'icon' => 'fa fa-user', 'url' => '/users/users/index',],
-                            ['label' => '用户分组', 'icon' => 'fa fa-user', 'url' => '/users/user-role',],
-                            ['label' => '权限', 'icon' => 'fa fa-user', 'url' => '/users/permissions/index',],
-                            ['label' => '权限配置', 'icon' => 'fa fa-user', 'url' => '/users/user-permissions/index',],
+                            ['label' => '用户', 'icon' => 'user', 'url' => ['/users/users/index']],
+                            ['label' => '用户分组', 'icon' => 'user', 'url' => ['/users/user-role']],
+                            ['label' => '权限', 'icon' => 'user', 'url' => ['/users/permissions/index']],
+                            ['label' => '权限配置', 'icon' => 'user', 'url' => ['/users/user-permissions/index']],
                         ],
                     ],
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-//                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
-//                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
+//                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
+//                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                 ],
                     
           ]
