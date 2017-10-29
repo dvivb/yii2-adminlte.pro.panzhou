@@ -20,8 +20,13 @@ class ProjectController extends BaseController
     {
         $type=yii::$app->request->get('id');
         $this->getView()->title = '项目列表';
+        $get = yii::$app->request->get();
         $data = new ProjectsSearch();
         $projectSearch = $data->search(Yii::$app->request->queryParams);
+        
+        if(isset($get['export'])){
+            ProjectService::exportProject($get);exit;
+        }
         switch ($type){
             case 1 :
                 return $this->render('index',['data'=>$projectSearch,'searchModel'=> $data]);
@@ -115,5 +120,10 @@ class ProjectController extends BaseController
             Yii::$app->getSession()->setFlash('success', '删除失败');
         }
         return $this->redirect(['/project/project']);
+    }
+    
+    
+    public function actionExport(){
+        var_dump($_GET);
     }
 }

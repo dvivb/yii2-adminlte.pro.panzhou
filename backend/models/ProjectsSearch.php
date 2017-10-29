@@ -6,6 +6,8 @@ use yii\data\ActiveDataProvider;
 class ProjectsSearch extends Projects
 {
     public $name;
+    public $start_at;
+    public $end_at;
     public function attributes()
     {
         // 添加关联字段到可搜索特性
@@ -14,7 +16,7 @@ class ProjectsSearch extends Projects
     public function rules()
     {
         return [
-            [['name'], 'string'],
+            [['name','start_at','end_at'], 'string'],
         ];
     }
     public function scenarios()
@@ -53,6 +55,7 @@ class ProjectsSearch extends Projects
 //             'name' => $this->name,
 //         ]);
         $query->andFilterWhere(['like', 'name', $this->name]);
+     
         if(isset($params['ProjectsSearch']['start_at']) && $params['ProjectsSearch']['start_at'] !=''){
             $query->andWhere(['>=', 'created_at', $params['ProjectsSearch']['start_at'].' 00:00:00']);
         }

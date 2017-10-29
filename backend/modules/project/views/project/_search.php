@@ -15,19 +15,20 @@ use yii\jui\DatePicker;
         'method' => 'get',
     ]); ?>
 <?php  ?>
-
+<?= $form->field($model, 'name') ?>
     <?php echo  $form->field($model, 'start_at')->widget( \dosamigos\datepicker\DateRangePicker::className(), [
         'nameTo'=>'aaa',
         'attributeTo'=>"end_at",
         'language' => 'zh-CN',
         'labelTo'=>'至',
+        'value'=>'',
         'clientOptions'=>['format' => 'yyyy-mm-dd'],
 ]); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
-         <?= Html::resetButton('导出', ['class' => 'btn btn-default']) ?>
+            <input type="submit" name="search" class="btn btn-primary" value="搜索" >      
+            <input type="reset" class="btn btn-default"  value="重置" >    
+            <input type="submit" name="export" class="btn btn-default" value="导出" >    
     </div>
 
     <?php ActiveForm::end(); ?>
