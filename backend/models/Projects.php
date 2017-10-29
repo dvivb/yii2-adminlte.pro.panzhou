@@ -120,6 +120,7 @@ class Projects extends \yii\db\ActiveRecord
             'period' => 'Period',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
+            'start_at' =>'时间搜索'
         ];
     }
 }
