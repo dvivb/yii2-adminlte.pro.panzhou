@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
     .panel .col-lg-1, .panel .col-lg-2, .panel .col-lg-3, .panel .col-lg-4, .panel .col-lg-5 {padding:2px;}
     .table {margin-bottom:0px;}
 </style>
+<?php echo $this->render('_search', ['model' => $searchModel]); ?>
 <div class="row">
     <div class=".col-lg-12">
     <?php 
