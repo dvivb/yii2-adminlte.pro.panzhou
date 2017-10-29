@@ -9,7 +9,7 @@ class ProjectsSearch extends Projects
     public function attributes()
     {
         // 添加关联字段到可搜索特性
-        return array_merge(parent::attributes(), ['name']);
+        return array_merge(parent::attributes(), ['name','start_at','end_at']);
     }
     public function rules()
     {
@@ -29,6 +29,7 @@ class ProjectsSearch extends Projects
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        
 //         $dataProvider->setSort([
 //             'attributes' => [
 //                 /* 其它字段不要动 */
@@ -52,6 +53,13 @@ class ProjectsSearch extends Projects
 //             'name' => $this->name,
 //         ]);
         $query->andFilterWhere(['like', 'name', $this->name]);
+        if(isset($params['ProjectsSearch']['start_at']) && $params['ProjectsSearch']['start_at'] !=''){
+            $query->andWhere(['>=', 'created_at', $params['ProjectsSearch']['start_at'].' 00:00:00']);
+        }
+        
+        if(isset($params['ProjectsSearch']['end_at']) && $params['ProjectsSearch']['end_at'] !=''){
+            $query->andWhere(['<=', 'created_at', $params['ProjectsSearch']['end_at'].' 23:59:59']);
+        }
 //         $query->andFilterWhere(['like', 'customer.customer_name', $this->customer_name]) ;//<=====加入这句
         
         return $dataProvider;
