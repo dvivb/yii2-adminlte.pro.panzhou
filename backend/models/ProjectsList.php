@@ -49,15 +49,15 @@ class ProjectsList extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'project_id' => 'Project ID',
-            'household' => 'Household',
-            'area' => 'Area',
-            'amount' => 'Amount',
-            'state' => 'State',
-            'status' => 'Status',
+            'project_id' => '项目ID',
+            'household' => '总户数',
+            'area' => '总面积',
+            'amount' => '金额',
+            'state' => '状态',
+            'status' => '审批进度',
             'type' => 'Type',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '制表时间',
+            'updated_at' => '更新时间',
         ];
     }
 }
