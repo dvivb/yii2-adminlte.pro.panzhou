@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => '权限配置', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-permissions-view view">
-    
+
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
