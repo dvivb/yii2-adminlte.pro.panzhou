@@ -39,6 +39,7 @@ class ProjectsList extends \yii\db\ActiveRecord
             [['amount'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['area'], 'string', 'max' => 10],
+            
         ];
     }
 
@@ -58,6 +59,7 @@ class ProjectsList extends \yii\db\ActiveRecord
             'type' => 'Type',
             'created_at' => '制表时间',
             'updated_at' => '更新时间',
+            'start_at' =>'时间搜索'
         ];
     }
 }

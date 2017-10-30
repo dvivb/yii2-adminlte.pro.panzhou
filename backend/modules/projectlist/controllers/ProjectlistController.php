@@ -22,6 +22,11 @@ class ProjectlistController extends BaseController
     public function actionIndex()
     {
         $this->getView()->title = '项目列表';
+        $get = yii::$app->request->get();
+        if(isset($get['export'])){
+            ProjectlistService::exportProject($get);
+            exit;
+        }
         $data = new ProjectListSearch();
         $projectlistSearch = $data->search(Yii::$app->request->queryParams);
         return $this->render('index',[
