@@ -116,6 +116,12 @@ return [
         'interim' => [
             'class' => 'backend\modules\interim\interim',
         ],
+        'houselevy' => [
+            'class' => 'backend\modules\houselevy\houselevy',
+        ],
+        'landlevy' => [
+            'class' => 'backend\modules\landlevy\landlevy',
+        ],
     ],
     'params' => $params,
 ];

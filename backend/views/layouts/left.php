@@ -40,15 +40,19 @@
                     ],
                     ['label' => '房屋征收', 'icon' => 'building-o', 'url' => '#',
                         'items'=>[
-                            ['label' => '房屋征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/1']],
-                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/2']],
+//                            ['label' => '房屋征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/1']],
+//                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/2']],
+
+                            ['label' => '房屋征补信息管理', 'icon' => 'archive', 'url' => ['/houselevy']],
                             ['label' => '过渡费发放', 'icon' => 'archive', 'url' => ['/interim/interim-list/index']],
                         ]
                     ],
                     ['label' => '土地征补', 'icon' => 'map', 'url' => '#',
                         'items'=>[
-                            ['label' => '土地征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/2']],
-                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/1']],
+//                            ['label' => '土地征补信息管理', 'icon' => 'archive', 'url' => ['/project/project/index/2']],
+//                            ['label' => '新增花名册', 'icon' => 'archive', 'url' => ['/project/project/add/1']],
+
+                            ['label' => '土地征补信息管理', 'icon' => 'archive', 'url' => ['/landlevy']],
                         ]
                     ],
                     [

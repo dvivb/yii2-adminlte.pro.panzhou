@@ -96,7 +96,7 @@ $fieldOptions2 = [
     }
     .login-box-body, .register-box-body {
         background: none;
-        padding: 150px;
+        padding: 146px 100px;
         height: 600px;
         border-top: 0;
         color: #fefefe;
