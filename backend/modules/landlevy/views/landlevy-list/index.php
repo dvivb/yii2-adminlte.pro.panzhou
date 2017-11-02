@@ -24,21 +24,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'landlevy_total_id',
+//            'id',
+//            'landlevy_total_id',
+            'name'=>['attribute'=>'name','value'=>function($dataProvider){
+                return '<a href="/landlevy/landlevy-detail?LandlevyDetailSearch[landlevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+            }, 'format' => 'raw',],
+            'identification',
             'land_survey_no',
             'land_map_no',
-            'name',
+//            'name',
             // 'gender',
-            // 'identification',
-            // 'phone',
-            // 'towns',
+             'phone',
+             'towns',
             // 'address',
             // 'bank_card',
             // 'bank_name',
             // 'upload_file',
             // 'created_at',
-            // 'updated_at',
+             'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

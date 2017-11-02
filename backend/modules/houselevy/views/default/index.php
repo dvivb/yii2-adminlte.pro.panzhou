@@ -56,7 +56,10 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
                     // 通过 $dataProvider 包括的数据定义了一个简单列
                     // 模型列1 的数据将被使用
                     'id',
-                    'name',
+//                    'name',
+                    'name'=>['attribute'=>'name','value'=>function($data){
+                        return '<a href="/houselevy/houselevy-total?HouselevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
+                    }, 'format' => 'raw',],
                     'total_household',
                     'total_areas',
                     'amount',
@@ -66,7 +69,7 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
                         'label'=>'操作',
                         'value' => function ($data) {
                             $buttonStr = '';
-                            $buttonStr .=  Html::a('详情', ['/houselevy/houselevy-total/?'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
+                            $buttonStr .=  Html::a('详情', ['/houselevy/houselevy-total?HouselevyTotalSearch[project_id]='.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
                             $buttonStr .=  Html::a('编辑',['/project/project/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
                             $buttonStr.=Html::a('删除',['/project/project/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
 

@@ -24,19 +24,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'houselevy_total_id',
-            'name',
-            'gender',
+//            'id',
+//            'houselevy_total_id',
+//            'name',
+            'name'=>['attribute'=>'name','value'=>function($dataProvider){
+                return '<a href="/houselevy/houselevy-detail?HouselevyDetailSearch[houselevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+            }, 'format' => 'raw',],
             'identification',
-            // 'phone',
-            // 'towns',
-            // 'address',
+             'phone',
+            'gender',
+             'towns',
+//             'address',
             // 'bank_card',
             // 'bank_name',
             // 'upload_file',
             // 'created_at',
-            // 'updated_at',
+             'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
