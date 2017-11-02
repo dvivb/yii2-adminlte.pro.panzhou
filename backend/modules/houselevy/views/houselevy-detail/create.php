@@ -6,13 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\HouselevyDetail */
 
-$this->title = 'Create Houselevy Detail';
-$this->params['breadcrumbs'][] = ['label' => 'Houselevy Details', 'url' => ['index']];
+$this->title = '创建';
+$this->params['breadcrumbs'][] = ['label' => '房屋征补项目花名册详情', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="houselevy-detail-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

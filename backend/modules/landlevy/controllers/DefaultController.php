@@ -17,8 +17,6 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
-//        $type=yii::$app->request->get('id');
-        $this->getView()->title = '项目列表';
         $get = yii::$app->request->get();
         $data = new ProjectsSearch();
         $projectSearch = $data->search(Yii::$app->request->queryParams);

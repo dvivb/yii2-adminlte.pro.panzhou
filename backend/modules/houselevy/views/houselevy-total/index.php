@@ -7,16 +7,15 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\HouselevyTotalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Houselevy Totals';
+$this->title = '房屋征补项目花名册汇总';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="houselevy-total-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Houselevy Total', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -42,3 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+
+<style>
+    .grid-view{
+        margin-top: 10px;
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    .btn-success {
+        float: left;
+        margin: 16px;
+    }
+</style>

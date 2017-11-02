@@ -10,6 +10,8 @@ $this->registerJsFile(
         "position"=> $this::POS_END
     ]
 );
+
+$this->title = '房屋征补信息管理';
 $this->params['breadcrumbs'][] = ['label' => '房屋征补', ];
 $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' => ['/houselevy/default/index']];
 /* @var $this yii\web\View */
@@ -43,9 +45,6 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
 <div class='text-center'>
     <div class='col-lg-12'>
         <div class='box box-primary'>
-            <div class="box-header with-border">
-                <h5 class="box-title">项目列表</h5>
-            </div>
             <div style='clear:both'></div>
             <?php
             echo GridView::widget([
