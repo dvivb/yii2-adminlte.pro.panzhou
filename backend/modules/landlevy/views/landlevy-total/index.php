@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\LandlevyTotalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '土地征补项目花名册汇总';
+    $this->title = '土地征补项目花名册汇总';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="landlevy-total-index">

@@ -71,6 +71,7 @@ use yii\widgets\ActiveForm;
     }
     .form-group-title{
         margin: 10px 0;
+        width: 100%;
     }
     .control-label{
         font-weight: normal;
