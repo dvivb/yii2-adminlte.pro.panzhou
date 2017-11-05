@@ -57,7 +57,8 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
                     'id',
 //                    'name',
                     'name'=>['attribute'=>'name','value'=>function($data){
-                        return '<a href="/houselevy/houselevy-total?HouselevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
+//                        return '<a href="/houselevy/houselevy-total?HouselevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
+                        return  Html::a($data->name,"/houselevy/houselevy-total?HouselevyTotalSearch[project_id]={$data->id}", ['target'=> '_blank']);
                     }, 'format' => 'raw',],
                     'total_household',
                     'total_areas',

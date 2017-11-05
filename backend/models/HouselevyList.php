@@ -53,7 +53,7 @@ class HouselevyList extends \yii\db\ActiveRecord
             'id' => 'ID',
             'houselevy_total_id' => '房屋征收汇总ID',
             'name' => '姓名',
-            'gender' => '性别（1:男，2:女）',
+            'gender' => '性别',
             'identification' => '身份证号',
             'phone' => '联系电话',
             'towns' => '乡镇',
