@@ -8,24 +8,24 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="dictionaries-search">
+<div class="dictionaries-search search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?php // $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'subject') ?>
+    <?= $form->field($model, 'subject')->dropDownList([ 'house_structure' => '房屋结构', 'annexe_structure' => '附房结构', 'attach' => '地上附着物', 'structure' => '构筑物', 'equipment' => '配套设备', 'land_status' => '土地类别', 'young_crop' => '青苗', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'parent_id') ?>
+    <?php // $form->field($model, 'parent_id') ?>
 
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'unit') ?>
 
-    <?php // echo $form->field($model, 'price') ?>
+    <?php echo $form->field($model, 'price') ?>
 
     <?php // echo $form->field($model, 'remarks') ?>
 
@@ -35,9 +35,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updated_at') ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+    <div class="form-group submit-button">
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

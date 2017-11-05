@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -33,6 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'land_map_no',
 //            'name',
             // 'gender',
+            'gender'=>['attribute'=>'gender','value'=>function($dataProvider){
+                $var = '';
+                switch($dataProvider->gender){
+                    case 1:
+                        $var ='男';
+                        break;
+                    case 2:
+                        $var ='女';
+                        break;
+                    default:
+                        $var = null;
+                        break;
+                }
+                return $var;
+            }],
              'phone',
              'towns',
             // 'address',

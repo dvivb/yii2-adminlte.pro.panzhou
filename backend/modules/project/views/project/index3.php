@@ -51,6 +51,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                 echo GridView::widget([
                     'dataProvider' => $data,
                     'filterModel' => $searchModel,
+                    'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
                     'columns' => [
                         
                             // 通过 $dataProvider 包括的数据定义了一个简单列

@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                 echo GridView::widget([
                     'dataProvider' => $data,
                     'filterModel' => $searchModel,
+                    'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
                     'columns' => [
                         
                             // 通过 $dataProvider 包括的数据定义了一个简单列
@@ -54,29 +55,29 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                             'area',
                             'amount',
                             'status'=>['attribute'=>'status','value'=>function($data){
-                            $statusStr = '';
-                            switch($data->status){
-                                case 0;
-                                    $statusStr ='未提交';
-                                break;
-                                case 1:
-                                    $statusStr ='提交拨款';
-                                    break;
-                                case 2:
-                                    $statusStr ='初审通过';
-                                break;
-                                case 3:
-                                    $statusStr ='业务主管审批通过';
-                                break;
-                                case 4:
-                                    $statusStr ='分管领导审批通过';
-                                break;
-                                case 5:
-                                    $statusStr ='主要领导审批通过';
-                                break;
-                            }
-                            return $statusStr;
-                    }],
+                                    $statusStr = '';
+                                    switch($data->status){
+                                        case 0;
+                                            $statusStr ='未提交';
+                                        break;
+                                        case 1:
+                                            $statusStr ='提交拨款';
+                                            break;
+                                        case 2:
+                                            $statusStr ='初审通过';
+                                        break;
+                                        case 3:
+                                            $statusStr ='业务主管审批通过';
+                                        break;
+                                        case 4:
+                                            $statusStr ='分管领导审批通过';
+                                        break;
+                                        case 5:
+                                            $statusStr ='主要领导审批通过';
+                                        break;
+                                    }
+                                    return $statusStr;
+                            }],
                             'created_at',
                             'updated_at',
                             'do_action' =>[

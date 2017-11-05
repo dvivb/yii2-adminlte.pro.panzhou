@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dictionaries_id')->textInput() ?>
 
-    <?= $form->field($model, 'subject')->dropDownList([ 'house_structure' => 'House structure', 'annexe_structure' => 'Annexe structure', 'attach' => 'Attach', 'structure' => 'Structure', 'equipment' => 'Equipment', 'land_status' => 'Land status', 'young_crop' => 'Young crop', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'subject')->dropDownList([ 'house_structure' => '房屋结构', 'annexe_structure' => '附房结构', 'attach' => '地上附着物', 'structure' => '构筑物', 'equipment' => '配套设备', 'land_status' => '土地类别', 'young_crop' => '青苗', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'parent_id')->textInput() ?>
 

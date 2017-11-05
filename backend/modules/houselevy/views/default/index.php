@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
             echo GridView::widget([
                 'dataProvider' => $data,
                 'filterModel' => $searchModel,
+                'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
                 'columns' => [
 
                     // 通过 $dataProvider 包括的数据定义了一个简单列
@@ -58,7 +59,7 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
 //                    'name',
                     'name'=>['attribute'=>'name','value'=>function($data){
 //                        return '<a href="/houselevy/houselevy-total?HouselevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
-                        return  Html::a($data->name,"/houselevy/houselevy-total?HouselevyTotalSearch[project_id]={$data->id}", ['target'=> '_blank']);
+                        return  Html::a($data->name,"/houselevy/houselevy-total?HouselevyTotalSearch[project_id]={$data->id}", ['target'=> 'self']);
                     }, 'format' => 'raw',],
                     'total_household',
                     'total_areas',
