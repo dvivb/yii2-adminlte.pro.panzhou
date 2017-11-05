@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="residentials-search search">
+<div class="residentials-search search" >
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -23,43 +23,28 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'address') ?>
 
     <?= $form->field($model, 'house_total') ?>
+    <?php echo  $form->field($model, 'created_at')->widget( \dosamigos\datepicker\DateRangePicker::className(), [
+            'nameTo'=>'aaa',
+            'attributeTo'=>"end_at",
+            'language' => 'zh-CN',
+            'labelTo'=>'至',
+            'value'=>'',
+            'clientOptions'=>['format' => 'yyyy-mm-dd'],
+    ]); ?>
 
-    <?php // echo $form->field($model, 'house_area') ?>
-
-    <?php // echo $form->field($model, 'suite_area') ?>
-
-    <?php // echo $form->field($model, 'house_month_total') ?>
-
-    <?php // echo $form->field($model, 'house_year_total') ?>
-
-    <?php // echo $form->field($model, 'house_year_area') ?>
-
-    <?php // echo $form->field($model, 'house_amount') ?>
-
-    <?php // echo $form->field($model, 'house_surplusr_amount') ?>
-
-    <?php // echo $form->field($model, 'remarks') ?>
-
-    <?php // echo $form->field($model, 'operator') ?>
-
-    <?php // echo $form->field($model, 'finished_time') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <div class="form-group submit-button">
-        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
+    <div class="form-group">
+            <input type="submit" name="search" class="btn btn-primary" value="搜索" >      
+            <input type="reset" class="btn btn-default"  value="重置" >    
+            <input type="submit" name="export" class="btn btn-default" value="导出" >    
     </div>
-
+    <div style="clear: both"></div>
     <?php ActiveForm::end(); ?>
-
+    <div style="clear: both"></div>
 </div>
 
+<div style="clear: both"></div>
 <style>
     .search{
-        height: 130px;
         padding: 10px;
         background: #fcfcfd;
     }

@@ -19,8 +19,13 @@ class ResidentialsSearch extends Residentials
     {
         return [
             [['id', 'house_total', 'house_area', 'suite_area', 'house_month_total', 'house_year_total', 'house_year_area', 'house_amount', 'house_surplusr_amount'], 'integer'],
-            [['name', 'house_name', 'address', 'remarks', 'operator', 'finished_time', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'house_name', 'address', 'remarks', 'operator', 'finished_time', 'created_at', 'updated_at','end_at'], 'safe'],
         ];
+    }
+    public function attributes()
+    {
+        // 添加关联字段到可搜索特性
+        return array_merge(parent::attributes(), ['end_at']);
     }
 
     /**

@@ -230,7 +230,7 @@ $this->params['breadcrumbs'][] = ['label' => '项目详情', 'url' => ['/project
         </form>
      </div>
 </div>
-
+<div style="clear:both"></div>
 <style>
     .grid-view {margin:20px}
     .pageNum{float:right;}

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\controllers\BaseController;
+use backend\modules\arrange\services\ArrangeService;
 
 /**
  * ResidentialController implements the CRUD actions for Residentials model.
@@ -36,9 +37,12 @@ class ResidentialController extends BaseController
      */
     public function actionIndex()
     {
+        $get = yii::$app->request->get();
         $searchModel = new ResidentialsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if(isset($get['export'])){
+            ArrangeService::exportResidential($get);exit;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
