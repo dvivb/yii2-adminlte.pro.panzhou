@@ -57,7 +57,7 @@ class LandlevyList extends \yii\db\ActiveRecord
             'land_survey_no' => '土地勘丈登记表编号',
             'land_map_no' => '地籍图号',
             'name' => '姓名',
-            'gender' => '性别（1:男，2:女）',
+            'gender' => '性别',
             'identification' => '身份证号',
             'phone' => '联系电话',
             'towns' => '乡镇',

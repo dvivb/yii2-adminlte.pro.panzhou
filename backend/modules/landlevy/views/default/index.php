@@ -57,7 +57,8 @@ $this->params['breadcrumbs'][] = ['label' => '土地征补信息管理', 'url' =
                     'id',
 //                    'name',
                     'name'=>['attribute'=>'name','value'=>function($data){
-                        return '<a href="/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
+//                        return '<a href="/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $data->id .'">'.$data->name.'</a>';
+                        return  Html::a($data->name,"/landlevy/landlevy-total?LandlevyTotalSearch[project_id]={$data->id}", ['target'=> '_blank']);
                     }, 'format' => 'raw',],
                     'total_household',
                     'total_areas',

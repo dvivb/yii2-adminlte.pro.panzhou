@@ -26,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'houselevy_total_id',
 //            'name',
             'name'=>['attribute'=>'name','value'=>function($dataProvider){
-                return '<a href="/houselevy/houselevy-detail?HouselevyDetailSearch[houselevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+//                return '<a href="/houselevy/houselevy-detail?HouselevyDetailSearch[houselevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+                return  Html::a($dataProvider->name,"houselevy-detail?HouselevyDetailSearch[houselevy_list_id]={$dataProvider->id}", ['target'=> '_blank']);
             }, 'format' => 'raw',],
             'identification',
              'phone',

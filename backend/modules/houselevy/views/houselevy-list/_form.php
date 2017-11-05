@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->textInput() ?>
+    <?= $form->field($model, 'gender')->dropDownList([ '1' => '男', '2' => '女'], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'identification')->textInput(['maxlength' => true]) ?>
 

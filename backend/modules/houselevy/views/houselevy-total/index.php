@@ -27,7 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'project_id',
 //            'periods',
             'periods'=>['attribute'=>'periods','value'=>function($dataProvider){
-                return '<a href="/houselevy/houselevy-list?HouselevyListSearch[houselevy_total_id]='.$dataProvider->id.'">'.$dataProvider->periods.'</a>';
+//                return '<a href="/houselevy/houselevy-list?HouselevyListSearch[houselevy_total_id]='.$dataProvider->id.'">'.$dataProvider->periods.'</a>';
+                return  Html::a('第（'. $dataProvider->periods .'）期',"houselevy-list?HouselevyListSearch[houselevy_total_id]={$dataProvider->id}", ['target'=> '_blank']);
             }, 'format' => 'raw',],
             'total_households',
             'total_area',

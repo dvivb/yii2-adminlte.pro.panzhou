@@ -25,7 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
 //            'landlevy_total_id',
             'name'=>['attribute'=>'name','value'=>function($dataProvider){
-                return '<a href="/landlevy/landlevy-detail?LandlevyDetailSearch[landlevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+//                return '<a href="/landlevy/landlevy-detail?LandlevyDetailSearch[landlevy_list_id]='.$dataProvider->id.'">'.$dataProvider->name.'</a>';
+                return  Html::a($dataProvider->name,"landlevy-detail?LandlevyDetailSearch[landlevy_list_id]={$dataProvider->id}", ['target'=> '_blank']);
             }, 'format' => 'raw',],
             'identification',
             'land_survey_no',
