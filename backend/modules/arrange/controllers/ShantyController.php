@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\controllers\BaseController;
+use backend\modules\arrange\services\ArrangeService;
 
 /**
  * ShantyController implements the CRUD actions for Shanties model.
@@ -36,7 +37,11 @@ class ShantyController extends BaseController
      */
     public function actionIndex()
     {
+        $get = yii::$app->request->get();
         $searchModel = new ShantiesSearch();
+        if(isset($get['export'])){
+            ArrangeService::exportShanty($get);exit;
+        }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

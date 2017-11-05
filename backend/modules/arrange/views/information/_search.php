@@ -25,61 +25,30 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'towns') ?>
 
-    <?php // echo $form->field($model, 'address') ?>
 
-    <?php // echo $form->field($model, 'booklet') ?>
-
-    <?php // echo $form->field($model, 'contract_no') ?>
-
-    <?php // echo $form->field($model, 'arrange_type') ?>
-
-    <?php // echo $form->field($model, 'permute_type') ?>
-
-    <?php // echo $form->field($model, 'house_area') ?>
-
-    <?php // echo $form->field($model, 'permute_area') ?>
-
-    <?php // echo $form->field($model, 'use_area') ?>
-
-    <?php // echo $form->field($model, 'arrange_address') ?>
-
-    <?php // echo $form->field($model, 'arrange_house_total') ?>
-
-    <?php // echo $form->field($model, 'arrange_root_no') ?>
-
-    <?php // echo $form->field($model, 'arrange_house_area') ?>
-
-    <?php // echo $form->field($model, 'arrange_clearing') ?>
-
-    <?php // echo $form->field($model, 'arrange_delivery_time') ?>
-
-    <?php // echo $form->field($model, 'arrange_is_clearing') ?>
-
-    <?php // echo $form->field($model, 'remarks') ?>
-
-    <?php // echo $form->field($model, 'upload_file') ?>
-
-    <?php // echo $form->field($model, 'operator') ?>
-
-    <?php // echo $form->field($model, 'sign_time') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php echo  $form->field($model, 'created_at')->widget( \dosamigos\datepicker\DateRangePicker::className(), [
+            'nameTo'=>'aaa',
+            'attributeTo'=>"end_at",
+            'language' => 'zh-CN',
+            'labelTo'=>'至',
+            'value'=>'',
+            'clientOptions'=>['format' => 'yyyy-mm-dd'],
+    ]); ?>
 
     <div class="form-group submit-button">
-        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('重置', ['class' => 'btn btn-default']) ?>
-
+            <input type="submit" class="btn btn-primary" value="搜索" >      
+            <input type="reset" class="btn btn-default"  value="重置" >    
+            <input type="submit" name="export" class="btn btn-default" value="导出" >    
     </div>
 
+    <div style="clear: both"></div>
     <?php ActiveForm::end(); ?>
+    <div style="clear: both"></div>
 
 </div>
 
 <style>
     .information-search{
-        height: 130px;
         padding: 10px;
         background: #fcfcfd;
     }

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\controllers\BaseController;
+use backend\modules\arrange\services\ArrangeService;
 
 /**
  * InformationController implements the CRUD actions for Information model.
@@ -36,7 +37,11 @@ class InformationController extends BaseController
      */
     public function actionIndex()
     {
+        $get = yii::$app->request->get();
         $searchModel = new InformationSearch();
+        if(isset($get['export'])){
+            ArrangeService::exportInformation($get);exit;
+        }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

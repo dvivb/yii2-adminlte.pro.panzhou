@@ -22,7 +22,11 @@ class ShantiesSearch extends Shanties
             [['name', 'address', 'remarks', 'operator', 'created_at', 'updated_at'], 'safe'],
         ];
     }
-
+    public function attributes()
+    {
+        // 添加关联字段到可搜索特性
+        return array_merge(parent::attributes(), ['end_at']);
+    }
     /**
      * @inheritdoc
      */

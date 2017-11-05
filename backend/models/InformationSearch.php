@@ -22,7 +22,11 @@ class InformationSearch extends Information
             [['name', 'identification', 'phone', 'towns', 'address', 'booklet', 'contract_no', 'arrange_address', 'arrange_root_no', 'arrange_delivery_time', 'remarks', 'upload_file', 'operator', 'sign_time', 'created_at', 'updated_at'], 'safe'],
         ];
     }
-
+    public function attributes()
+    {
+        // 添加关联字段到可搜索特性
+        return array_merge(parent::attributes(), ['end_at']);
+    }
     /**
      * @inheritdoc
      */
