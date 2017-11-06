@@ -32,13 +32,15 @@ use yii\jui\DatePicker;
         <input type="reset" class="btn btn-default"  value="重置" >
     </div>
 
+    <div style="clear: both"></div>
     <?php ActiveForm::end(); ?>
+    <div style="clear: both"></div>
 
 </div>
 
 <style>
     .search{
-        height: 160px;
+        height: 100px;
         padding: 10px;
         background: #fcfcfd;
     }

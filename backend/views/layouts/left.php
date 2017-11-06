@@ -35,7 +35,7 @@
                     ['label' => '项目管理', 'icon' => 'cube', 'url' => '#',
                         'items'=>[
                             ['label' => '项目列表', 'icon' => 'archive', 'url' => ['/project/project/index']],
-                            ['label' => '项目新增', 'icon' => 'archive', 'url' => ['/project/project/add']],
+//                            ['label' => '项目新增', 'icon' => 'archive', 'url' => ['/project/project/add']],
                         ]
                     ],
                     ['label' => '房屋征收', 'icon' => 'building-o', 'url' => '#',
