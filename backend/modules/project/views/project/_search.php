@@ -8,7 +8,7 @@ use yii\jui\DatePicker;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="interim-detail-search">
+<div class="interim-detail-search search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
