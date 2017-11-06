@@ -11,7 +11,7 @@ $this->title = '房屋征补项目花名册汇总列表';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="houselevy-list-index">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>

@@ -11,7 +11,7 @@ $this->title = '土地征补项目花名册列表';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="landlevy-list-index">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>
