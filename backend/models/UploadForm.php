@@ -23,7 +23,6 @@ class UploadForm extends Model
     {
         if ($this->validate()) {
             $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            return 2;
             return true;
         } else {
             return false;

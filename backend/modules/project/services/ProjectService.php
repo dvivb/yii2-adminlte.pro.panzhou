@@ -8,6 +8,9 @@ use yii\base\Module;
 use backend\modules\project\project;
 use m35\thecsv\theCsv;
 use PHPExcel;
+use PHPExcel_IOFactory;
+
+
 /**
  * Default controller for the `project` module
  */
@@ -169,6 +172,21 @@ class ProjectService{
             'data' => $output,
             'name' => $filename,
         ]);
+    }
+
+    public static function readerExcel($path, $name)
+    {
+        var_dump($path . $name);die;
+        $excel = new PHPExcel();
+        $excel->setMacrosCode(1);
+
+        echo 1;die;
+//        $excel = new \PHPExcel_IOFactory();
+        $objPHPExcel = PHPExcel_IOFactory::load($path . $name);
+        $dataArray = $objPHPExcel->getActiveSheet()->toArray();
+//        $objPHPExcel = $excel::load($path . $name);
+        return $objPHPExcel;
+
     }
 }
 

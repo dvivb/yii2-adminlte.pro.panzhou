@@ -82,7 +82,8 @@ use yii\jui\DatePicker;
                 </div>
                 <div class="modal-body">
                     <div class="btn btn-primary btn-file" style="width:570px">
-                        <i class="glyphicon glyphicon-folder-open"></i>&nbsp;  <span class="hidden-xs">浏览</span><input type="file" name="imageFile" >
+                        <i class="glyphicon glyphicon-folder-open"></i>&nbsp;  <span class="hidden-xs">浏览</span><input type="file" name="file" >
+                        <input type="hidden" name="name" value="abc">
                     </div>
                 </div>
                 <div class="modal-footer">
