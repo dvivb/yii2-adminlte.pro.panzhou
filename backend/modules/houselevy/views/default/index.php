@@ -19,11 +19,16 @@ $this->params['breadcrumbs'][] = ['label' => '房屋征补信息管理', 'url' =
 
             <?php
             echo GridView::widget([
+                
                 'dataProvider' => $data,
                 'filterModel' => $searchModel,
                 'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
                 'columns' => [
-
+                    'index'=>[
+                        'label'=>'#',
+                        'value'=>function($data,$id,$index){
+                            return $index+1;
+                        }],
                     // 通过 $dataProvider 包括的数据定义了一个简单列
                     // 模型列1 的数据将被使用
                     'id',

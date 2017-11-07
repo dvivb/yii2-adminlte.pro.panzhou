@@ -22,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
 //            'landlevy_total_id',
             'name'=>['attribute'=>'name','value'=>function($dataProvider){
