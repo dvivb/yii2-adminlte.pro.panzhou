@@ -39,7 +39,7 @@ class InformationController extends BaseController
     {
         $get = yii::$app->request->get();
         $searchModel = new InformationSearch();
-        if(isset($get['export'])){
+        if(isset($get['search']) && $get['search'] =="导出"){
             ArrangeService::exportInformation($get);exit;
         }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

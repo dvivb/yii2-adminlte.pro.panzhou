@@ -29,7 +29,7 @@ use yii\jui\DatePicker;
     <div class="form-group">
             <input type="submit" name="search" class="btn btn-primary" value="搜索" >      
             <input type="reset" class="btn btn-default"  value="重置" >    
-            <input type="submit" name="export" class="btn btn-default" value="导出" >    
+            <input type="submit" name="search" class="btn btn-default" value="导出" >    
     </div>
 
     <?php ActiveForm::end(); ?>

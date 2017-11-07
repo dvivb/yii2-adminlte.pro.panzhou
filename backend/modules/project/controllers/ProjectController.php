@@ -24,7 +24,7 @@ class ProjectController extends BaseController
         $data = new ProjectsSearch();
         $projectSearch = $data->search(Yii::$app->request->queryParams);
         
-        if(isset($get['export'])){
+        if(isset($get['search']) && $get['search'] =="导出"){
             ProjectService::exportProject($get);exit;
         }
         switch ($type){
