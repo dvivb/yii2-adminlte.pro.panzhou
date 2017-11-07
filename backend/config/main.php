@@ -11,12 +11,12 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-//         'redactor' => [
-//             'class' => 'yii\redactor\RedactorModule',
-//             'imageAllowExtensions'=>['jpg','png','gif'],
-//             'uploadDir' => '../../public/uploads',
-//             'uploadUrl' => 'http://www.hil-design.com/yii2/public/uploads', // 图片服务器地址
-//         ],
+         'redactor' => [
+             'class' => 'yii\redactor\RedactorModule',
+             'imageAllowExtensions'=>['jpg','png','gif'],
+             'uploadDir' => '../../public/uploads',
+             'uploadUrl' => 'http://www.hil-design.com/yii2/public/uploads', // 图片服务器地址
+         ],
     ],
     'components' => [
         'urlManager' => [

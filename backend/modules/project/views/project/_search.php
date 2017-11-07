@@ -67,12 +67,11 @@ use yii\jui\DatePicker;
 </style>
 
 
-
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- form start -->
-            <form role="form" method="post">
+            <form role="form" action="upload" enctype="multipart/form-data" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
@@ -83,7 +82,7 @@ use yii\jui\DatePicker;
                 </div>
                 <div class="modal-body">
                     <div class="btn btn-primary btn-file" style="width:570px">
-                        <i class="glyphicon glyphicon-folder-open"></i>&nbsp;  <span class="hidden-xs">浏览</span><input type="file" class="ul_fl" name="ul_fl" id="1509985117379">
+                        <i class="glyphicon glyphicon-folder-open"></i>&nbsp;  <span class="hidden-xs">浏览</span><input type="file" name="imageFile" >
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -1,11 +1,14 @@
 <?php
 
 namespace backend\modules\project\controllers;
+
+use app\models\Projects;
 use yii;
-use yii\web\Controller;
 use backend\modules\project\services\ProjectService;
 use app\models\ProjectsSearch;
 use backend\controllers\BaseController;
+use yii\web\UploadedFile;
+use app\models\UploadForm;
 
 /**
  * Default controller for the `project` module
@@ -126,4 +129,29 @@ class ProjectController extends BaseController
     public function actionExport(){
         var_dump($_GET);
     }
+
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // 文件上传成功
+                return;
+            }
+            return $model->upload();
+        }
+
+//        $data = new ProjectsSearch();
+//        $projectSearch = $data->search(Yii::$app->request->queryParams);
+//        return $this->render('index',['data'=>$projectSearch,'searchModel'=> $data]);
+//        return $this->render('index', ['model' => $model]);
+    }
+
+
+
+
+
 }
