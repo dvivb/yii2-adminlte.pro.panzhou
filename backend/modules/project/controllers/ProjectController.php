@@ -27,7 +27,7 @@ class ProjectController extends BaseController
         if(isset($get['export'])){
             ProjectService::exportProject($get);exit;
         }
-        switch ($type = 1){
+        switch ($type){
             case 1 :
                 return $this->render('index',['data'=>$projectSearch,'searchModel'=> $data]);
                 break;

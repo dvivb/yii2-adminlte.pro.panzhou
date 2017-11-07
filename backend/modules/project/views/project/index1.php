@@ -1,52 +1,22 @@
 <?php
+
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
 use yii\grid\GridView;
-backend\assets\JConfirmAsset::register($this);
-$this->registerJsFile(
-    Yii::$app->request->baseUrl."/js/sms_template.js",
-    [
-        "depends"=>['backend\assets\AppAsset'],
-        "position"=> $this::POS_END
-    ]
-);
+use yii\widgets\Pjax;
+
 $this->params['breadcrumbs'][] = ['label' => '项目管理', ];
 $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project/project/index']];
 /* @var $this yii\web\View */
 ?>
-<style>
-    .panel {margin:0px 10px 40px 10px; box-shadow:0 3px 3px rgba(0,0,0,.05);}
-    .panel .col-lg-1, .panel .col-lg-2, .panel .col-lg-3, .panel .col-lg-4, .panel .col-lg-5 {padding:2px;}
-    .table {margin-bottom:0px;}
-</style>
-<?php echo $this->render('_search', ['model' => $searchModel]); ?>
-<div class="row">
-    <div class=".col-lg-12">
-    <?php 
-    ?>
-    </div>
-</div>
-<div style='clear:both'></div>
-<div class="row">
-    <div class=".col-lg-12">
-        <div class="order-search">
-        
-            <?
-//                 $this->render('_smsListForm', [
-//                 'model' => $model,
-           // ]) 
-           ?>
-        </div>
-    </div>
-</div>
-    <div style='clear:both'></div>
-    <div class='text-center'>
-        <div class='col-lg-12'>
-            <div class='box box-primary'>
-                <div class="box-header with-border">
-                     <h5 class="box-title">项目列表</h5>
-                 </div>
-                 <div style='clear:both'></div>
+
+<div class="project-index">
+
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('创建', ['/project/project/add'], ['class' => 'btn btn-success']) ?>
+    </p>
+
                 <?php
                 echo GridView::widget([
                     'dataProvider' => $data,
@@ -87,29 +57,17 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                 ]);
                
                 ?>
-        </div>
-     </div>
 </div>
-<div style='clear:both'></div>
+
 <style>
-    .grid-view {margin:20px}
-    .pageNum{float:right;}
-    .field-goodslistform-goodsupc div {padding:0px;}
-	.box-primary .with-border{float:left}
-	.summary{float:right}
-	.box-title{padding-top:15px}
-	.pull-right{float:right}
-	.pagination{display:block;width:50%;margin:0 auto}
-	th{text-align:center}
-	.fr{float:right}
-	.fn {float:none}
-	.rn{resize: none}
-	.dl{display:inline-block}
-	.jconfirm-box-container{width:70%;margin-left:10%}
-	.min,.max{width:20%;text-align:center}
+    .grid-view{
+        margin-top: 10px;
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    .btn-success {
+        float: left;
+        margin: 16px;
+    }
 </style>
-<?php $this->beginBlock('smsList');  ?>
-
-
-<?php $this->endBlock(); ?>
-<?php $this->registerJs($this->blocks['smsList'], \yii\web\View::POS_END);  ?>
