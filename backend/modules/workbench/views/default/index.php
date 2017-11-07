@@ -40,7 +40,7 @@ $this->title = '工作台';
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3><?=$data["project_amount_total"]["actual_amount"]/$data["project_amount_total"]["amount"]*100;?><sup style="font-size: 20px">%</sup></h3>
+                <h3><?=sprintf("%.4f",$data["project_amount_total"]["actual_amount"]/$data["project_amount_total"]["amount"])*100;?><sup style="font-size: 20px">%</sup></h3>
 
                 <p>款项拨付完成率</p>
             </div>

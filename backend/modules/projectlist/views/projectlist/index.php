@@ -50,6 +50,11 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                         
                             // 通过 $dataProvider 包括的数据定义了一个简单列
                             // 模型列1 的数据将被使用
+                            'index'=>[
+                            'label'=>'序号',
+                            'value'=>function($data,$id,$index){
+                                return $index+1;
+                            }],
                             'id',
                             'household',
                             'area',

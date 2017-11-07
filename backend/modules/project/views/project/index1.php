@@ -26,6 +26,11 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                         
                             // 通过 $dataProvider 包括的数据定义了一个简单列
                             // 模型列1 的数据将被使用
+                            'index'=>[
+                            'label'=>'#',
+                            'value'=>function($data,$id,$index){
+                                return $index+1;
+                            }],
                             'id',
                             'name'=>['attribute'=>'name','value'=>function($data){
                             return '<a href="/landlist/landlist/'.$data->id.'">'.$data->name.'</a>';
