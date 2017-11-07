@@ -39,7 +39,7 @@ class ShantyController extends BaseController
     {
         $get = yii::$app->request->get();
         $searchModel = new ShantiesSearch();
-        if(isset($get['export'])){
+        if(isset($get['search']) && $get['search'] =="导出"){
             ArrangeService::exportShanty($get);exit;
         }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

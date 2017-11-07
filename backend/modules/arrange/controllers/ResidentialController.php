@@ -40,7 +40,7 @@ class ResidentialController extends BaseController
         $get = yii::$app->request->get();
         $searchModel = new ResidentialsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if(isset($get['export'])){
+        if(isset($get['search']) && $get['search'] =="导出"){
             ArrangeService::exportResidential($get);exit;
         }
         return $this->render('index', [

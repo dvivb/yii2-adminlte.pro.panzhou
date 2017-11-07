@@ -23,7 +23,7 @@ class ProjectlistController extends BaseController
     {
         $this->getView()->title = '项目列表';
         $get = yii::$app->request->get();
-        if(isset($get['export'])){
+        if(isset($get['search']) && $get['search'] =="导出"){
             ProjectlistService::exportProject($get);
             exit;
         }
