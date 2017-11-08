@@ -176,11 +176,11 @@ class ProjectService{
 
     public static function readerExcel($path, $name)
     {
-        var_dump($path . $name);die;
-        $excel = new PHPExcel();
-        $excel->setMacrosCode(1);
+//        var_dump($path . $name);die;
+//        $excel = new PHPExcel();
+//        $excel->setMacrosCode(1);
 
-        echo 1;die;
+//        echo 1;die;
 //        $excel = new \PHPExcel_IOFactory();
         $objPHPExcel = PHPExcel_IOFactory::load($path . $name);
         $dataArray = $objPHPExcel->getActiveSheet()->toArray();

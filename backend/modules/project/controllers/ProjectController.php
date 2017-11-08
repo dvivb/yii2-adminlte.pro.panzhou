@@ -198,7 +198,6 @@ class ProjectController extends BaseController
                 {
                     // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
                     move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
-//                    move_uploaded_file($_FILES["file"]["tmp_name"], "D:/I/Clown/pro/php/yii2-adminlte.pro.panzhou/backend/web/upload/" . $_FILES["file"]["name"]);
                     echo "文件存储在: " . "upload/" . $_FILES["file"]["name"];
                 }
             }
@@ -212,7 +211,7 @@ class ProjectController extends BaseController
     public function actionImport()
     {
         $path = "/upload/";
-        $name = "项目列表2017-11-06 13-41-31.xlsx";
+        $name = "upload/2017-11-07 00-45-41-xlsx.xlsx";
         return ProjectService::readerExcel($path, $name);
     }
 
