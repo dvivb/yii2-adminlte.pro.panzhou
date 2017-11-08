@@ -8,6 +8,7 @@ use app\models\HouselevyTotalSearch;
 use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\modules\houselevy\services\HouselevyService;
 
 /**
  * HouselevyTotalController implements the CRUD actions for HouselevyTotal model.
@@ -35,9 +36,12 @@ class HouselevyTotalController extends BaseController
      */
     public function actionIndex()
     {
+        $get = yii::$app->request->get();
         $searchModel = new HouselevyTotalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if(isset($get['search']) && $get['search'] =="导出"){
+            HouselevyService::HouseLevyTotalExport($get);exit;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

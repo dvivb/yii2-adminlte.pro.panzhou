@@ -8,6 +8,9 @@ use app\models\LandlevyTotalSearch;
 use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\modules\houselevy\services\HouselevyService;
+use backend\modules\landlevy\landlevy;
+use backend\modules\landlevy\services\LandlevyService;
 
 /**
  * LandlevyTotalController implements the CRUD actions for LandlevyTotal model.
@@ -35,9 +38,12 @@ class LandlevyTotalController extends BaseController
      */
     public function actionIndex()
     {
+        $get = yii::$app->request->get();
         $searchModel = new LandlevyTotalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if(isset($get['search']) && $get['search'] =="导出"){
+            LandlevyService::LandlevyExport($get);exit;
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

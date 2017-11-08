@@ -27,13 +27,13 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'total_amount') ?>
 
-    <?php  echo $form->field($model, 'operator') ?>
+    <?php // echo $form->field($model, 'operator') ?>
 
     <?php // echo $form->field($model, 'approval') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php  echo $form->field($model, 'project_id')->hiddenInput(['value'=>$_GET['HouselevyTotalSearch']['project_id']])->label('') ?>
 
     <div class="form-group operate-button">
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">导入</button>
