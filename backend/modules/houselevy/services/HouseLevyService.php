@@ -5,10 +5,11 @@ use yii\base\Module;
 use m35\thecsv\theCsv;
 use backend\modules\landlevy\landlevy;
 use app\models\LandlevyTotal;
+use app\models\HouselevyTotal;
 
 class HouselevyService {
     public static function HouseLevyTotalExport($params){
-        $query = LandlevyTotal::find()->select([
+        $query = HouselevyTotal::find()->select([
             'project_id',
             'periods',
             'total_households',
