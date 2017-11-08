@@ -50,7 +50,7 @@ class HouselevyService {
         $output = [array_values($columns)];
          
         foreach($res as $v){
-            $v['periods'] = "第（".$v['periods']."）期";
+            $v['periods'] =$v['periods'];
             array_push($output, array_values($v));
         }
         $filename = '房屋征补项目花名册'.date('Y-m-d H:i:s',time()).'.csv';
