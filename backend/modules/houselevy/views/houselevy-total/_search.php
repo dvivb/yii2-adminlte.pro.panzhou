@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'total_amount') ?>
 
-    <?php  echo $form->field($model, 'operator') ?>
+    <?php // echo $form->field($model, 'operator') ?>
 
     <?php // echo $form->field($model, 'approval') ?>
 
