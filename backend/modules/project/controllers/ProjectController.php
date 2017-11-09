@@ -159,12 +159,6 @@ class ProjectController extends BaseController
         $temp = explode(".", $_FILES["file"]["name"]);
         echo $_FILES["file"]["size"];
 
-//        echo "上传文件名: " . $_FILES["file"]["name"] . "<br>";
-//        echo "文件类型: " . $_FILES["file"]["type"] . "<br>";
-//        echo "文件大小: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-//        echo "文件临时存储的位置: " . $_FILES["file"]["tmp_name"] . "<br>";
-//        echo "文件类型: " . $_FILES["file"]["type"] . "<br>";die;
-
         $extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
                 || ($_FILES["file"]["type"] == "image/jpeg")
@@ -199,6 +193,11 @@ class ProjectController extends BaseController
                     // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
                     move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
                     echo "文件存储在: " . "upload/" . $_FILES["file"]["name"];
+
+                    $path = yii::$app->basePath . '\web\upload\\';
+                    $name = $_FILES["file"]["name"];
+
+                    return ProjectService::importProject($path, $name);
                 }
             }
         }
@@ -210,9 +209,9 @@ class ProjectController extends BaseController
 
     public function actionImport()
     {
-        $path = "/upload/";
-        $name = "upload/2017-11-07 00-45-41-xlsx.xlsx";
-        return ProjectService::readerExcel($path, $name);
+        $path = yii::$app->basePath . '\web\upload\\';
+        $name = "2017-11-06 13-41-31.xlsx";
+        return ProjectService::importProject($path, $name);
     }
 
 

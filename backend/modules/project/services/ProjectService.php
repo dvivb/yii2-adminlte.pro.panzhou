@@ -7,8 +7,6 @@ use yii\data\ActiveDataProvider;
 use yii\base\Module;
 use backend\modules\project\project;
 use m35\thecsv\theCsv;
-use PHPExcel;
-use PHPExcel_IOFactory;
 
 
 /**
@@ -174,18 +172,77 @@ class ProjectService{
         ]);
     }
 
-    public static function readerExcel($path, $name)
+    public static function importProject($path, $name)
     {
-//        var_dump($path . $name);die;
-//        $excel = new PHPExcel();
-//        $excel->setMacrosCode(1);
+        $fileName = $path . $name;
 
-//        echo 1;die;
-//        $excel = new \PHPExcel_IOFactory();
-        $objPHPExcel = PHPExcel_IOFactory::load($path . $name);
-        $dataArray = $objPHPExcel->getActiveSheet()->toArray();
-//        $objPHPExcel = $excel::load($path . $name);
-        return $objPHPExcel;
+//        $data = \moonland\phpexcel\Excel::import($fileName, $config); // $config is an optional
+
+        $data = \moonland\phpexcel\Excel::widget([
+            'mode' => 'import',
+            'fileName' => $fileName,
+            'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
+            'setIndexSheetByName' => true, // set this if your excel data with multiple worksheet, the index of array will be set with the sheet name. If this not set, the index will use numeric.
+            'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
+        ]);
+
+//        $data = \moonland\phpexcel\Excel::import($fileName, [
+//            'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
+//            'setIndexSheetByName' => true, // set this if your excel data with multiple worksheet, the index of array will be set with the sheet name. If this not set, the index will use numeric.
+//            'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
+//        ]);
+
+
+//        foreach ()
+
+        $columns = [
+            'id' => 'id',
+            'code' => '项目编号',
+            'name' => '项目名称',
+            'total_household' => '总户数',
+            'total_areas' => '总面积',
+            'amount' => '总金额',
+            'col_household' => '应该正补户数',
+            'actual_household' => '实际征收补偿户数',
+            'col_area_household' => '房屋征补总面积',
+            'actual_area_household' => '实际房屋征补总面积',
+            'col_amout_household' => '房屋征补总金额',
+            'actual_amout_household' => '实际房屋征补总金额',
+            'excessive_amount' => '过渡费总计',
+            'actual_excessive_amount' => '实际过渡费总计',
+            'col_land_household' => '土地征补总户数',
+            'actual_land_hosehold' => '实际土地征补总户数',
+            'col_land_areas' => '土地征补总面积',
+            'actual_land_areas' => '实际土地征补总面积',
+            'col_area_amout' => '土地征补总金额',
+            'actual_area_amount' => '实际土地征补总金额',
+            'company_name' => '中标公司名称',
+            'price' => '中标价格',
+            'pay_price' => '工程进度已支付金额',
+            'agent_price' => '招投标代理费',
+            'pay_agent_price' => '支付招投标代理费',
+            'audit_price' => '预算审计费用',
+            'pay_audit_price' => '支付预算审计费用',
+            'balance_price' => '结算审计费用',
+            'pay_balance_price' => '支付结算审计费用',
+            'design_price' => '项目设计费',
+            'pay_design_price' => '支付项目设计费',
+            'settlement_price' => '工程款结算审计金额',
+            'pay_settlement_price' => '支付工程款结算审计金额',
+            'supervisor_price' => '监理费用',
+            'actul_supervisor_price' => '支付监理费用',
+            'warranty_price' => '质保金额',
+            'created_at' => '创建时间',
+        ];
+
+        $key = array_keys($columns);
+//        $value  = array_values($columns);
+
+        $data_value = array_values($data[0]);
+
+        $data_arr = array_combine($key, $data_value);
+
+        return self::addProject($data_arr);
 
     }
 }
