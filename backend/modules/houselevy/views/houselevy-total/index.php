@@ -63,7 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
              'created_at',
              'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                //'template'=>'{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
+                'buttons' => ['view'=>function ($url,$dataProvider){
+                    if($dataProvider->approval ==0)return '<button class="btn btn-info">提交</button>';
+                }]
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
