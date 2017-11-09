@@ -39,7 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'created_at',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','buttons' => ['view'=>function ($url,$dataProvider){
+                    if($dataProvider->approval ==0)return '<button class="btn btn-info">申请拨款</button>';
+                }]],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
