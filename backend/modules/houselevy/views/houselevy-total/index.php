@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                 //'template'=>'{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
                 'buttons' => ['view'=>function ($url,$dataProvider){
-                    if($dataProvider->approval ==0)return '<button class="btn btn-info">提交</button>';
+                    if($dataProvider->approval ==0)return '<button class="btn btn-info">申请拨款</button>';
                 }]
             ],
         ],
