@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
         margin: 16px;
     }
 </style>
-<?php $this->beginBlock('houseTotalindex') ?>
+<?php $this->beginBlock('interim') ?>
       $(function(){
     	  $('.commit-btn').click(function(){
     	        var id = $(this).attr('data');
@@ -86,4 +86,4 @@ $this->params['breadcrumbs'][] = $this->title;
           })
      
 <?php $this->endBlock() ?>
-<?php $this->registerJs($this->blocks['houseTotalindex'], \yii\web\View::POS_END); ?>
+<?php $this->registerJs($this->blocks['interim'], \yii\web\View::POS_END); ?>

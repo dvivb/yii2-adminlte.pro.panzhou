@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use backend\modules\houselevy\services\HouselevyService;
 use backend\modules\landlevy\landlevy;
 use backend\modules\landlevy\services\LandlevyService;
+use app\models\ApprovalLog;
 
 /**
  * LandlevyTotalController implements the CRUD actions for LandlevyTotal model.
@@ -125,6 +126,27 @@ class LandlevyTotalController extends BaseController
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    public function actionApplys($id){
+        $id = yii::$app->request->get('id');
+        if(empty($id)){
+            return json_encode(['code'=>0]);
+        }
+        if (($model = LandlevyTotal::findOne($id)) == null) {
+            
+            return json_encode(['code'=>0,'msg'=>'non-existent']);
+        }
+        $model->setAttributes(['approval'=>1]);//'operator'=>yii::$app->user->identity->id
+        if($model->save(false)){
+            ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
+                'source_id'=>$id,
+                'source_type'=>'landlevy',
+                'approval'=>1
+            ]);
+            return json_encode(['code'=>1]);
+        }else{
+            return json_encode(['code'=>0,'msg'=>'failed']);
         }
     }
 }

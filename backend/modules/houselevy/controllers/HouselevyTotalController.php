@@ -9,6 +9,7 @@ use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\modules\houselevy\services\HouselevyService;
+use app\models\ApprovalLog;
 
 /**
  * HouselevyTotalController implements the CRUD actions for HouselevyTotal model.
@@ -135,8 +136,13 @@ class HouselevyTotalController extends BaseController
         if (($model = HouselevyTotal::findOne($id)) == null) {
             return json_encode(['code'=>0,'msg'=>'non-existent']);
         }
-        $model->setAttributes(['approval'=>1,'operator'=>yii::$app->user->identity->id]);
+        $model->setAttributes(['approval'=>1]);//'operator'=>yii::$app->user->identity->id
         if($model->save(false)){
+            ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
+                                 'source_id'=>$id,
+                                'source_type'=>'houselevy',
+                                'approval'=>1
+            ]);
             return json_encode(['code'=>1]);
         }else{
             return json_encode(['code'=>0,'msg'=>'failed']);

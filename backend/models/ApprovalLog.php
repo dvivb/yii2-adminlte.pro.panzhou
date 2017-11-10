@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Object;
 
 /**
  * This is the model class for table "approval_log".
@@ -64,5 +65,11 @@ class ApprovalLog extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ApprovalLogQuery(get_called_class());
+    }
+    
+    public static function addLog($data){
+        $model = new ApprovalLog();
+        $model->setAttributes($data);
+        return $model->save(false);
     }
 }
