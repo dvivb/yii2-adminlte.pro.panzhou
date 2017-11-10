@@ -66,7 +66,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
                 //'template'=>'{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
                 'buttons' => ['view'=>function ($url,$dataProvider){
-                    if($dataProvider->approval ==0)return '<button class="btn btn-info">申请拨款</button>';
+                    if($dataProvider->approval ==0)
+                        return '<button class="btn btn-info commit-btn" data='.$dataProvider->id.'>申请拨款</button>';
+                    else
+                        return '<a href="/houselevy/houselevy-total/view?id='.$dataProvider->id.'" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>';
                 }]
             ],
         ],
@@ -85,3 +88,28 @@ $this->params['breadcrumbs'][] = $this->title;
         margin: 16px;
     }
 </style>
+<?php $this->beginBlock('houseTotalindex') ?>
+      $(function(){
+    	  $('.commit-btn').click(function(){
+    	        var id = $(this).attr('data');
+    			var ifTrue = confirm("确认提交申请拨款?");
+                if(ifTrue){
+                    $.get('/houselevy/houselevy-total/applys/'+id,function(res){
+                        if(res.code == 1){
+                            alert("申请拨款成功");
+                            location.href = location.href;
+                        }else{
+                           alert("申请拨款失败");
+                        }
+                        
+                    },'json')
+                }else{
+                    return false
+                }
+              })
+          })
+     
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks['houseTotalindex'], \yii\web\View::POS_END); ?>
+      
+

@@ -38,7 +38,7 @@ class InterimDetail extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['project_id'], 'integer'],
+            [['project_id','approval'], 'integer'],
             [['house_area', 'biz_house_area', 'amount'], 'number'],
             [['sign_time', 'start_time', 'end_time', 'created_at', 'updated_at'], 'safe'],
             [['name', 'id_number', 'project_name'], 'string', 'max' => 100],
@@ -53,6 +53,7 @@ class InterimDetail extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '户主姓名',
+            'approval' => '审核状态',
             'id_number' => '身份证号',
             'project_id' => '项目编号',
             'project_name' => '项目名称',

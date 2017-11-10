@@ -123,4 +123,19 @@ class InterimDetailController extends BaseController
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionApplys($id){
+        $id = yii::$app->request->get('id');
+        if(empty($id)){
+            return json_encode(['code'=>0]);
+        }
+        if (($model = InterimDetail::findOne($id)) == null) {
+            return json_encode(['code'=>0,'msg'=>'non-existent']);
+        }
+        $model->setAttributes(['approval'=>1,'operator'=>yii::$app->user->identity->id]);
+        if($model->save(false)){
+            return json_encode(['code'=>1]);
+        }else{
+            return json_encode(['code'=>0,'msg'=>'failed']);
+        }
+    }
 }
