@@ -29,8 +29,7 @@ class DefaultController extends BaseController
     {
         $roleId =  yii::$app->user->identity->role;
         $userId =  yii::$app->user->identity->getId();
-//        var_dump($roleId);die;
-
+        
         $condition = [
             "state" => 0,
         ];
@@ -75,19 +74,6 @@ class DefaultController extends BaseController
 //                    ->limit(4)
                     ->orderBy('id DESC')
                     ->All();
-
-//                echo "<pre>";
-//                var_dump($query);die;
-
-//                LEFT JOIN USER AS u ON u.id = al.user_id
-//LEFT JOIN user_role AS ur ON ur.id = u.role
-//                SELECT * FROM approval_log al
-//                LEFT JOIN landlevy_total lt ON lt.id = al.source_id
-//                LEFT JOIN projects p ON p.id = lt.project_id
-//                WHERE al.user_id = 6
-//            AND al.source_type = 'landlevy'
-//            AND al.approval = 1
-//            AND lt.approval = 1
 
                 break;
             case 2:
