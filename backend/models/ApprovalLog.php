@@ -10,6 +10,7 @@ use Yii;
  * @property string $id
  * @property integer $user_id
  * @property integer $source_id
+ * @property string $source_type
  * @property string $approval
  * @property string $remarks
  * @property string $created_at
@@ -32,7 +33,8 @@ class ApprovalLog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'source_id'], 'integer'],
-            [['approval'], 'required'],
+            [['source_type', 'approval'], 'required'],
+            [['source_type'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['approval', 'remarks'], 'string', 'max' => 100],
         ];
@@ -47,6 +49,7 @@ class ApprovalLog extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => '用户ID',
             'source_id' => '数据源ID',
+            'source_type' => '数据来源',
             'approval' => '审批进度',
             'remarks' => '备注',
             'created_at' => '创建时间',
