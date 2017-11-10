@@ -109,29 +109,30 @@ $this->title = '工作台';
                                 <tr>
                                     <td><?= $v['id']; ?></td>
                                     <td><?= $v['name']; ?></td>
-                                    <td>房屋征补（<?= $v['period']; ?>）期拨款</td>
-                                    <td>admin[系统管理员]</td>
+                                    <td>房屋征补（<?= $v['periods']; ?>）期拨款</td>
+                                    <td><?= $v['username']; ?>[<?= $v['role_name']; ?>]</td>
                                     <td>
                                         <?php
 //                                        0未提交、1提交拨款,2初审通过、3业务主管审批通过、4分管领导审批通过、5主要领导审批通过
-                                            if($v['status'] == 0){
+                                            if($v['approval'] == 0){
                                                 echo '未提交';
-                                            }elseif ($v['status'] = 1) {
+                                            }elseif ($v['approval'] = 1) {
                                                 echo '提交拨款';
-                                            }elseif ($v['status'] = 2) {
+                                            }elseif ($v['approval'] = 2) {
                                                 echo '初审通过';
-                                            }elseif ($v['status'] = 3) {
+                                            }elseif ($v['approval'] = 3) {
                                                 echo '业务主管审批通过';
-                                            }elseif ($v['status'] = 4) {
+                                            }elseif ($v['approval'] = 4) {
                                                 echo '分管领导审批通过';
-                                            }elseif ($v['status'] = 5) {
+                                            }elseif ($v['approval'] = 5) {
                                                 echo '主要领导审批通过';
                                             }
-                                        ?>[系统管理员.admin]
+                                        echo "[系统管理员.admin]";
+                                        ?>
                                     </td>
                                     <td><?= $v['created_at']; ?></td>
                                     <td><?= $v['updated_at']; ?></td>
-                                    <td><?= Html::a('查看', ['/project/project/detail/' . $v['id']], ['class' => 'btn btn-success']) ?></td>
+                                    <td><?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
