@@ -29,7 +29,7 @@ class DefaultController extends BaseController
     {
         $roleId =  yii::$app->user->identity->role;
         $userId =  yii::$app->user->identity->getId();
-        
+
         $condition = [
             "state" => 0,
         ];
