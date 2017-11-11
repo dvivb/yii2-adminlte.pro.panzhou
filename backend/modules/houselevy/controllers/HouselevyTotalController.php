@@ -38,6 +38,10 @@ class HouselevyTotalController extends BaseController
     public function actionIndex()
     {
         $get = yii::$app->request->get();
+        if(!isset($get['HouselevyTotalSearch']['project_id']) || $get['HouselevyTotalSearch']['project_id'] ==''){
+            Yii::$app->getSession()->setFlash('success', 'url错误,缺少项目id');
+            return $this->redirect(['/houselevy']);
+        }
         $searchModel = new HouselevyTotalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         if(isset($get['search']) && $get['search'] =="导出"){

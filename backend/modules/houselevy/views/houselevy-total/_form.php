@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'project_id')->textInput() ?>
+    <?= $form->field($model, 'project_id')->textInput(['value'=>$_GET['project_id'],'readonly'=>true]) ?>
 
     <?= $form->field($model, 'periods')->textInput() ?>
 
