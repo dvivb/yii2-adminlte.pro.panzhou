@@ -7,7 +7,7 @@ use yii\data\ActiveDataProvider;
 use yii\base\Module;
 use backend\modules\project\project;
 use m35\thecsv\theCsv;
-
+use yii;
 
 /**
  * Default controller for the `project` module
@@ -56,6 +56,7 @@ class ProjectService{
     
     public static function addProject($addData){
         $project = new Projects();
+        $addData['operator']=yii::$app->user->identity->id;
         $project -> setAttributes($addData);
         return $project->save(false);
     }

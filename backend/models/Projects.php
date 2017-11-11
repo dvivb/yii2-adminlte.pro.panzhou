@@ -67,7 +67,7 @@ class Projects extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['state', 'total_household', 'total_areas', 'col_household', 'actual_household', 'col_land_household', 'actual_land_hosehold', 'period'], 'integer'],
-            [['amount', 'col_area_household', 'actual_area_household', 'col_amout_household', 'actual_amout_household', 'excessive_amount', 'actual_excessive_amount', 'col_land_areas', 'actual_land_areas', 'col_area_amout', 'actual_area_amount', 'price', 'pay_price', 'agent_price', 'pay_agent_price', 'audit_price', 'pay_audit_price', 'balance_price', 'pay_balance_price', 'design_price', 'pay_design_price', 'settlement_price', 'pay_settlement_price', 'supervisor_price', 'actul_supervisor_price', 'warranty_price', 'actul_warranty_price'], 'number'],
+            [['amount', 'col_area_household', 'actual_area_household', 'col_amout_household', 'actual_amout_household', 'excessive_amount', 'actual_excessive_amount', 'col_land_areas', 'actual_land_areas', 'col_area_amout', 'actual_area_amount', 'price', 'pay_price', 'agent_price', 'pay_agent_price', 'audit_price', 'pay_audit_price', 'balance_price', 'pay_balance_price', 'design_price', 'pay_design_price', 'settlement_price', 'pay_settlement_price', 'supervisor_price', 'actul_supervisor_price', 'warranty_price', 'actul_warranty_price','operator'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['code', 'name', 'company_name'], 'string', 'max' => 50],
         ];
@@ -118,6 +118,7 @@ class Projects extends \yii\db\ActiveRecord
             'warranty_price' => 'Warranty Price',
             'actul_warranty_price' => 'Actul Warranty Price',
             'period' => 'Period',
+            'operator' => 'operator',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
             'start_at' =>'时间搜索'
