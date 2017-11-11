@@ -35,5 +35,4 @@ phpunit.phar
 /.vagrant
 backend/runtime/logs
 
-backend/web/upload
 
