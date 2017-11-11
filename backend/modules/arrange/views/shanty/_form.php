@@ -56,10 +56,22 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'remarks')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'operator')->textInput(['maxlength' => true]) ?>
+<?php if($model['created_at'] == null){
+        echo  $form->field($model, 'created_at')->textInput(['readonly'=>true,'value'=>date('Y-m-d H:i:s',time())]);
+      }else{
+        echo  $form->field($model, 'created_at')->textInput(['readonly'=>true,]);
+      }
+?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+<?php if($model['updated_at'] == null){
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,'value'=>date('Y-m-d H:i:s',time())]);
+      }else{
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,]);
+      }
+?>
+    <?// $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?// $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group submit-button">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

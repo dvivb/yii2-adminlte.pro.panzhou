@@ -30,9 +30,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'compensation_price')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput(['readonly'=>true]) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['readonly'=>true]) ?>
 
     <div class="form-group submit-button">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

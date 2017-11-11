@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datetimepicker\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Residentials */
@@ -42,12 +43,32 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'remarks')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'operator')->textInput(['maxlength' => true]) ?>
+<?php if($model['finished_time'] == null){
+     echo  $form->field($model, 'finished_time')->widget(DateTimePicker::className(), [
+        'clientOptions'=>['format' => 'yyyy-mm-dd hh:ii:ss'],
+    ]); 
+      }else{
+        echo  $form->field($model, 'finished_time')->textInput(['readonly'=>true,]);
+      }
+?> 
+<?php if($model['created_at'] == null){
+        echo  $form->field($model, 'created_at')->textInput(['readonly'=>true,'value'=>date('Y-m-d H:i:s',time())]);
+      }else{
+        echo  $form->field($model, 'created_at')->textInput(['readonly'=>true,]);
+      }
+?>
 
-    <?= $form->field($model, 'finished_time')->textInput() ?>
+<?php if($model['updated_at'] == null){
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,'value'=>date('Y-m-d H:i:s',time())]);
+      }else{
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,]);
+      }
+?>
+    <?// $form->field($model, 'finished_time')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?// $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?// $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group submit-button">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
