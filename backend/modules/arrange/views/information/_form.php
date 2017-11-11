@@ -82,9 +82,9 @@ use dosamigos\datetimepicker\DateTimePicker;
 ?>
 
 <?php if($model['updated_at'] == null){
-        echo  $form->field($model, 'updated_at')->textInput(['readonly'=>true,'value'=>date('Y-m-d H:i:s',time())]);
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,'value'=>date('Y-m-d H:i:s',time())]);
       }else{
-        echo  $form->field($model, 'updated_at')->textInput(['readonly'=>true,]);
+        echo  $form->field($model, 'updated_at')->textInput(['disabled'=>true,]);
       }
 ?>
     <?// $form->field($model, 'sign_time')->textInput() ?>
