@@ -73,8 +73,10 @@ class HouselevyTotalController extends BaseController
     public function actionCreate()
     {
         $model = new HouselevyTotal();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $_POST['HouselevyTotal']['operator']=yii::$app->user->identity->id;
+        $_POST['HouselevyTotal']['approval']=0;
+//         var_dump(Yii::$app->request->post());exit;
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
