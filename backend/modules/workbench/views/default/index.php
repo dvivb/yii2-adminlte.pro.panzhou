@@ -1,6 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+backend\assets\JConfirmAsset::register($this);
 
 $this->title = '工作台';
 ?>
@@ -82,8 +85,11 @@ $this->title = '工作台';
             </ul>
             <div class="tab-content no-padding">
                 <!-- Morris chart - Sales -->
-                <div class="chart tab-pane" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                <div class="chart tab-pane" id="revenue-chart" style="position: relative; height: 300px;">
+
+                </div>
+                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                </div>
                 <div class="tab-pane active box" id="box" style="border-top:0;">
                     <div class="box-header">
                         <h3 class="box-title">全部待处理事项列表</h3>
@@ -132,7 +138,7 @@ $this->title = '工作台';
                                     </td>
                                     <td><?= $v['created_at']; ?></td>
                                     <td><?= $v['updated_at']; ?></td>
-                                    <td><?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
+                                    <td><button class="btn btn-info commit-btn" data='.$dataProvider->id.'>审批</button> <?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -161,3 +167,110 @@ $this->title = '工作台';
         })
     })
 </script>
+
+
+
+
+<?php $this->beginBlock('houseTotalindex') ?>
+
+
+        $(function(){
+            <!--     	  $('.commit-btn').click(function(){ -->
+            <!--     	        var id = $(this).attr('data'); -->
+            <!--     			var ifTrue = confirm("确认提交申请拨款?"); -->
+            <!--                 if(ifTrue){ -->
+            <!--                     $.get('/landlevy/landlevy-total/applys/'+id,function(res){ -->
+            <!--                         if(res.code == 1){ -->
+            <!--                             alert("申请拨款成功"); -->
+            <!--                             location.href = location.href; -->
+            <!--                         }else{ -->
+            <!--                            alert("申请拨款失败"); -->
+            <!--                         } -->
+
+            <!--                     },'json') -->
+            <!--                 }else{ -->
+            <!--                     return false -->
+            <!--                 } -->
+            <!--               }) -->
+
+            $('.commit-btn').click(function(){
+                var id = $(this).attr('data');
+                $.confirm({
+                    title: '确认审批并指向下一步审批',
+                    content: function () {
+                        var self = this;
+                        return $.ajax({
+                            url: '/users/users/get-user-group',
+                            dataType: 'json',
+                            method: 'get'
+                        }).done(function (response) {
+                            var content = '<select class="user_role col-lg-12"> <option>选择部门</option>';
+                            for(var i in response) {
+                                console.log(i);
+                                content += '<option value="'+response[i].id+'">'+response[i].role_name+'</option>';
+                            }
+                            content += '</select><br><br><select class="user_id col-lg-12"><option>选择审批人</option></select><br><br>';
+
+                            content += '</select><br><br><select class="is_agree col-lg-12"><option>是否同意</option value="1"><option>是</option><option value="-1">否</option></select><br><br>';
+                            content +='<div>备注：<input type="text" name="remarks"></div>';
+                            content +='<div style="clear: both"></div>';
+                            self.setContent(content);
+                        }).fail(function(){
+                            self.setContent('Something went wrong.');
+                        });
+                    },
+                    buttons: {
+                        formSubmit: {
+                            text: '提交',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                                var userid = $('.user_id').val();
+                                $.get('/landlevy/landlevy-total/applys/'+id+'/'+userid,function(res){
+                                    if(res.code == 1){
+                                        alert("申请拨款成功");
+                                        location.href = location.href;
+                                    }else{
+                                        alert("申请拨款失败");
+                                    }
+
+                                },'json')
+                            }
+                        },
+                        cancel: {
+                            text: '关闭',
+                            action: function () {
+                            }
+                        },
+                    },
+                    onContentReady: function () {
+                        var self = this;
+                    },
+                    columnClass: 'small'
+                })
+            })
+
+
+            $(document).on('change','.user_role',function(){
+                var role_id = $(this).val();
+                if(role_id >0 ){
+                    $.get("/users/users/get-users?role_id="+role_id,function(res){
+                        $str = '';
+                        for(var i in res){
+                            $str += '<option value="'+res[i].id+'">'+res[i].username+'</option>';
+                        }
+                        if($str == ''){
+                            $str = '<option>该部门无用户</option>';
+                        }
+                        $('.user_id').html($str)
+                    },'json')
+                }else{
+                    $str = '<option>该部门无用户</option>';
+                    $('.user_id').html($str)
+                }
+
+            })
+        })
+
+
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks['houseTotalindex'], \yii\web\View::POS_END); ?>

@@ -197,7 +197,7 @@ class ProjectService{
 //        foreach ()
 
         $columns = [
-            'id' => 'id',
+            'id'  => 'id',
             'code' => '项目编号',
             'name' => '项目名称',
             'total_household' => '总户数',
@@ -240,10 +240,31 @@ class ProjectService{
 //        $value  = array_values($columns);
 
         $data_value = array_values($data[0]);
-
         $data_arr = array_combine($key, $data_value);
-
         return self::addProject($data_arr);
+
+
+//        try{
+//            $model = new Projects();
+//            $key = array_keys($columns);
+//            $data_arr = '';
+//            $operator = yii::$app->user->identity->id;
+//            foreach($data as $value) {
+//
+////                                var_dump($data_value);die;
+//                $_model = clone $model;
+//                $data_value = array_values($value);
+//                $data_arr = array_combine($key, $data_value);
+//                $data_arr["operator"] = $operator;
+//                $_model->setAttributes($data_arr);
+//                $_model->save(false);
+//            }
+//            return true;
+//        }catch (\Exception $e){
+//            var_dump($e->getMessage());die;
+//            return false;
+//        }
+
 
     }
 }

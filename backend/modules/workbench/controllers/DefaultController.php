@@ -2,6 +2,7 @@
 
 namespace backend\modules\workbench\controllers;
 
+use app\models\LandlevyTotalSearch;
 use backend\modules\workbench\services\StatisticsServices;
 use Yii;
 use backend\controllers\BaseController;
@@ -50,9 +51,10 @@ class DefaultController extends BaseController
             "state" => 0,
         ];
 
-//        $project_list = StatisticsServices::getProjectList($condition);
 
-
+        $data["project_total"]              = $project_total["total_project"];
+        $data["project_incomplete_total"]   = $project_incomplete_total["total_project"];
+        $data["project_amount_total"]       = $project_amount_total;
 
 
         switch ($roleId){
@@ -74,7 +76,10 @@ class DefaultController extends BaseController
 //                    ->limit(4)
                     ->orderBy('id DESC')
                     ->All();
+                $data["project_list"]       = $query;
 
+                $searchModel = new LandlevyTotalSearch();
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
                 break;
             case 2:
                 break;
@@ -96,18 +101,10 @@ class DefaultController extends BaseController
                 break;
         }
 
-        $data["project_total"]              = $project_total["total_project"];
-        $data["project_incomplete_total"]   = $project_incomplete_total["total_project"];
-        $data["project_amount_total"]       = $project_amount_total;
-//        $data["project_list"]       = $project_list;
-        $data["project_list"]       = $query;
-
-//        echo "<pre>";
-//        var_dump($project_total);
-//        var_dump($project_incomplete_total);
-//        var_dump($project_amount_total);die;
-//        var_dump($project_list);die;
-//        var_dump($data);die;
-        return $this->render('index', ['data'=>$data]);
+        return $this->render('index', [
+            'searchModel'  => $searchModel,
+            'dataProvider' => $dataProvider,
+            'data'         => $data,
+        ]);
     }
 }
