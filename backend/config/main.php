@@ -40,9 +40,9 @@ return [
                 'landlist/landlist/del/<id:\d+>' => 'landlist/landlist/del',
 
                 '/interim/interim-list/index/<id:\d+>' => '/interim/interim-detail/index',
-                'houselevy/houselevy-total/applys/<id:\d+>'=>'/houselevy/houselevy-total/applys',
-                'interim/interim-detail/applys/<id:\d+>'=>'/interim/interim-detail/applys',
-                'landlevy/landlevy-total/applys/<id:\d+>'=>'/landlevy/landlevy-total/applys',
+                'houselevy/houselevy-total/applys/<id:\d+>/<userid:\d+>'=>'/houselevy/houselevy-total/applys',
+                'interim/interim-detail/applys/<id:\d+>/<userid:\d+>'=>'/interim/interim-detail/applys',
+                'landlevy/landlevy-total/applys/<id:\d+>/<userid:\d+>'=>'/landlevy/landlevy-total/applys',
                 ]
          ],
         'request' => [
