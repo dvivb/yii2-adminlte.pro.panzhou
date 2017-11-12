@@ -35,4 +35,6 @@ phpunit.phar
 /.vagrant
 backend/runtime/logs
 
-
+backend/web/upload/excel/
+backend/web/upload/file/
+backend/web/upload/image/
