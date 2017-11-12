@@ -40,6 +40,10 @@ class LandlevyTotalController extends BaseController
     public function actionIndex()
     {
         $get = yii::$app->request->get();
+        if(!isset($get['LandlevyTotalSearch']['project_id']) || $get['LandlevyTotalSearch']['project_id'] ==''){
+            Yii::$app->getSession()->setFlash('success', 'url错误,缺少项目id');
+            return $this->redirect(['/landlevy']);
+        }
         $searchModel = new LandlevyTotalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         if(isset($get['search']) && $get['search'] =="导出"){

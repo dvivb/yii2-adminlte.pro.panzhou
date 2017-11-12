@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建', ['create?project_id='.$_GET['LandlevyTotalSearch']['project_id']], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -54,6 +54,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         break;
                     case 5:
                         $var ='主要领导审批通过';
+                        break;
+                    default:
+                        $var ='流程结束';
                         break;
                 }
                 return $var;

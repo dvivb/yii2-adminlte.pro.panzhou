@@ -150,4 +150,14 @@ class UsersController extends BaseController
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionGetUserGroup(){
+        $userRoles = UserRole::find()->select(['id','role_name'])->asArray()->all();
+        return json_encode($userRoles);
+    }
+    public function actionGetUsers(){
+        $roleId = yii::$app->request->get('role_id');
+        $users = User::find()->where(['role'=>$roleId])->select(['id','username'])->asArray()->all();
+        return json_encode($users);
+    }
 }

@@ -33,7 +33,7 @@ class ApprovalLog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'source_id'], 'integer'],
+            [['user_id', 'source_id','approver'], 'integer'],
             [['source_type', 'approval'], 'required'],
             [['source_type'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
@@ -52,6 +52,7 @@ class ApprovalLog extends \yii\db\ActiveRecord
             'source_id' => '数据源ID',
             'source_type' => '数据来源',
             'approval' => '审批进度',
+            'approver' => '审批人id',
             'remarks' => '备注',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',

@@ -11,8 +11,14 @@ use yii\widgets\ActiveForm;
 <div class="houselevy-total-form form">
 
     <?php $form = ActiveForm::begin(); ?>
+<?php 
+    if(isset($_GET['project_id']) && $_GET['project_id'] != ''){
+        echo $form->field($model, 'project_id')->textInput(['value'=>$_GET['project_id'],'readonly'=>true]);
+    }else{
+        echo  $form->field($model, 'project_id')->textInput(['readonly'=>true]);
+    }
+?>
 
-    <?= $form->field($model, 'project_id')->textInput() ?>
 
     <?= $form->field($model, 'periods')->textInput() ?>
 
