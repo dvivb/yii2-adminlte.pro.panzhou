@@ -126,18 +126,20 @@ class InterimDetailController extends BaseController
     }
     public function actionApplys($id){
         $id = yii::$app->request->get('id');
+        $userid = yii::$app->request->get('userid');
         if(empty($id)){
             return json_encode(['code'=>0]);
         }
         if (($model = InterimDetail::findOne($id)) == null) {
             return json_encode(['code'=>0,'msg'=>'non-existent']);
         }
-        $model->setAttributes(['approval'=>1]);//'operator'=>yii::$app->user->identity->id
+        $model->setAttributes(['approval'=>1,'approver'=>$userid]);//'operator'=>yii::$app->user->identity->id
         if($model->save(false)){
             ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
                 'source_id'=>$id,
                 'source_type'=>'interm',
-                'approval'=>1
+                'approval'=>1,
+                'approver'=>$userid
             ]);
             return json_encode(['code'=>1]);
         }else{

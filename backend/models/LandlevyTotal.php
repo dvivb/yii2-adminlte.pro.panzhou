@@ -34,7 +34,7 @@ class LandlevyTotal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'periods', 'total_households'], 'integer'],
+            [['project_id', 'periods', 'total_households','approver'], 'integer'],
             [['total_area', 'total_amount'], 'number'],
             [['approval'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
@@ -56,6 +56,7 @@ class LandlevyTotal extends \yii\db\ActiveRecord
             'total_amount' => '总金额（元）',
             'operator' => '填报人',
             'approval' => '审批进度',
+            'approver' => '审批人id',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
