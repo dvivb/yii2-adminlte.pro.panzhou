@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "flow".
  *
- * @property integer $id
+ * @property string $id
  * @property string $name
  * @property integer $type
  * @property string $create_time
@@ -29,7 +29,7 @@ class Flow extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'update_time'], 'required'],
+            [['type'], 'required'],
             [['type'], 'integer'],
             [['create_time', 'update_time'], 'safe'],
             [['name'], 'string', 'max' => 50],
@@ -43,10 +43,10 @@ class Flow extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'type' => 'Type',
+            'name' => '流程名称',
+            'type' => '1房屋2征收补偿款，3土地',
             'create_time' => 'Create Time',
-            'update_time' => 'Update Time',
+            'update_time' => '更新时间',
         ];
     }
 

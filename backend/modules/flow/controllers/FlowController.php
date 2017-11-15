@@ -4,15 +4,15 @@ namespace backend\modules\flow\controllers;
 
 use Yii;
 use app\models\Flow;
-use app\models\FlowQuery;
-use yii\web\Controller;
+use app\models\FlowSearch;
+use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * FlowController implements the CRUD actions for Flow model.
  */
-class FlowController extends Controller
+class FlowController extends BaseController
 {
     /**
      * @inheritdoc
@@ -35,8 +35,8 @@ class FlowController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FlowQuery();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);echo 1;exit;
+        $searchModel = new FlowSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -46,7 +46,7 @@ class FlowController extends Controller
 
     /**
      * Displays a single Flow model.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -77,7 +77,7 @@ class FlowController extends Controller
     /**
      * Updates an existing Flow model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -96,7 +96,7 @@ class FlowController extends Controller
     /**
      * Deletes an existing Flow model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -109,7 +109,7 @@ class FlowController extends Controller
     /**
      * Finds the Flow model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $id
      * @return Flow the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

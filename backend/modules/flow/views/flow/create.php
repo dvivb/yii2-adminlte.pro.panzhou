@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Flow */
 
-$this->title = Yii::t('app', 'Create Flow');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Flows'), 'url' => ['index']];
+$this->title = 'Create Flow';
+$this->params['breadcrumbs'][] = ['label' => 'Flows', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flow-create">
