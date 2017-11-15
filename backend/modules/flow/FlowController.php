@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\modules\flow\controllers;
+namespace backend\modules\flow;
 
 use Yii;
 use app\models\Flow;
-use app\models\FlowQuery;
+use app\models\FlowSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,8 +35,8 @@ class FlowController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new FlowQuery();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);echo 1;exit;
+        $searchModel = new FlowSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

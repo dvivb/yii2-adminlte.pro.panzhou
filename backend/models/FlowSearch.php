@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Flow;
 
 /**
- * FlowQuery represents the model behind the search form about `app\models\Flow`.
+ * FlowSearch represents the model behind the search form about `app\models\Flow`.
  */
-class FlowQuery extends Flow
+class FlowSearch extends Flow
 {
     /**
      * @inheritdoc
@@ -42,7 +42,7 @@ class FlowQuery extends Flow
     public function search($params)
     {
         $query = Flow::find();
-var_dump($query);exit;
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
