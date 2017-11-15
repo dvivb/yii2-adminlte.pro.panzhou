@@ -44,8 +44,8 @@ class Flow extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '流程名称',
-            'type' => '1房屋2征收补偿款，3土地',
-            'create_time' => 'Create Time',
+            'type' => '流程分类',//'1房屋征补2过渡费流程，3土地征补流程，4安置流程',
+            'create_time' => '创建时间',
             'update_time' => '更新时间',
         ];
     }

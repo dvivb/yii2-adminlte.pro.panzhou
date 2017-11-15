@@ -7,16 +7,16 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\FlowSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Flows';
+$this->title = '流程管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="flow-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><? //Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Flow', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,

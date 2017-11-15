@@ -18,8 +18,8 @@ class FlowSearch extends Flow
     public function rules()
     {
         return [
-            [['id', 'type'], 'integer'],
-            [['name', 'create_time', 'update_time'], 'safe'],
+//            [['id', 'type'], 'integer'],
+            [['name',], 'safe'],
         ];
     }
 
