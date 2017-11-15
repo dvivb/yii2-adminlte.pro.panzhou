@@ -66,7 +66,7 @@
                         ],
                     ],
                     ['label' => '字典管理', 'icon' => 'stack-overflow', 'url' => ['/dictionarie/dictionarie/index']],
-                    ['label' => '流程管理', 'icon' => 'stack-overflow', 'url' => ['/flow/flow/index']],
+                    ['label' => '流程管理', 'icon' => 'random', 'url' => ['/flow/flow/index']],
                     [
                         'label' => '用户管理',
                         'icon' => 'users',

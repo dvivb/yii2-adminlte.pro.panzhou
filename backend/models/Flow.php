@@ -58,4 +58,5 @@ class Flow extends \yii\db\ActiveRecord
     {
         return new FlowQuery(get_called_class());
     }
+
 }

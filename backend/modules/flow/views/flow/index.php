@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
+        'summary' => "<p style='float: right;margin-top: 10px;'>显示 {begin} - {end} 共 {totalCount} 条</p>",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,3 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+
+<style>
+    .grid-view{
+        margin-top: 10px;
+        padding: 10px;
+        background: #fcfcfd;
+    }
+
+    .btn-success {
+        float: left;
+        margin: 16px;
+    }
+</style>
