@@ -125,6 +125,9 @@ return [
         'landlevy' => [
             'class' => 'backend\modules\landlevy\landlevy',
         ],
+        'flow' => [
+            'class' => 'backend\modules\flow\flow',
+        ],
     ],
     'params' => $params,
 ];
