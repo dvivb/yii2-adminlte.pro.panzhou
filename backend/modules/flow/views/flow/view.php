@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Flows', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="flow-view view">
 
@@ -60,6 +61,23 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 </div>
 
+<div class="flow-view view">
+    <?php
+       if(!empty($modelDetail)){
+           echo '<div><h5>审批流程</h5></div>';
+           echo '<div class="detail">';
+           echo '<div>流程发起</div><br>';
+           foreach ($modelDetail as $key => $v){
+               echo '<div>第'.($key+1).'步，审批人'.$v['username'].'</div><br>';
+           }
+           echo '<div>流程结束</div><br>';
+           echo '</div>';
+       }
+    ?>
+
+
+</div>
+
 <style>
     .view{
         padding: 10px;
@@ -70,4 +88,5 @@ $this->params['breadcrumbs'][] = $this->title;
         float: right;
         margin: 16px;
     }
+    .detail{margin-left:100px}
 </style>

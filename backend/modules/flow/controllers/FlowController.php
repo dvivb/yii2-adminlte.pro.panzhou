@@ -2,6 +2,9 @@
 
 namespace backend\modules\flow\controllers;
 
+use app\models\FlowDetail;
+use app\models\User;
+use backend\modules\users\users;
 use Yii;
 use app\models\Flow;
 use app\models\FlowSearch;
@@ -53,6 +56,7 @@ class FlowController extends BaseController
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'modelDetail' =>$this->findDetailModel($id)
         ]);
     }
 
@@ -120,5 +124,15 @@ class FlowController extends BaseController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    protected function findDetailModel($flowid){
+        $model= FlowDetail::find()->where(['flow_id'=>$flowid])
+            ->select([User::tableName().'.username'])
+            ->leftJoin(User::tableName(),User::tableName().'.id = '.FlowDetail::tableName().'.user_id')
+            ->orderBy([FlowDetail::tableName().'.pid'=>SORT_ASC])
+            ->asArray()
+            ->all();
+        return $model;
     }
 }
