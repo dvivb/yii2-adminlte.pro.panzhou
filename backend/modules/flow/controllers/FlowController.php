@@ -68,8 +68,34 @@ class FlowController extends BaseController
     public function actionCreate()
     {
         $model = new Flow();
+        if(isset($_POST['userIds'])){
+            $flowIds = json_decode($_POST['userIds'],true);
+            unset($_POST['userIds']);
+        }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $flow = Flow::find()->where(['type'=>$_POST['Flow']['type']])->one();
+            if(!is_null($flow)){
+                Yii::$app->getSession()->setFlash('success', '该分类下已经存在流程');
+                return $this->redirect(['/flow/flow']);
+            }
+            $model->save();
+            if(!empty($flowIds)){
+                $flowDetailM = new FlowDetail();
+                $pid = 0;
+                foreach ($flowIds as $v){
+                    $arr = array();
+                    $arr = ['flow_id'=>$model->id,'user_id'=>$v,'update_time'=>date('Y-m-d H:i:s'),'pid'=>$pid];
+                    $flowDetail = null;
+                    $flowDetail = clone $flowDetailM;
+                    $flowDetail->setAttributes($arr);
+                    $flowDetail->save(false);
+                    $pid = $flowDetail->id;
+                }
+//                var_dump($arr);exit;
+
+
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

@@ -16,4 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
     ]) ?>
 
+
 </div>
+
+<!--div class="flow-view view">
+        <div><h5>审批流程</h5></div>
+        <div class="detail">
+        <div>流程发起</div><br>
+
+        <div>流程结束</div><br>
+        </div>
+</div-->
