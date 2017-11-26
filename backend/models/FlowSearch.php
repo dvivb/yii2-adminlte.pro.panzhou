@@ -12,6 +12,7 @@ use app\models\Flow;
  */
 class FlowSearch extends Flow
 {
+
     /**
      * @inheritdoc
      */

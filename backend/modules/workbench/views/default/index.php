@@ -116,7 +116,7 @@ $this->title = '工作台';
                                     <td><?= $v['id']; ?></td>
                                     <td><?= $v['name']; ?></td>
                                     <td>房屋征补（<?= $v['periods']; ?>）期拨款</td>
-                                    <td><?= $v['username']; ?>[<?= $v['role_name']; ?>]</td>
+                                    <td><?= $v['username']; ?><!--[<?// $v['role_name']; ?>]--></td>
                                     <td>
                                         <?php
 //                                        0未提交、1提交拨款,2初审通过、3业务主管审批通过、4分管领导审批通过、5主要领导审批通过
@@ -132,13 +132,14 @@ $this->title = '工作台';
                                                 echo '分管领导审批通过';
                                             }elseif ($v['approval'] = 5) {
                                                 echo '主要领导审批通过';
+                                            }else{
+                                                echo '审批状态未知';
                                             }
-                                        echo "[系统管理员.admin]";
                                         ?>
                                     </td>
                                     <td><?= $v['created_at']; ?></td>
                                     <td><?= $v['updated_at']; ?></td>
-                                    <td><button class="btn btn-info commit-btn" data='.$dataProvider->id.'>审批</button> <?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
+                                    <td><button class="btn btn-info commit-btn-approval" data-source-type="<?=$v['source_type'];?>" data="<?=$v["id"];?>"> 审批</button> <?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
                                 </tr>
                             <?php } ?>
                             </tbody>
@@ -154,27 +155,25 @@ $this->title = '工作台';
 </div>
 <!-- /.row -->
 
-<script>
-    $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
-</script>
 
 
 
 
 <?php $this->beginBlock('houseTotalindex') ?>
 
-
-        $(function(){
+/*
+    $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+    'paging'      : true,
+    'lengthChange': false,
+    'searching'   : false,
+    'ordering'    : true,
+    'info'        : true,
+    'autoWidth'   : false
+    })
+    })
+    $(function(){
             <!--     	  $('.commit-btn').click(function(){ -->
             <!--     	        var id = $(this).attr('data'); -->
             <!--     			var ifTrue = confirm("确认提交申请拨款?"); -->
@@ -271,6 +270,6 @@ $this->title = '工作台';
             })
         })
 
-
+*/
 <?php $this->endBlock() ?>
 <?php $this->registerJs($this->blocks['houseTotalindex'], \yii\web\View::POS_END); ?>

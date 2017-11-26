@@ -73,4 +73,11 @@ class ApprovalLog extends \yii\db\ActiveRecord
         $model->setAttributes($data);
         return $model->save(false);
     }
+    public static function approvallogList($sourece_id,$source_type){
+        return self::find()
+            ->select([User::tableName().'.username',ApprovalLog::tableName().'.remarks',ApprovalLog::tableName().'.created_at'])
+            ->where(['source_id'=>$sourece_id,'source_type'=>$source_type])
+            ->leftJoin(User::tableName(),User::tableName().'.id = '.ApprovalLog::tableName().'.approver')
+            ->asArray()->all();
+    }
 }

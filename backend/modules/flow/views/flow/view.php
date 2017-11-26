@@ -42,10 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
     function type_switch($type){
         switch($type){   //'1房屋征补2过渡费流程，3土地征补流程，4安置流程',
             case 1:
-                return Html::encode("房屋征补");
+                return Html::encode("房屋征补流程");
                 break;
             case 2:
-                return Html::encode("过渡费流程");
+                return Html::encode("征收补偿款流程");
                 break;
             case 3:
                 return Html::encode("土地征补流程");

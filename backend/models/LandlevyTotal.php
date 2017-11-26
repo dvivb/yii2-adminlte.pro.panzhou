@@ -70,4 +70,20 @@ class LandlevyTotal extends \yii\db\ActiveRecord
     {
         return new LandlevyTotalQuery(get_called_class());
     }
+    public static function getPendinglistByUserId($userId){
+        return self::find()->select(
+            [   LandlevyTotal::tableName().'.created_at',
+                LandlevyTotal::tableName().'.updated_at',
+                User::tableName().'.username',
+                Projects::tableName().'.name',
+                LandlevyTotal::tableName().'.sourece_type'
+            ]
+        )
+            ->leftJoin(Projects::tableName(),Projects::tableName().'.id = '.LandlevyTotal::tableName().'.project_id')
+            ->leftJoin(User::tableName(),User::tableName().'.id = '.LandlevyTotal::tableName().'.operator')
+            ->where(['approver'=>$userId])
+            ->andWhere(['approval'=>['1','2','3','4','5']])
+            ->asArray()
+            ->all();
+    }
 }

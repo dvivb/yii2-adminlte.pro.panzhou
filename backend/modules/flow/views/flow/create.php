@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'userIds'=>isset($userIds)?$userIds:null,
+        'userDetails'=>isset($userDetails)?$userDetails:[]
     ]) ?>
 
 

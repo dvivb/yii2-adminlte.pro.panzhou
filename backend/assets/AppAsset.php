@@ -16,7 +16,8 @@ class AppAsset extends AssetBundle
         'layui/css/layui.css'
     ];
     public $js = [
-        'layui/layui.js'
+//        'layui/layui.js'
+    'js/flowConfirm.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

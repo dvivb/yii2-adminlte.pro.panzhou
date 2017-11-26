@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = '更新';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'userIds'=>isset($userIds)?$userIds:null,
+        'userDetails'=>isset($userDetails)?$userDetails:[]
     ]) ?>
 
 </div>

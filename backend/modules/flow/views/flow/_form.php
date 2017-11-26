@@ -15,7 +15,7 @@ backend\assets\JConfirmAsset::register($this);
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->dropDownList(['1'=>'房屋','2'=>'征收补偿款','3'=>'土地']) ?>
+    <?= $form->field($model, 'type')->dropDownList(['1'=>'房屋征补流程','2'=>'征收补偿款流程','3'=>'土地征补流程','4'=>'安置流程']) ?>
     <?php
         if($model->create_time==null){
             echo $form->field($model, 'create_time')->textInput(['disabled'=>true,'value'=>date('Y-m-d H:i:s')]);
@@ -36,12 +36,27 @@ backend\assets\JConfirmAsset::register($this);
     <div style="clear: both">
         <div><h5>审批流程</h5></div>
         <div class="detail">
-            <div class="flowDetail">流程发起</div><br>
+            <div class="flowDetail">流程发起
+            <?php
+            if(!empty($userDetails)){
+
+                foreach ($userDetails as $key => $v){
+                    echo '<div class="orderList">第'.($key+1).'步，审批人'.$v['username'].'</div>';
+                }
+            }
+            ?>
+            </div><br>
             <p class="btn btn-info commit-btn" data=''>选择用户</p> &nbsp;&nbsp;&nbsp;&nbsp;<p class="btn btn-info commit-del" data=''>删除用户</p>
             <div>流程结束</div><br>
         </div>
     </div>
-    <div><input type="hidden" value="" name="userIds" class="userIdsInput"> </div>
+    <div>
+        <?php if($userIds == null){
+          echo '<input type="hidden" value="" name="userIds" class="userIdsInput"> </div>';
+        }else{
+            echo '<input type="hidden" value='.'\''.$userIds.'\''.' name="userIds" class="userIdsInput"> </div>';
+        } ?>
+
     <div class="form-group submit-button">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
@@ -76,7 +91,13 @@ backend\assets\JConfirmAsset::register($this);
 </style>
 <?php $this->beginBlock('houseTotalindex') ?>
     $(function(){
-    var userIds = [];
+    var userIdsStr = $('.userIdsInput').val();
+    if(userIdsStr == ''){
+        var userIds = [];
+    }else{
+        var userIds = JSON.parse( userIdsStr );
+    }
+console.log(userIdsStr)
     <!--     	  $('.commit-btn').click(function(){ -->
     <!--     	        var id = $(this).attr('data'); -->
     <!--     			var ifTrue = confirm("确认提交申请拨款?"); -->

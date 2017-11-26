@@ -27,7 +27,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'type',
+            [   'attribute'=>'type',
+                'content'=> function($dataProvider){
+                    switch($dataProvider->type){   //'1房屋征补2过渡费流程，3土地征补流程，4安置流程',
+                        case 1:
+                            return Html::encode("房屋征补流程");
+                            break;
+                        case 2:
+                            return Html::encode("征收补偿款流程");
+                            break;
+                        case 3:
+                            return Html::encode("土地征补流程");
+                            break;
+                        case 4:
+                            return Html::encode("安置流程");
+                            break;
+                        default:
+                            return "未知";
+                            break;
+                    }
+                }
+            ],
             'create_time',
             'update_time',
 

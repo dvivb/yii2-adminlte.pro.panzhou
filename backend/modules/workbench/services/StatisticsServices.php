@@ -1,6 +1,8 @@
 <?php
 namespace backend\modules\workbench\services;
 
+use app\models\HouselevyTotal;
+use app\models\LandlevyTotal;
 use Yii;
 
 /**
@@ -89,5 +91,27 @@ class StatisticsServices
             ->queryAll();
 
         return $query;
+    }
+
+    public static  function getRendinglist($userId){
+        $houseTotal = HouselevyTotal::getPendinglistByUserId($userId);
+        $landlevyTotal = LandlevyTotal::getPendinglistByUserId($userId);
+        return array_merge($houseTotal,$landlevyTotal);
+    }
+    public static function updateFlowBySource($sourceType,$nextUser,$flowId){
+        switch ($sourceType){
+            case 'houselevy':
+                $type = 1;
+                break;
+            case 'landlevy':
+                $type=3;
+                break;
+            case 'interm':
+                $type=2;
+                break;
+            default:
+                $type = null;
+                break;
+        }
     }
 }

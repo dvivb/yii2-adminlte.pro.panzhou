@@ -70,4 +70,31 @@ class HouselevyTotal extends \yii\db\ActiveRecord
     {
         return new HouselevyTotalQuery(get_called_class());
     }
+
+    public static function getPendinglistByUserId($userId){
+        return self::find()->select(
+            [   HouselevyTotal::tableName().'.id',
+                HouselevyTotal::tableName().'.periods',
+                HouselevyTotal::tableName().'.approval',
+                HouselevyTotal::tableName().'.created_at',
+                HouselevyTotal::tableName().'.updated_at',
+                User::tableName().'.username',
+                Projects::tableName().'.name',
+                HouselevyTotal::tableName().'.source_type'
+                ]
+            )
+            ->leftJoin(Projects::tableName(),Projects::tableName().'.id = '.HouselevyTotal::tableName().'.project_id')
+            ->leftJoin(User::tableName(),User::tableName().'.id = '.HouselevyTotal::tableName().'.operator')
+            ->where(['approver'=>$userId])
+            ->andWhere(['approval'=>['1','2','3','4','5']])
+            ->asArray()
+            ->all();
+    }
+    public static function  updateFlow($id,$userId,$agree){
+        if(empty($userId)){
+            
+        }
+
+    }
+
 }

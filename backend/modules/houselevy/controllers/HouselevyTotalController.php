@@ -2,6 +2,8 @@
 
 namespace backend\modules\houselevy\controllers;
 
+use app\models\Flow;
+use app\models\FlowDetail;
 use Yii;
 use app\models\HouselevyTotal;
 use app\models\HouselevyTotalSearch;
@@ -136,24 +138,61 @@ class HouselevyTotalController extends BaseController
     
     public function actionApplys($id){
         $id = yii::$app->request->get('id');
-        $userid = yii::$app->request->get('userid');
-        if(empty($id)){
-            return json_encode(['code'=>0]);
+        $type = yii::$app->request->get('type');
+        $remark = yii::$app->request->get('remark');
+        if(empty($id) || empty($type)){
+            return json_encode(['code'=>0,'msg'=>'参数异常']);
         }
         if (($model = HouselevyTotal::findOne($id)) == null) {
             return json_encode(['code'=>0,'msg'=>'non-existent']);
         }
-        $model->setAttributes(['approval'=>1,'approver'=>$userid]);//'operator'=>yii::$app->user->identity->id
+        $flow = Flow::getFlowByType($type);
+        if(is_null($flow) || empty($flow)){
+            return json_encode(['code'=>0,'msg'=>'流程不存在,请先创建流程']);
+        }
+        $flowId = $flow['id'];
+        $flowDetail = FlowDetail::getFlowSecondUserIdByFlowId($flowId);
+        if(is_null($flowDetail) || empty($flowDetail)){
+            return json_encode(['code'=>0,'msg'=>'流程审批人不存在,请先修改流程']);
+        }
+        $model->setAttributes(['approval'=>1,'approver'=>$flowDetail['user_id']]);//'operator'=>yii::$app->user->identity->id
         if($model->save(false)){
             ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
                                  'source_id'=>$id,
-                                'source_type'=>'houselevy',
-                                'approval'=>1,
-                                'approver'=>$userid,
+                                 'source_type'=>'houselevy',
+                                 'approval'=>1,
+                                 'approver'=>$flowDetail['user_id'],
+                                 'remarks'=>$remark,
             ]);
             return json_encode(['code'=>1]);
         }else{
             return json_encode(['code'=>0,'msg'=>'failed']);
+        }
+    }
+
+    public function actionApprovalList(){
+        $id = yii::$app->request->get('id');
+        $source_type = yii::$app->request->get('sourceType');
+        $approvalList = ApprovalLog::approvallogList($id,$source_type);//var_dump($approvalList);
+        return json_encode($approvalList);
+    }
+    public function actionApproval(){
+        $id = yii::$app->request->get('id');
+        $agree = yii::$app->request->get('agree');
+        $remarks = yii::$app->request->get('remarks',"略");
+        $sourceType = yii::$app->request->get('sourceType');
+        if(empty($id) || empty($agree) || empty($sourceType)){
+            return json_encode(['code'=>0,'msg'=>"参数异常!"]);
+        }
+        $flow = Flow::getFlowBySource($sourceType);
+        if(is_null($flow) || empty($flow)){
+            return json_encode(['code'=>0,'msg'=>"请检查流程设置是否正确!"]);
+        }
+        $nextUser = FlowDetail::getFlowNextUserIdByFlowIdAndUserId($flow['id'],yii::$app->user->identity->id);
+        if(empty($nextUser)){ //为空流程结束
+
+        }else{
+
         }
     }
 }

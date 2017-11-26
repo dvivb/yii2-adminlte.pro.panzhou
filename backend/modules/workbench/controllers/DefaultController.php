@@ -56,7 +56,15 @@ class DefaultController extends BaseController
         $data["project_incomplete_total"]   = $project_incomplete_total["total_project"];
         $data["project_amount_total"]       = $project_amount_total;
 
+        /***
+         * 待处理
+         * 多张表的合集
+         * houselevy_total  landlevy_total interim_list
+         */
+        $data["project_list"] = StatisticsServices::getRendinglist($userId);
 
+
+/*
         switch ($roleId){
             case 1:
 
@@ -100,10 +108,10 @@ class DefaultController extends BaseController
             default:
                 break;
         }
-
+*/
         return $this->render('index', [
-            'searchModel'  => $searchModel,
-            'dataProvider' => $dataProvider,
+//            'searchModel'  => $searchModel,
+//            'dataProvider' => $dataProvider,
             'data'         => $data,
         ]);
     }

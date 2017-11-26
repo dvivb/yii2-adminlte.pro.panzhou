@@ -76,7 +76,7 @@ class FlowController extends BaseController
         if ($model->load(Yii::$app->request->post()) ) {
             $flow = Flow::find()->where(['type'=>$_POST['Flow']['type']])->one();
             if(!is_null($flow)){
-                Yii::$app->getSession()->setFlash('success', '该分类下已经存在流程');
+                Yii::$app->getSession()->setFlash('error', '该分类下已经存在流程,请不要重复创建!');
                 return $this->redirect(['/flow/flow']);
             }
             $model->save();
@@ -114,11 +114,32 @@ class FlowController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        if (yii::$app->request->isPost) {
+            $userIds = Yii::$app->request->post('userIds');
+            $userIds = json_decode($userIds,true);
+            unset($_POST['userIds']);
+            $model->load(Yii::$app->request->post()) && $model->save();
+            FlowDetail::delUserDetailByFlowId($id);
+            $flowDetailM = new FlowDetail();
+            $pid = 0;
+            foreach ($userIds as $v){
+                $arr = array();
+                $arr = ['flow_id'=>$id,'user_id'=>$v,'update_time'=>date('Y-m-d H:i:s'),'pid'=>$pid];
+                $flowDetail = null;
+                $flowDetail = clone $flowDetailM;
+                $flowDetail->setAttributes($arr);
+                $flowDetail->save(false);
+                $pid = $flowDetail->id;
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $userIds = FlowDetail::getUserIdsByFlowId($id);
+            $userDetails = FlowDetail::getUserDetailsByFlowId($id);
             return $this->render('update', [
                 'model' => $model,
+                'userIds'=>json_encode($userIds),
+                'userDetails'=>$userDetails
             ]);
         }
     }
@@ -132,7 +153,7 @@ class FlowController extends BaseController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        FlowDetail::delUserDetailByFlowId($id);
         return $this->redirect(['index']);
     }
 

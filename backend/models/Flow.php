@@ -15,6 +15,7 @@ use Yii;
  */
 class Flow extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -57,6 +58,46 @@ class Flow extends \yii\db\ActiveRecord
     public static function find()
     {
         return new FlowQuery(get_called_class());
+    }
+
+    public static function getFlowByType($type){
+        return self::find()->where(['type'=>$type])->asArray()->one();
+    }
+    /*
+     *
+     *  case 1:
+                            return Html::encode("房屋征补流程");
+                            break;
+                        case 2:
+                            return Html::encode("征收补偿款流程");
+                            break;
+                        case 3:
+                            return Html::encode("土地征补流程");
+                            break;
+                        case 4:
+                            return Html::encode("安置流程");
+                            break;
+     */
+    public static function getFlowBySource($source){//'houselevy','landlevy','interm'
+        switch ($source){
+            case 'houselevy':
+                $type = 1;
+                break;
+            case 'landlevy':
+                $type=3;
+                break;
+            case 'interm':
+                $type=2;
+                break;
+            default:
+                $type = null;
+                break;
+        }
+        if(is_null($type)){
+            return false;
+        }
+        return self::getFlowByType($type);
+
     }
 
 }
