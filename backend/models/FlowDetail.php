@@ -29,7 +29,7 @@ class FlowDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['flow_id', 'user_id', 'pid'], 'integer'],
+            [['flow_id', 'user_id', 'pid','status'], 'integer'],
             [['update_time'], 'safe'],
         ];
     }
@@ -43,6 +43,7 @@ class FlowDetail extends \yii\db\ActiveRecord
             'id' => 'ID',
             'flow_id' => 'Flow ID',
             'user_id' => 'User ID',
+            'status'=>'status',
             'pid' => '流程deitailid，上一级审批信息',
             'update_time' => 'Update Time',
         ];

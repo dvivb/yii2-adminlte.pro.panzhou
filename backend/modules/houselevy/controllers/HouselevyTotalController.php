@@ -4,6 +4,7 @@ namespace backend\modules\houselevy\controllers;
 
 use app\models\Flow;
 use app\models\FlowDetail;
+use backend\modules\workbench\services\StatisticsServices;
 use Yii;
 use app\models\HouselevyTotal;
 use app\models\HouselevyTotalSearch;
@@ -189,10 +190,13 @@ class HouselevyTotalController extends BaseController
             return json_encode(['code'=>0,'msg'=>"请检查流程设置是否正确!"]);
         }
         $nextUser = FlowDetail::getFlowNextUserIdByFlowIdAndUserId($flow['id'],yii::$app->user->identity->id);
-        if(empty($nextUser)){ //为空流程结束
-
-        }else{
-
-        }
+        StatisticsServices::updateFlowBySource($sourceType,$nextUser,$id,$agree);
+        ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
+            'source_id'=>$id,
+            'source_type'=>$sourceType,
+            'approval'=>$nextUser['status'],
+            'approver'=>$nextUser['user_id'],
+            'remarks'=>$remarks,
+        ]);
     }
 }

@@ -122,15 +122,15 @@ $this->title = '工作台';
 //                                        0未提交、1提交拨款,2初审通过、3业务主管审批通过、4分管领导审批通过、5主要领导审批通过
                                             if($v['approval'] == 0){
                                                 echo '未提交';
-                                            }elseif ($v['approval'] = 1) {
+                                            }elseif ($v['approval'] == 1) {
                                                 echo '提交拨款';
-                                            }elseif ($v['approval'] = 2) {
+                                            }elseif ($v['approval'] == 2) {
                                                 echo '初审通过';
-                                            }elseif ($v['approval'] = 3) {
+                                            }elseif ($v['approval'] == 3) {
                                                 echo '业务主管审批通过';
-                                            }elseif ($v['approval'] = 4) {
+                                            }elseif ($v['approval'] == 4) {
                                                 echo '分管领导审批通过';
-                                            }elseif ($v['approval'] = 5) {
+                                            }elseif ($v['approval'] == 5) {
                                                 echo '主要领导审批通过';
                                             }else{
                                                 echo '审批状态未知';

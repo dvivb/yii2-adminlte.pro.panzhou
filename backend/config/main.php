@@ -42,7 +42,7 @@ return [
                 '/interim/interim-list/index/<id:\d+>' => '/interim/interim-detail/index',
                 'houselevy/houselevy-total/applys/<id:\d+>/<type:\d+>/<remark:\w+>'=>'/houselevy/houselevy-total/applys',
                 'houselevy/houselevy-total/approval-list/<id:\d+>/<sourceType:\w+>'=>'/houselevy/houselevy-total/approval-list',
-                'houselevy/houselevy-total/approval/<id:\d+>/<agree:\id>/<remarks:\w>/<sourceType:\w+>'=>'/houselevy/houselevy-total/approval',
+                'houselevy/houselevy-total/approval/<id:\d+>/<agree:\d+>/<remarks:\w+>/<sourceType:\w+>'=>'/houselevy/houselevy-total/approval',
                 'interim/interim-detail/applys/<id:\d+>/<userid:\d+>'=>'/interim/interim-detail/applys',
                 'landlevy/landlevy-total/applys/<id:\d+>/<userid:\d+>'=>'/landlevy/landlevy-total/applys',
                 ]

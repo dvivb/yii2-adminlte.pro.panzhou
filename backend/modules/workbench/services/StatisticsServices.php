@@ -98,10 +98,12 @@ class StatisticsServices
         $landlevyTotal = LandlevyTotal::getPendinglistByUserId($userId);
         return array_merge($houseTotal,$landlevyTotal);
     }
-    public static function updateFlowBySource($sourceType,$nextUser,$flowId){
+    public static function updateFlowBySource($sourceType,$nextUser,$flowId,$agree){
+
         switch ($sourceType){
             case 'houselevy':
                 $type = 1;
+                HouselevyTotal::updateFlow($flowId,$nextUser,$agree);
                 break;
             case 'landlevy':
                 $type=3;

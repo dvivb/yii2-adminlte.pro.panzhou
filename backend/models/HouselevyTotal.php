@@ -91,10 +91,18 @@ class HouselevyTotal extends \yii\db\ActiveRecord
             ->all();
     }
     public static function  updateFlow($id,$userId,$agree){
-        if(empty($userId)){
-            
+        if(!empty($userId)){
+            if($agree==1){
+                $data = ['approval'=>$userId['status'],'approver'=>$userId['user_id']];//成功 流程结束  -2 审批拒绝流程结束
+            }else{
+                $data = ['approval'=>-2,'approver'=>-2];
+            }
+        }else{
+            $data = ['approval'=>-1,'approver'=>-1];//成功 流程结束  -2 审批拒绝流程结束
         }
-
+        $model = self::find()->where(['id'=>$id])->one();
+        $model->setAttributes($data);
+        return $model->save(false);
     }
 
 }

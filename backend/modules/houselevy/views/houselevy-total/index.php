@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //             'approval',
             'approval'=>['attribute'=>'approval','value'=>function($dataProvider){
                 $var = '';
-                switch($dataProvider->approval){
+                switch($dataProvider->approval){ //2初审通过 3 业务主管审批通过 4 分管领导审批通过 主要领导审批通过
                     case 0;
                         $var ='未提交';
                         break;

@@ -47,9 +47,9 @@ $(function() {
                              content += '<p><span><b>第'+(parseInt(i)+1)+'步:</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>'+response[i].username+'&nbsp;&nbsp;&nbsp;&nbsp;<span><b>备注:</b>&nbsp;&nbsp;&nbsp;&nbsp;'+response[i].remarks+'</span></p><p><b>时间:</b>'+response[i].created_at+'</p><hr>';
                         }
                         content +='</div>';
-                        content += '<div><select style="float:none" class="col-lg-12 agree"> <option vlaue="1">同意</option><option vlaue="2">拒绝</option></select></div><br>';
+                        content += '<div><select style="float:none" class="col-lg-12 agree"> <option value="1">同意</option><option value="2">拒绝</option></select></div><br>';
                         content += '<div><input style="float:none" class="col-lg-12 remarks" name="remarks" value="同意"></div>';
-                        content += '<div><input style="float:none" type="hidden" class="source-type"  name="source-type" value="sourceType"></div>';
+                        //content += '<div><input style="float:none" type="hidden" class="source-type"  name="source-type" value="sourceType"></div>';
                         self.setContent(content);
                     }).fail(function(){
                         self.setContent('Something went wrong.');
@@ -60,9 +60,9 @@ $(function() {
                         text: '提交',
                         btnClass: 'btn-blue',
                         action: function () {
-                            var agree = $('.agree').val();
+                            var agree = $('.agree').val();console.log(agree);
                             var remarks = $('.remarks').val();
-                            var sourceType = $('.source-type').val();
+                            // var sourceType = $('.source-type').val();
 
                             $.get('/houselevy/houselevy-total/approval/'+id+'/'+agree+'/'+remarks+'/'+sourceType,function(res){
                                 if(res.code == 1){
