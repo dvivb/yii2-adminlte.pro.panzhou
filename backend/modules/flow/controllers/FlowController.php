@@ -76,6 +76,11 @@ class FlowController extends BaseController
                 Yii::$app->getSession()->setFlash('error', $returnMsg);
                 return $this->redirect(['/flow/flow']);
             }
+            $returnMsg = $this->_ifUnique($flowIds);
+            if(true !== $returnMsg){
+                Yii::$app->getSession()->setFlash('error', $returnMsg);
+                return $this->redirect(['/flow/flow']);
+            }
         }
 
         if ($model->load(Yii::$app->request->post()) ) {
@@ -126,6 +131,11 @@ class FlowController extends BaseController
             $userIds = Yii::$app->request->post('userIds');
             $userIds = json_decode($userIds,true);
             $returnMsg = $this->_checkFlowDetail($userIds);
+            if(true !== $returnMsg){
+                Yii::$app->getSession()->setFlash('error', $returnMsg);
+                return $this->redirect(['/flow/flow']);
+            }
+            $returnMsg = $this->_ifUnique($userIds);
             if(true !== $returnMsg){
                 Yii::$app->getSession()->setFlash('error', $returnMsg);
                 return $this->redirect(['/flow/flow']);
@@ -238,5 +248,16 @@ class FlowController extends BaseController
                 break;
         }
         return $msg;
+    }
+    /**
+     * 判断审批用户是否重复
+     */
+    private function _ifUnique($arr){
+        $tmpArr = array_unique($arr);
+        if(count($arr) === count($tmpArr)){
+            return true;
+        }else{
+            return "审批用户重复";
+        }
     }
 }

@@ -77,7 +77,7 @@ class ApprovalLog extends \yii\db\ActiveRecord
         return self::find()
             ->select([User::tableName().'.username',ApprovalLog::tableName().'.remarks',ApprovalLog::tableName().'.created_at'])
             ->where(['source_id'=>$sourece_id,'source_type'=>$source_type])
-            ->leftJoin(User::tableName(),User::tableName().'.id = '.ApprovalLog::tableName().'.approver')
+            ->leftJoin(User::tableName(),User::tableName().'.id = '.ApprovalLog::tableName().'.user_id')
             ->asArray()->all();
     }
 }

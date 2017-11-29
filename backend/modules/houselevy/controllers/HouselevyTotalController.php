@@ -9,6 +9,7 @@ use Yii;
 use app\models\HouselevyTotal;
 use app\models\HouselevyTotalSearch;
 use backend\controllers\BaseController;
+use yii\db\Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\modules\houselevy\services\HouselevyService;
@@ -185,18 +186,24 @@ class HouselevyTotalController extends BaseController
         if(empty($id) || empty($agree) || empty($sourceType)){
             return json_encode(['code'=>0,'msg'=>"参数异常!"]);
         }
-        $flow = Flow::getFlowBySource($sourceType);
-        if(is_null($flow) || empty($flow)){
-            return json_encode(['code'=>0,'msg'=>"请检查流程设置是否正确!"]);
+        $transaction =Yii::$app->db->beginTransaction();
+        try {
+            $flow = Flow::getFlowBySource($sourceType);
+            if (is_null($flow) || empty($flow)) {
+                return json_encode(['code' => 0, 'msg' => "请检查流程设置是否正确!"]);
+            }
+            $nextUser = FlowDetail::getFlowNextUserIdByFlowIdAndUserId($flow['id'], yii::$app->user->identity->id);
+            StatisticsServices::updateFlowBySource($sourceType, $nextUser, $id, $agree);
+            ApprovalLog::addLog(['user_id' => yii::$app->user->identity->id,
+                'source_id' => $id,
+                'source_type' => $sourceType,
+                'approval' => (!empty($nextUser) && $agree == 1) ? $nextUser['status'] : (empty($nextUser) && $agree == 1) ? -1 : -2,// -2拒绝
+                'approver' => !empty($nextUser) ? $nextUser['user_id'] : 0,//流程结束
+                'remarks' => $remarks,
+            ]);
+            $transaction->commit();
+        }catch(Exception $e){
+            $transaction->rollBack();
         }
-        $nextUser = FlowDetail::getFlowNextUserIdByFlowIdAndUserId($flow['id'],yii::$app->user->identity->id);
-        StatisticsServices::updateFlowBySource($sourceType,$nextUser,$id,$agree);
-        ApprovalLog::addLog(['user_id'=>yii::$app->user->identity->id,
-            'source_id'=>$id,
-            'source_type'=>$sourceType,
-            'approval'=>$nextUser['status'],
-            'approver'=>$nextUser['user_id'],
-            'remarks'=>$remarks,
-        ]);
     }
 }
