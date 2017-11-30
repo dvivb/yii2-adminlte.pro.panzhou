@@ -6,6 +6,7 @@ use app\models\LandlevyTotalSearch;
 use backend\modules\workbench\services\StatisticsServices;
 use Yii;
 use backend\controllers\BaseController;
+
 /**
  * Default controller for the `modules` module
  */
@@ -31,29 +32,42 @@ class DefaultController extends BaseController
         $roleId =  yii::$app->user->identity->role;
         $userId =  yii::$app->user->identity->getId();
 
-        $condition = [
-            "state" => 0,
-        ];
-        $project_total   = StatisticsServices::getProjectTotal($condition);
+//        $condition = [
+//            "state" => "-1",
+//        ];
+//        $project_total   = StatisticsServices::getProjectTotal($condition);
+//
+//        $condition = [
+//            "state" => 0,
+//        ];
+//        $project_incomplete_total   = StatisticsServices::getProjectTotal($condition);
 
-        $condition = [
-            "state"     => 0,
-            "status"    => "0,1,2,3,4",
-        ];
-        $project_incomplete_total   = StatisticsServices::getProjectTotal($condition);
+        $project_total = (new \yii\db\Query())
+            ->from('projects')
+            ->where(['state' => [0,1]])
+            ->count();
 
-        $condition = [
-            "state" => 0,
-        ];
-        $project_amount_total  = StatisticsServices::getProjectAmountTotal($condition);
+        $project_incomplete_total = (new \yii\db\Query())
+            ->from('projects')
+            ->where(['state' => [0]])
+            ->count();
 
-        $condition = [
-            "state" => 0,
-        ];
+        $project_amount_total["amount"] = (new \yii\db\Query())
+            ->from('projects')
+            ->where(['state' => [0,1]])
+            ->sum('col_amout_household + col_area_amout');
+
+        $project_amount_total["actual_amount"] = (new \yii\db\Query())
+            ->from('projects')
+            ->where(['state' => [0,1]])
+            ->sum('actual_area_household + actual_area_amount');
+
+//        var_dump($actual_amount);die;
 
 
-        $data["project_total"]              = $project_total["total_project"];
-        $data["project_incomplete_total"]   = $project_incomplete_total["total_project"];
+
+        $data["project_total"]              = $project_total;
+        $data["project_incomplete_total"]   = $project_incomplete_total;
         $data["project_amount_total"]       = $project_amount_total;
 
         /***

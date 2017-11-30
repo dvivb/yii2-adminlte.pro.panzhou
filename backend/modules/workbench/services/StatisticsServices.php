@@ -15,26 +15,26 @@ class StatisticsServices
     {
         $params = [];
         $sql = "SELECT 
-                    COUNT(p.id) AS total_project 
-                FROM projects p
-                LEFT JOIN projects_list pl ON pl.id = p.id
+                    COUNT(id) AS total_project 
+                FROM projects 
                 WHERE 1=1";
 
         if (isset($condition["state"])) {
-            $sql .= " and pl.state = :state";
+            $sql .= " and state in (:state)";
+//            $sql .= " and state <> :state";
             $params[":state"] = $condition["state"];
         }
 
-        if (isset($condition["status"])) {
-            $sql .= " and pl.status in (:status)";
-            $params[":status"] = $condition["status"];
-        }
-
-        $sql .= " ORDER BY pl.id DESC";
+//        if (isset($condition["status"])) {
+//            $sql .= " and pl.status in (:status)";
+//            $params[":status"] = $condition["status"];
+//        }
+        $sql .= " ORDER BY id DESC";
 
         $query = Yii::$app->db->createCommand($sql)
             ->bindValues($params)
             ->queryOne();
+
 
         return $query;
     }

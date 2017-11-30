@@ -28,6 +28,7 @@ return [
                 'project/project/index/<id:\d+>' => 'project/project/index/',
                 'project/project/edit/<id:\d+>' => 'project/project/edit/',
                 'project/project/del/<id:\d+>' => 'project/project/del/',
+                'project/project/finish/<id:\d+>' => 'project/project/finish/',
                 'project/project/add/<id:\d+>' => '/project/project/add/',
                 'projectlist/projectlist/<id:\d+>' => 'projectlist/projectlist/index',
                 'projectlist/projectlist/add/<id:\d+>' => 'projectlist/projectlist/add',

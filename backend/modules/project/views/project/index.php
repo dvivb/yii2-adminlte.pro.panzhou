@@ -45,7 +45,8 @@ $this->params['breadcrumbs'][] = ['label' => '项目列表', 'url' => ['/project
                     $buttonStr = '';
                     $buttonStr .=  Html::a('详情', ['/project/project/detail/'.$data->id],['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
                     $buttonStr .=  Html::a('编辑',['/project/project/edit/'.$data->id], ['class'=>'btn btn-primary edit-sms-template']).'&nbsp;&nbsp;&nbsp;';
-                    $buttonStr.=Html::a('删除',['/project/project/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
+                    $buttonStr .=  Html::a('完成',['/project/project/finish/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
+                    $buttonStr .=  Html::a('删除',['/project/project/del/'.$data->id],  ['class'=>'btn update-sms-template-del btn-primary']).'&nbsp;&nbsp;&nbsp;';
 
                     return $buttonStr;
                 },

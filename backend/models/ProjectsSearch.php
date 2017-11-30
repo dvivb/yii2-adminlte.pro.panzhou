@@ -26,7 +26,7 @@ class ProjectsSearch extends Projects
     }
     public function search($params)
     {
-        $query =  Projects::find()->where(['state'=>0])->orderBy(['id'=> SORT_DESC]);
+        $query =  Projects::find()->where(['state'=>[0,1]])->orderBy(['id'=> SORT_DESC]);
         //$query->joinWith(['customer']);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
