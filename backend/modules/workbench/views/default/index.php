@@ -132,6 +132,10 @@ $this->title = '工作台';
                                                 echo '分管领导审批通过';
                                             }elseif ($v['approval'] == 5) {
                                                 echo '主要领导审批通过';
+                                            }elseif ($v['approval'] == -1) {
+                                                echo '审批成功';
+                                            }elseif ($v['approval'] == -2) {
+                                                echo '审批拒绝';
                                             }else{
                                                 echo '审批状态未知';
                                             }
