@@ -4,6 +4,8 @@ namespace backend\modules\houselevy\controllers;
 
 use app\models\Flow;
 use app\models\FlowDetail;
+use app\models\InterimList;
+use app\models\LandlevyTotal;
 use backend\modules\workbench\services\StatisticsServices;
 use Yii;
 use app\models\HouselevyTotal;
@@ -145,7 +147,10 @@ class HouselevyTotalController extends BaseController
         if(empty($id) || empty($type)){
             return json_encode(['code'=>0,'msg'=>'参数异常']);
         }
-        if (($model = HouselevyTotal::findOne($id)) == null) {
+
+
+
+        if (($model = $this->_getModel($id,$type)) == null) {
             return json_encode(['code'=>0,'msg'=>'non-existent']);
         }
         $flow = Flow::getFlowByType($type);
@@ -208,4 +213,22 @@ class HouselevyTotalController extends BaseController
             return json_encode(['code'=>0,'msg'=>'failed']);
         }
     }
+
+    private function _getModel($id,$type){
+        switch ($type){
+            case 1:
+                return  HouselevyTotal::findOne($id) ;
+                break;
+            case 2:
+                return InterimList::findOne($id);
+                break;
+            case 3:
+                return LandlevyTotal::findOne($id);
+                break;
+            default:
+                return null;
+
+        }
+    }
+
 }

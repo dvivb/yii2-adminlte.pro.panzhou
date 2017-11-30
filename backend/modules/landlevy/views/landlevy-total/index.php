@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'template'=>'{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}',
                 'buttons' => ['view'=>function ($url,$dataProvider){
                     if($dataProvider->approval ==0)
-                        return '<button class="btn btn-info commit-btn-flow-start" data='.$dataProvider->id.'>申请拨款</button>';
+                        return '<button class="btn btn-info commit-btn-flow-start"  data-type="3" data='.$dataProvider->id.'>申请拨款</button>';
                     else
                         return '<a href="/landlevy/landlevy-total/view?id='.$dataProvider->id.'" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>';
                 }]
