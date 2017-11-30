@@ -57,6 +57,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     case 5:
                         $var ='主要领导审批通过';
                         break;
+                    case -1:
+                        $var ='流程审批成功';
+                        break;
+                    case -2:
+                        $var ='流程审批拒绝';
+                        break;
                     default:
                         $var ='流程结束';
                         break;

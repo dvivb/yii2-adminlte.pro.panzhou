@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'total_amount')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'operator')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'operator')->textInput(['maxlength' => true,'value'=>yii::$app->user->identity->id]) ?>
 
     <?// $form->field($model, 'approval')->textInput(['maxlength' => true]) ?>
 <?php if($model['created_at'] == null){

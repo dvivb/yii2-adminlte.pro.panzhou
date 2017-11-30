@@ -202,8 +202,10 @@ class HouselevyTotalController extends BaseController
                 'remarks' => $remarks,
             ]);
             $transaction->commit();
+            return json_encode(['code'=>1]);
         }catch(Exception $e){
             $transaction->rollBack();
+            return json_encode(['code'=>0,'msg'=>'failed']);
         }
     }
 }
