@@ -143,7 +143,24 @@ $this->title = '工作台';
                                     </td>
                                     <td><?= $v['created_at']; ?></td>
                                     <td><?= $v['updated_at']; ?></td>
-                                    <td><button class="btn btn-info commit-btn-approval" data-source-type="<?=$v['source_type'];?>" data="<?=$v["id"];?>"> 审批</button> <?= Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?></td>
+                                    <td><button class="btn btn-info commit-btn-approval" data-source-type="<?=$v['source_type'];?>" data="<?=$v["id"];?>"> 审批</button>
+                                        <?php
+                                            switch ($v['source_type']){//'houselevy','landlevy','interm'
+                                                case 'houselevy':
+                                                    echo Html::a('查看', ['/houselevy/houselevy-total/view?id=' . $v['id']], ['class' => 'btn btn-success']);
+                                                    break;
+                                                case 'landlevy':
+                                                    echo Html::a('查看', ['/landlevy/landlevy-total/view?id=' . $v['id']], ['class' => 'btn btn-success']);
+                                                    break;
+                                                case 'interm':
+                                                    echo Html::a('查看', ['/interm/interm-list/view?id=' . $v['id']], ['class' => 'btn btn-success']);
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+
+                                        Html::a('查看', ['/landlevy/landlevy-total?LandlevyTotalSearch[project_id]=' . $v['id']], ['class' => 'btn btn-success']) ?>
+                                    </td>
                                 </tr>
                             <?php } ?>
                             </tbody>
