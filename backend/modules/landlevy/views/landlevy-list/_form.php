@@ -12,36 +12,62 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'landlevy_total_id')->textInput() ?>
+    <div class="form-group form-group-title">
+        <label class="" >被征户主基本：</label>
+    </div>
+    <hr/>
+    <?= $form->field($list, 'landlevy_total_id')->textInput() ?>
 
-    <?= $form->field($model, 'land_survey_no')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'land_survey_no')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'land_map_no')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'land_map_no')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gender')->dropDownList([ '1' => '男', '2' => '女'], ['prompt' => '']) ?>
+    <?= $form->field($list, 'gender')->dropDownList([ '1' => '男', '2' => '女'], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'identification')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'identification')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'towns')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'towns')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'bank_card')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'bank_card')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'bank_name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'bank_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'upload_file')->textInput(['maxlength' => true]) ?>
+    <div class="form-group form-group-title">
+        <label class="" >土地信息录入：</label>
+    </div>
+    <hr/>
+<!--    --><?//= $form->field($detail, 'landlevy_list_id')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($detail, 'dictionaries_id')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($detail, 'subject')->dropDownList([ 'house_structure' => '房屋结构', 'annexe_structure' => '附房结构', 'attach' => '地上附着物', 'structure' => '构筑物', 'equipment' => '配套设备', 'land_status' => '土地类别', 'young_crop' => '青苗', ], ['prompt' => '']) ?>
+
+    <?= $form->field($detail, 'parent_id')->textInput() ?>
+
+    <?= $form->field($detail, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($detail, 'unit')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($detail, 'price')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($detail, 'levy_value')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($detail, 'compensation_price')->textInput(['maxlength' => true]) ?>
+
+    <div class="form-group form-group-title">
+        <label class="" >附件：</label>
+    </div>
+    <hr/>
+    <?= $form->field($list, 'upload_file')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group submit-button">
-        <?= Html::submitButton($model->isNewRecord ? '创建' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($list->isNewRecord ? '创建' : '更新', ['class' => $list->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -50,7 +76,7 @@ use yii\widgets\ActiveForm;
 
 <style>
     .form{
-        height: 400px;
+        height: 800px;
         padding: 10px;
         background: #fcfcfd;
     }
@@ -62,6 +88,7 @@ use yii\widgets\ActiveForm;
     }
     .form-group-title{
         margin: 10px 0;
+        width: 100%;
     }
     .control-label{
         font-weight: normal;

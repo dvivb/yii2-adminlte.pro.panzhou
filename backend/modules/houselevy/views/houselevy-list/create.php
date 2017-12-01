@@ -13,7 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="houselevy-list-create">
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'list' => $list,
+        'detail' => $detail,
     ]) ?>
 
 </div>
