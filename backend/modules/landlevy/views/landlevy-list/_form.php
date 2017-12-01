@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
         <label class="" >附件：</label>
     </div>
     <hr/>
-    <?= $form->field($list, 'upload_file')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'upload_file')->fileInput(['maxlength' => true]) ?>
 
     <div class="form-group submit-button">
         <?= Html::submitButton($list->isNewRecord ? '创建' : '更新', ['class' => $list->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

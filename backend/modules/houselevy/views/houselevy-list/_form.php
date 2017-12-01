@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($list, 'upload_file')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group form-group-title">
-        <label class="" >土地信息录入：</label>
+        <label class="" >房屋信息录入：</label>
     </div>
     <hr/>
 <!--    --><?//= $form->field($detail, 'houselevy_list_id')->textInput() ?>
@@ -62,7 +62,7 @@ use yii\widgets\ActiveForm;
         <label class="" >附件：</label>
     </div>
     <hr/>
-    <?= $form->field($list, 'upload_file')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($list, 'upload_file')->fileInput(['maxlength' => true]) ?>
 
     <div class="form-group submit-button">
         <?= Html::submitButton($list->isNewRecord ? '创建' : '更新', ['class' => $list->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
