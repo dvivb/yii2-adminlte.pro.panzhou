@@ -8,21 +8,25 @@ use yii\web\UploadedFile;
 class UploadForm extends Model
 {
     /**
-     * @var UploadedFile
+     * @var UploadedFile[]
      */
-    public $imageFile;
+    public $upload_file;
 
     public function rules()
     {
         return [
-            [['imageFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['upload_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 4],
         ];
     }
 
     public function upload()
     {
-        if ($this->validate()) {
-            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+//        if ($this->validate()) {
+        if (true) {
+            foreach ($this->upload_file as $file) {
+//                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+                $file->saveAs('C:\D\I\Clown\pro\php\yii2-adminlte.pro.panzhou\backend\web\upload\file\\' . $file->baseName . '.' . $file->extension);
+            }
             return true;
         } else {
             return false;

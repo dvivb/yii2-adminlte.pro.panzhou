@@ -267,4 +267,25 @@ class BaseController extends Controller
 
         return $data;
     }
+
+    public static function upload($upload_files)
+    {
+        $date = date("Ymd");
+        // 文件存放路径
+        $os_path = yii::$app->basePath . '/web/';
+        $diy_path =  'upload/' . $date .'/';
+        $base_path = $os_path . $diy_path;
+        if (!file_exists($base_path)){
+            mkdir($base_path);
+        }
+        if (!empty($upload_files)) {
+            foreach ($upload_files as $file) {
+                $file->saveAs($base_path . $file->baseName . '.' . $file->extension);
+                $paths[] = $diy_path . $file->baseName . '.' . $file->extension;
+            }
+            return $paths;
+        } else {
+            return false;
+        }
+    }
 }

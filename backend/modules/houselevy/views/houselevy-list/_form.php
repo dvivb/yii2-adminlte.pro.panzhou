@@ -10,10 +10,11 @@ use yii\widgets\ActiveForm;
 
 <div class="houselevy-list-form form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="form-group form-group-title">
         <label class="" >被征户主基本：</label>
+        <hr/>
     </div>
     <hr/>
     <?= $form->field($list, 'houselevy_total_id')->textInput() ?>
@@ -34,10 +35,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($list, 'bank_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($list, 'upload_file')->textInput(['maxlength' => true]) ?>
-
     <div class="form-group form-group-title">
         <label class="" >房屋信息录入：</label>
+        <hr/>
     </div>
     <hr/>
 <!--    --><?//= $form->field($detail, 'houselevy_list_id')->textInput() ?>
@@ -60,9 +60,20 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group form-group-title">
         <label class="" >附件：</label>
+        <hr/>
+        <?= $form->field($list, 'upload_file[]')->fileInput(['multiple' => true, 'accept' => '*']) ?>
     </div>
-    <hr/>
-    <?= $form->field($list, 'upload_file')->fileInput(['maxlength' => true]) ?>
+
+
+    <div class="form-group form-group">
+        <?php
+            $upload_file = json_decode($list["upload_file"]);
+            foreach ($upload_file as $file){
+                echo "<a href=" .'http://' . $_SERVER['SERVER_NAME'] . '/' . $file . " target='_blank'>" . $file . "</a><br/>";
+            }
+        ?>
+    </div>
+
 
     <div class="form-group submit-button">
         <?= Html::submitButton($list->isNewRecord ? '创建' : '更新', ['class' => $list->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -74,7 +85,7 @@ use yii\widgets\ActiveForm;
 
 <style>
     .form{
-        height: 800px;
+        height: 900px;
         padding: 10px;
         background: #fcfcfd;
     }

@@ -3,12 +3,14 @@
 namespace backend\modules\houselevy\controllers;
 
 use app\models\HouselevyDetail;
+use app\models\UploadForm;
 use Yii;
 use app\models\HouselevyList;
 use app\models\HouselevyListSearch;
 use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * HouselevyListController implements the CRUD actions for HouselevyList model.
@@ -130,11 +132,17 @@ class HouselevyListController extends BaseController
         $detail = HouselevyDetail::findOne(["houselevy_list_id" => $list->id]);
 
         if (!$detail) {
-            throw new NotFoundHttpException("没有找到土地信息录入信息。");
+            throw new NotFoundHttpException("没有找到土地信息录入信息");
         }
 
 
         if ($list->load(Yii::$app->request->post()) && $detail->load(Yii::$app->request->post())) {
+
+            $upload_files = UploadedFile::getInstances($list, 'upload_file');
+
+            $paths = self::upload($upload_files);
+            $list->upload_file  = json_encode($paths, true);
+
             $isValid = $list->validate();
             $isValid = $detail->validate() && $isValid;
             if ($isValid) {
