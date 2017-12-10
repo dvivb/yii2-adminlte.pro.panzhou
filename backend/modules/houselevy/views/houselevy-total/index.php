@@ -34,7 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'total_households',
             'total_area',
              'total_amount',
-             'operator',
+             'operator'=>['attribute'=>'operator',
+                     'value'=>function($dataProvider){
+                        $userInfo = \app\models\User::find()->where(['id'=>$dataProvider->operator])->asArray()->one();
+                        return $userInfo['username'];
+                    }
+             ],
 //             'approval',
             'approval'=>['attribute'=>'approval','value'=>function($dataProvider){
                 $var = '';

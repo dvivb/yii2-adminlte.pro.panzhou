@@ -42,7 +42,8 @@ class HouselevyTotalSearch extends HouselevyTotal
      */
     public function search($params)
     {
-        $query = HouselevyTotal::find();
+        $query = HouselevyTotal::find()
+            ->leftJoin(\common\models\User::tableName(),\common\models\User::tableName().'.id = '.HouselevyTotal::tableName().'.operator');
 
         // add conditions that should always apply here
 
@@ -70,7 +71,7 @@ class HouselevyTotalSearch extends HouselevyTotal
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'operator', $this->operator])
+        $query->andFilterWhere(['like', 'username', $this->operator])
             ->andFilterWhere(['like', 'approval', $this->approval]);
 
         return $dataProvider;
