@@ -40,7 +40,7 @@ class HouselevyList extends \yii\db\ActiveRecord
             [['houselevy_total_id', 'gender'], 'integer'],
             [['name'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name', 'identification', 'phone', 'towns', 'address', 'bank_card', 'bank_name', 'upload_file'], 'string', 'max' => 100],
+            [['name', 'identification', 'phone', 'towns', 'address', 'bank_card', 'bank_name'], 'string', 'max' => 100],
         ];
     }
 

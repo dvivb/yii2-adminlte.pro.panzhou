@@ -138,18 +138,25 @@ class HouselevyListController extends BaseController
 
         if ($list->load(Yii::$app->request->post()) && $detail->load(Yii::$app->request->post())) {
 
-            $upload_files = UploadedFile::getInstances($list, 'upload_file');
+            $db = Yii::$app->db->beginTransaction();
+            try{
+                $upload_files = UploadedFile::getInstances($list, 'upload_file');
+                $save_path = self::upload($upload_files);
+                $list->upload_file  = json_encode($save_path, true);
 
-            $paths = self::upload($upload_files);
-            $list->upload_file  = json_encode($paths, true);
-
-            $isValid = $list->validate();
-            $isValid = $detail->validate() && $isValid;
-            if ($isValid) {
-                $list->save(false);
-                $detail->save(false);
-                return $this->redirect(['view', 'id' => $id]);
+                $isValid = $list->validate();
+                $isValid = $detail->validate() && $isValid;
+                if ($isValid) {
+                    $list->save(false);
+                    $detail->save(false);
+                    return $this->redirect(['view', 'id' => $id]);
+                }
+                $db->commit();
+            } catch (Exception $e) {
+                $db->rollBack();
+                echo '失败';
             }
+
         }
 
         return $this->render('update', [
