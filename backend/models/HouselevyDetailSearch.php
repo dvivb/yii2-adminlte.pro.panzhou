@@ -44,6 +44,7 @@ class HouselevyDetailSearch extends HouselevyDetail
     {
         $query = HouselevyDetail::find();
 
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
