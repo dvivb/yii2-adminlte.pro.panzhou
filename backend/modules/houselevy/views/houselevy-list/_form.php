@@ -68,10 +68,10 @@ use yii\widgets\ActiveForm;
     <div class="form-group form-group">
         <?php
             if(!empty($list["upload_file"])){
-//                $upload_file = json_decode($list["upload_file"]);
-//                foreach ($upload_file as $file){
-//                    echo "<a href=" .'http://' . $_SERVER['SERVER_NAME'] . '/' . $file . " target='_blank'>" . $file . "</a><br/>";
-//                }
+                $upload_file = json_decode($list["upload_file"]);
+                foreach ($upload_file as $file){
+                    echo "<a href=" .'http://' . $_SERVER['SERVER_NAME'] . '/' . $file . " target='_blank'>" . $file . "</a><br/>";
+                }
             }
         ?>
     </div>

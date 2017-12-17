@@ -138,6 +138,7 @@ class HouselevyListController extends BaseController
 
         if ($list->load(Yii::$app->request->post()) && $detail->load(Yii::$app->request->post())) {
 
+            var_dump($_POST);die;
             $db = Yii::$app->db->beginTransaction();
             try{
                 $upload_files = UploadedFile::getInstances($list, 'upload_file');
@@ -154,6 +155,7 @@ class HouselevyListController extends BaseController
                 $db->commit();
             } catch (Exception $e) {
                 $db->rollBack();
+                var_dump($e->getMessage());die;
                 echo '失败';
             }
 
@@ -194,5 +196,16 @@ class HouselevyListController extends BaseController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionExport()
+    {
+        return self::exportExcel();
+    }
+    public function actionImport()
+    {
+        $path = "C:/D/download";
+        $file = "/01simple.xlsx";
+        return self::importExcel($path . $file);
     }
 }
