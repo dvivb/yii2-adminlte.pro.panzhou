@@ -81,8 +81,23 @@ class HouselevyTotalController extends BaseController
         $model = new HouselevyTotal();
         $_POST['HouselevyTotal']['operator']=yii::$app->user->identity->id;
         $_POST['HouselevyTotal']['approval']=0;
-//         var_dump(Yii::$app->request->post());exit;
-        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+        if ( $model->load(Yii::$app->request->post()) ){
+            $project_id = $_POST['HouselevyTotal']['project_id'];
+            $periods = $_POST['HouselevyTotal']['periods'];
+            if($periods <= 0){
+                Yii::$app->getSession()->setFlash('error', '保存失败,期数不能小于0');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+            $info = $model->find()->where(['project_id' =>$project_id,'periods'=>$periods])->one();
+            if(null != $info){
+                Yii::$app->getSession()->setFlash('error', '保存失败'.$project_id.',期数已经存在');
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -118,9 +133,16 @@ class HouselevyTotalController extends BaseController
      */
     public function actionDelete($id)
     {
+
+        $info = $this->findModel($id);
+
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        if(null != $info){
+            return $this->redirect(['houselevy-total?HouselevyTotalSearch[project_id]='.$info->project_id]);
+        }else{
+            return $this->redirect(['index']);
+        }
     }
 
     /**
