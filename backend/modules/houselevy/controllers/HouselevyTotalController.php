@@ -84,6 +84,18 @@ class HouselevyTotalController extends BaseController
         if ( $model->load(Yii::$app->request->post()) ){
             $project_id = $_POST['HouselevyTotal']['project_id'];
             $periods = $_POST['HouselevyTotal']['periods'];
+            foreach($_POST['HouselevyTotal'] as $k  =>  $v){
+                if($k == 'approval')continue;
+                if(empty($v) || $v == 0 || $v <0){
+                    Yii::$app->getSession()->setFlash('error', '保存失败,参数不能为空,或者小于0');
+                    return $this->render('create', [
+                        'model' => $model,
+                    ]);
+
+                }
+
+            }
+
             if($periods <= 0){
                 Yii::$app->getSession()->setFlash('error', '保存失败,期数不能小于0');
                 return $this->render('create', [
@@ -139,7 +151,7 @@ class HouselevyTotalController extends BaseController
         $this->findModel($id)->delete();
 
         if(null != $info){
-            return $this->redirect(['houselevy-total?HouselevyTotalSearch[project_id]='.$info->project_id]);
+            return $this->redirect(['/houselevy/houselevy-total?HouselevyTotalSearch[project_id]='.$info->project_id]);
         }else{
             return $this->redirect(['index']);
         }
