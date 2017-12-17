@@ -76,6 +76,7 @@
                             ['label' => '用户分组', 'icon' => 'user', 'url' => ['/users/user-role']],
                             ['label' => '权限', 'icon' => 'user', 'url' => ['/users/permissions/index']],
                             ['label' => '权限配置', 'icon' => 'user', 'url' => ['/users/user-permissions/index']],
+                            ['label' => '秘密修改', 'icon' => 'user', 'url' => ['/users/users/change-pass']],
                         ],
                     ],
 //                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],

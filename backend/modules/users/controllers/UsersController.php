@@ -86,6 +86,50 @@ class UsersController extends BaseController
             ]);
         }
     }
+    /**
+     * 用户密码修改
+     * /users/change-pass
+     */
+
+    public  function  actionChangePass(){
+        $useId = yii::$app->user->identity->id;
+        if(null == $useId){
+            return $this->redirect(['index']);
+        }
+        $model = $this->findModel($useId);
+        if(yii::$app->request->isGet){
+            return $this->render('change-pass', [
+                'model' => $model,
+            ]);
+        }
+        $oldPass = yii::$app->request->post('oldPass');
+        $newPass = yii::$app->request->post('newPass');
+        if(empty($newPass)){
+            Yii::$app->getSession()->setFlash('error', '新密码不能为空');
+            return $this->render('change-pass', [
+                'model' => $model,
+            ]);
+        }
+
+        if(!password_verify($oldPass, $model->password_hash)){
+            Yii::$app->getSession()->setFlash('error', '旧密码错误');
+            return $this->render('change-pass', [
+                'model' => $model,
+            ]);
+        }
+        $model->password_hash = password_hash($newPass, 1,['code'=>13]);
+        if($model->save(false)){
+            Yii::$app->getSession()->setFlash('success', '密码修改成功');
+            return $this->render('change-pass', [
+                'model' => $model,
+            ]);
+        }else{
+            Yii::$app->getSession()->setFlash('error', '密码修改失败');
+            return $this->render('change-pass', [
+                'model' => $model,
+            ]);
+        }
+    }
 
     /**
      * Updates an existing User model.
