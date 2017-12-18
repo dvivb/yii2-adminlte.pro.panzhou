@@ -26,7 +26,7 @@ use yii\jui\DatePicker;
 ]); ?>
 
     <div class="form-group operate-button">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">导入</button>
+<!--        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">导入</button>-->
         <input type="submit" name="export" class="btn btn-info" value="导出" >
         <input type="submit" name="search" class="btn btn-primary" value="搜索" >
         <input type="reset" class="btn btn-default"  value="重置" >
