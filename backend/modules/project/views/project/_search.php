@@ -77,7 +77,7 @@ use yii\jui\DatePicker;
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">
                         导入
-                        <a href="?export" target="_blank" class="btn btn-sm btn-link" style="padding: 0;margin-left: 6px;"> <i class="fa fa-file-excel-o"></i>  下载导入模板 </a>
+                        <a href="export" target="_blank" class="btn btn-sm btn-link" style="padding: 0;margin-left: 6px;"> <i class="fa fa-file-excel-o"></i>  下载导入模板 </a>
                     </h4>
                 </div>
                 <div class="modal-body">

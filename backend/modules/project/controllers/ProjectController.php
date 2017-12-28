@@ -3,6 +3,7 @@
 namespace backend\modules\project\controllers;
 
 use app\models\Projects;
+use m35\thecsv\theCsv;
 use yii;
 use backend\modules\project\services\ProjectService;
 use app\models\ProjectsSearch;
@@ -142,7 +143,24 @@ class ProjectController extends BaseController
     
     
     public function actionExport(){
-        var_dump($_GET);
+        $projects = new Projects();
+        $fields = $projects->attributeLabels();
+        $f = array_keys($fields);
+
+//        echo "<pre>";
+//        var_dump($f);die;
+//        var_dump($_GET);
+//        theCsv::export([
+//            'table' => 'projects',
+//            'condition' => ['state' => 0],
+//            'orderby' => 'id DESC',
+//            'limit' => 10,
+//        ]);
+
+        theCsv::export([
+            'fields' => ["id", "code"],
+            'sql' => 'SELECT * FROM projects limit 1',
+        ]);
     }
 
     public function actionUpload()
